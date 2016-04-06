@@ -9,7 +9,7 @@
 
 unsigned short _send_pingreq();
 unsigned short _recieve_pingreq();
-unsigned short _packet_queue( command, packet, mid, qos);
+unsigned short _packet_queue(command, packet, mid, qos);
 unsigned short _send_simple_command(command);
 int recv_process();
 
@@ -19,6 +19,8 @@ int routetable();
 void rt_init();
 void insert_rt_next();
 void insert_rt_child();
+void insert_rt_next_doublenew();
+void insert_rt_next_doublenew_delete(int mid);
 
 unsigned short	CONNECT = 0x10;
 unsigned short	CONNACK = 0x20;
@@ -37,8 +39,8 @@ unsigned short	DISCONNECT = 0xE0;
 
 unsigned short  MQTT_ERR_SUCCESS = 0;
 
-char _out_packet[20] = {0};
-char _current_out_packet[20] = {0};
+char _out_packet[20] = { 0 };
+char _current_out_packet[20] = { 0 };
 
 struct messagestuff
 {
@@ -56,7 +58,7 @@ struct messagestuff mpkt;
 
 struct routestuff
 {
-	
+
 	unsigned short  mid;
 	unsigned short  forward_mid;
 	unsigned short  layer;
@@ -69,10 +71,14 @@ typedef struct list
 	int mid;
 	struct list *child;//child
 	struct list *next;//college
+	struct list *prior;//college
+	struct list *father;//college
 }node;
 node *head;
-node *temp;
-node *temp2;
+node *temp_next;
+node *temp_child;
+node *temp_prior;
+node *temp_father;
 
 
 
@@ -92,7 +98,7 @@ void main(){
 
 	//memcpy(buf, &aa, sizeof(aa));
 
-	 sprintf_s(buf,  200," all: %d%c%d%s\n", aa.a, aa.b, aa.c, aa.d);
+	sprintf_s(buf, 200, " all: %d%c%d%s\n", aa.a, aa.b, aa.c, aa.d);
 
 	printf_s("Output:\n%s\ncharacter count =\n", buf);
 
@@ -107,15 +113,15 @@ void main(){
 	//int lens = atoi(_current_out_packet);
 	//int lenss = atoi(_out_packet);
 	//printf("%d  and ", lens);
-      
-	
+
+
 
 
 	//printf_s("Output:%scharacter count =\n", buff);
 	//printf("%d  and buff ", sizeof(buff));
 	//sprintf_s(buff, lens, " %u\n", PINGREQ);
 	//printf_s("Output:%scharacter count =\n", buff);
-	
+
 	//printf("%s", _current_out_packet>>(lens-4));
 
 	//printf("%d  and new buff ", sizeof(buff));
@@ -129,14 +135,18 @@ void main(){
 	printf("how many numbers\n");
 
 	rt_init();
-	insert_rt_next();
-	insert_rt_next();
-	insert_rt_next();
+	insert_rt_next_doublenew(1);
+	insert_rt_next_doublenew(2);
+	insert_rt_next_doublenew(3);
+	insert_rt_next_doublenew(4);
+	insert_rt_next_doublenew(5);
+	insert_rt_next_doublenew(6);
+	insert_rt_next_doublenew_delete(5);
 
 
-	while (head!= NULL)
+	while (head != NULL)
 	{
-		
+
 		printf("%d", head->mid);
 		head = head->next;
 	}
@@ -145,44 +155,98 @@ void main(){
 }
 
 void rt_init(){
-	
+
 	head = malloc(sizeof(struct list));
 	head->mid = 0;
 	head->next = NULL;
 
-	temp = head;
-	temp2 = head;
+	temp_next = head;
+	temp_child = head;
 
 }
 void insert_rt_next(){
-	if (temp != 0){
-		while (temp->next != 0){
-			temp = temp->next;
+	if (temp_next != 0){
+		while (temp_next->next != 0){
+			temp_next = temp_next->next;
 		}
 	}
-	temp->next = malloc(sizeof(struct list));
-	temp = temp->next;
-	temp->mid = 4;
-	temp->next = NULL;
+	temp_next->next = malloc(sizeof(struct list));
+	temp_next = temp_next->next;
+	temp_next->mid = 4;
+	temp_next->next = NULL;
+
 }
+
+void insert_rt_next_doublenew(int one){
+
+	node * temp_insert = (node *)malloc(sizeof(struct list));//middle one
+
+	if (temp_next != 0){
+		while (temp_next->next != 0){
+			temp_next = temp_next->next;
+		}
+	}
+	//temp_next->next = malloc(sizeof(struct list));
+	//temp_next = temp_next->next;
+	//temp_next->mid = 4;
+	//temp_next->next = NULL;
+
+	temp_next->next = temp_insert;
+	temp_insert->prior = temp_next;
+	temp_insert->mid = one;
+	temp_insert->next = NULL;
+	temp_next = temp_insert;
+
+
+
+}
+void insert_rt_next_doublenew_delete(int mid){//deletenode
+	printf("one");
+	temp_next = head;
+	//node * temp_delete = (node *)malloc(sizeof(struct list));//middle one
+	while (temp_next->mid != mid){
+		printf("two");
+		if (temp_next != 0){
+			printf("there");
+			if (temp_next->next != 0){
+				printf("four");
+				temp_next = temp_next->next;
+			}
+		}
+	}
+
+	//temp_next->next = malloc(sizeof(struct list));
+	//temp_next = temp_next->next;
+	//temp_next->mid = 4;
+	//temp_next->next = NULL;
+	printf("five");
+
+	temp_next->next->prior = temp_next->prior;
+	temp_next->prior->next = temp_next->next;
+
+
+
+}
+
+
 //routetable_father
 void insert_rt_child(){
-	if (temp2 != 0){
-		while (temp2->child != 0){
-			temp2 = temp2->child;
+	if (temp_child != 0){
+		while (temp_child->child != 0){
+			temp_child = temp_child->child;
 		}
 	}
-	temp2->child = malloc(sizeof(struct list));
-	temp2 = temp2->child;
-	temp2->mid = 4;
-	temp2->child = NULL;
+	temp_child->child = malloc(sizeof(struct list));
+	temp_child = temp_child->child;
+	temp_child->mid = 4;
+	temp_child->child = NULL;
 
 }
 
 void rt_table(){
 	int count_pingack = 1;
 	rt_init();//init father mid=0 or something
-	if (count_pingack==1){
+	if (count_pingack == 1){
 		insert_rt_child();
 	}
 	else {
@@ -231,9 +295,9 @@ return rc;
 }
 
 unsigned short _recieve_pingreq(){
-	if (USART_rec()){
-		printf("rec message");
-	}
+if (USART_rec()){
+printf("rec message");
+}
 
 }
 
@@ -249,7 +313,7 @@ KEY_Init();         	//初始化与按键连接的硬件接口
 */
 
 int recv_process(){
-	
+
 	char seps[] = " ,\t\n";
 	char *token1 = NULL;
 
@@ -266,18 +330,18 @@ int recv_process(){
 	token1 = strtok_s(NULL, seps, &next_token1);
 	int tokenx2 = atoi(token1);
 	recmpkt.mid = tokenx2;
-	printf(" %d\n",recmpkt.mid);
+	printf(" %d\n", recmpkt.mid);
 
 	// While there are tokens in "string1" or "string2"
 	while (token1 != NULL)
 	{
 		// Get next token:
-	
+
 		printf(" %s\n", token1);
 		token1 = strtok_s(NULL, seps, &next_token1);
 
 	}
-	
+
 	unsigned short rc;
 	if (recmpkt.command == PINGREQ){
 		routetable();
@@ -288,7 +352,7 @@ int recv_process(){
 	if (recmpkt.command == PINGRESP){
 		//routetable_mult();
 		rc = 0;
-		
+
 
 	}
 	return rc;
@@ -361,7 +425,7 @@ unsigned short _packet_queue(command, packet, mid, qos){
 			_current_out_packet[i] = _out_packet[i];//把packet最后一位弹出给current-out-packet
 		}
 	}
-	
+
 	//	self._current_out_packet_mutex.release()
 	//	}
 	//self._out_packet_mutex.release()
