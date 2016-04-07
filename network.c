@@ -18,7 +18,7 @@ int routetable();
 //int USART_rec();
 void rt_init();
 void insert_rt_next();
-void insert_rt_child();
+
 void insert_rt_next_doublenew();
 void insert_rt_next_doublenew_delete(int mid);
 
@@ -141,14 +141,19 @@ void main(){
 	insert_rt_next_doublenew(4);
 	insert_rt_next_doublenew(5);
 	insert_rt_next_doublenew(6);
+	//	insert_rt_next_doublenew_delete(5);
+
+	head = head->child;//transfer to the first child node and then printf head-next-mid
+
 	insert_rt_next_doublenew_delete(5);
-
-
 	while (head != NULL)
 	{
 
 		printf("%d", head->mid);
-		//printf("%d", head->child->mid);
+		printf("enen");
+		//printf("%d", head->father);
+
+
 		head = head->next;
 	}
 	printf("\n");
@@ -160,11 +165,16 @@ void rt_init(){
 	head = malloc(sizeof(struct list));
 	head->mid = 0;
 	head->next = NULL;
+	head->father = 9;
+	head->prior = NULL;
+	head->child = NULL;
 
+
+
+	temp_next = malloc(sizeof(struct list));
 	temp_next = head;
+	temp_child = malloc(sizeof(struct list));
 	temp_child = head;
-	temp_father = head;
-	temp_prior = head;
 
 }
 void insert_rt_next(){
@@ -181,32 +191,71 @@ void insert_rt_next(){
 }
 
 
-
-void insert_rt_next_doublenew(int one){//recieve pingack
+void insert_rt_next_doublenew(int one){
 
 	node * temp_insert = (node *)malloc(sizeof(struct list));//middle one
 
-	if (temp_next != 0){
-		while (temp_next->next != 0){
-			temp_next = temp_next->next;
+	if (head->child == 0){      //如果子节点为空
+
+		temp_next->child = temp_insert;
+		temp_insert->prior = temp_next;
+		temp_insert->mid = one;
+		temp_insert->next = NULL;
+		//temp_insert->father = temp_next->father;//same father node
+		temp_next = temp_insert;
+
+	}
+	else{
+		if (temp_next != 0){
+			while (temp_next->next != 0){
+				temp_next = temp_next->next;
+			}
+			temp_next->next = temp_insert;
+			temp_insert->prior = temp_next;
+			temp_insert->mid = one;
+			temp_insert->next = NULL;
+			//temp_insert->father = temp_next->father;//same father node
+			temp_next = temp_insert;
 		}
 	}
+
 	//temp_next->next = malloc(sizeof(struct list));
 	//temp_next = temp_next->next;
 	//temp_next->mid = 4;
 	//temp_next->next = NULL;
 
-	temp_next->next = temp_insert;
-	temp_insert->prior = temp_next;
-	temp_insert->mid = one;
-	temp_insert->next = NULL;
-	temp_insert->father = temp_next->father;//same father node
-	temp_next = temp_insert;
 
 
 
 }
-void insert_rt_next_doublenew_delete(int mid){//delete fellow node
+/*
+void insert_rt_next_doublenew(int one){
+
+node * temp_insert = (node *)malloc(sizeof(struct list));//middle one
+
+if (temp_next != 0){
+while (temp_next->next != 0){
+temp_next = temp_next->next;
+}
+}
+//temp_next->next = malloc(sizeof(struct list));
+//temp_next = temp_next->next;
+//temp_next->mid = 4;
+//temp_next->next = NULL;
+
+temp_next->next = temp_insert;
+temp_insert->prior = temp_next;
+temp_insert->mid = one;
+temp_insert->next = NULL;
+temp_insert->father = temp_next->father;//same father node
+temp_next = temp_insert;
+
+
+
+}
+
+*/
+void insert_rt_next_doublenew_delete(int mid){//deletenode
 	printf("one");
 	temp_next = head;
 	//node * temp_delete = (node *)malloc(sizeof(struct list));//middle one
@@ -235,30 +284,7 @@ void insert_rt_next_doublenew_delete(int mid){//delete fellow node
 }
 
 
-//routetable_father
-void insert_rt_child(){
-	if (temp_child != 0){
-		while (temp_child->child != 0){
-			temp_child = temp_child->child;
-		}
-	}
-	temp_child->child = malloc(sizeof(struct list));
-	temp_child = temp_child->child;
-	temp_child->mid = 4;
-	temp_child->child = NULL;
 
-}
-
-void rt_table(){
-	int count_pingack = 1;
-	rt_init();//init father mid=0 or something
-	if (count_pingack == 1){
-		insert_rt_child();
-	}
-	else {
-		insert_rt_next();
-	}
-}
 
 
 
