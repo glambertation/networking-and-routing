@@ -148,6 +148,7 @@ void main(){
 	{
 
 		printf("%d", head->mid);
+		//printf("%d", head->child->mid);
 		head = head->next;
 	}
 	printf("\n");
@@ -162,6 +163,8 @@ void rt_init(){
 
 	temp_next = head;
 	temp_child = head;
+	temp_father = head;
+	temp_prior = head;
 
 }
 void insert_rt_next(){
@@ -177,7 +180,9 @@ void insert_rt_next(){
 
 }
 
-void insert_rt_next_doublenew(int one){
+
+
+void insert_rt_next_doublenew(int one){//recieve pingack
 
 	node * temp_insert = (node *)malloc(sizeof(struct list));//middle one
 
@@ -195,12 +200,13 @@ void insert_rt_next_doublenew(int one){
 	temp_insert->prior = temp_next;
 	temp_insert->mid = one;
 	temp_insert->next = NULL;
+	temp_insert->father = temp_next->father;//same father node
 	temp_next = temp_insert;
 
 
 
 }
-void insert_rt_next_doublenew_delete(int mid){//deletenode
+void insert_rt_next_doublenew_delete(int mid){//delete fellow node
 	printf("one");
 	temp_next = head;
 	//node * temp_delete = (node *)malloc(sizeof(struct list));//middle one
