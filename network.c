@@ -141,6 +141,7 @@ void main(){
 	insert_rt_next_doublenew(4);
 	insert_rt_next_doublenew(5);
 	insert_rt_next_doublenew(6);
+	insert_rt_next_doublenew(7);
 	//	insert_rt_next_doublenew_delete(5);
 
 	head = head->child;//transfer to the first child node and then printf head-next-mid
@@ -148,10 +149,10 @@ void main(){
 	insert_rt_next_doublenew_delete(5);
 	while (head != NULL)
 	{
-
-		printf("%d", head->mid);
-		printf("enen");
-		//printf("%d", head->father);
+		printf("my mid is :  ");
+		printf("%d\n", head->mid);
+		printf("my father mid is :");
+		printf("%d\n", head->father->mid);
 
 
 		head = head->next;
@@ -165,7 +166,7 @@ void rt_init(){
 	head = malloc(sizeof(struct list));
 	head->mid = 0;
 	head->next = NULL;
-	head->father = 9;
+	head->father = NULL;
 	head->prior = NULL;
 	head->child = NULL;
 
@@ -201,7 +202,7 @@ void insert_rt_next_doublenew(int one){
 		temp_insert->prior = temp_next;
 		temp_insert->mid = one;
 		temp_insert->next = NULL;
-		//temp_insert->father = temp_next->father;//same father node
+		temp_insert->father = head;//same father node
 		temp_next = temp_insert;
 
 	}
@@ -214,7 +215,7 @@ void insert_rt_next_doublenew(int one){
 			temp_insert->prior = temp_next;
 			temp_insert->mid = one;
 			temp_insert->next = NULL;
-			//temp_insert->father = temp_next->father;//same father node
+			temp_insert->father = temp_next->father;//same father node
 			temp_next = temp_insert;
 		}
 	}
