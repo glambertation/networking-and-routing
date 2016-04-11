@@ -1,0 +1,54 @@
+2916/4/7
+路由思路，参考ospf：1：像本自治系统中所有路由器发送信息（flooding）
+                    2.发送信息是与本路由器相邻的所有路由器的链路状态，包括metric（通                       信情况好不好）
+                    3.只有放链路状态发生变化时，才向所有路由器发送flooding
+
+
+=====================
+2016/4/6
+路由表改成双链表，删除写完
+git备份
+
+===========
+2016/3/31
+路由表同一父节点插入（单链表）
+
+下面要写路由表删除，更新
+
+===============
+
+2016/3/28
+字符串切分ok，路由表struct简单版（以后改）
+pingack，直接套用pingreq，先_send_simple_command(PINGRESP)，
+                            _packet_queue(command, packet, 0, 0);
+
+pingreq是_send_simple_command(PINGREQ)，
+         _packet_queue(command, packet, 0, 0);
+         队列中，mpkt。mid给自己赋值，字符串拼接，传到_out_packet和current_out_packet
+
+usart的收完后，应有添加一步存数据
+
+
+======================================
+2016/3/21
+usart recv弄完
+
+=========================================
+2016/3/17
+ping短帧send写完，rec有待改进，
+字符串拼接get
+尚未测试
+问题：日志，错误机制，队列，多线程
+
+
+=======================================
+2016/3/15
+htons网络字符转换
+time（0）：用秒数表达
+改完了send-ping（调用send-simple-command转换网络字符）
+send-simple-command 返回了packet队列，队列无失误的话，返回succces=0 return0
+packet-queue
+设定了一个结构体，来满足dict功能，不过后期可能需要读位来定
+
+线程没有看，注释掉了
+_current_out_packet=none，那么数据格式怎么设定呢
