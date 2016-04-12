@@ -21,6 +21,7 @@ void insert_rt_next();
 
 void insert_rt_next_doublenew();
 void insert_rt_next_doublenew_delete(int mid);
+void searching_node(int mid);
 
 unsigned short	CONNECT = 0x10;
 unsigned short	CONNACK = 0x20;
@@ -142,11 +143,13 @@ void main(){
 	insert_rt_next_doublenew(5);
 	insert_rt_next_doublenew(6);
 	insert_rt_next_doublenew(7);
+
 	//	insert_rt_next_doublenew_delete(5);
 
 	head = head->child;//transfer to the first child node and then printf head-next-mid
-
+	searching_node(15);
 	insert_rt_next_doublenew_delete(5);
+	insert_rt_next_doublenew_delete(16);
 	while (head != NULL)
 	{
 		printf("my mid is :  ");
@@ -161,10 +164,53 @@ void main(){
 	getchar();
 }
 
+
+void searching_node(int mid){// searching node only at its child level,
+	printf("one");
+	temp_next = head;
+	int yc = 1;
+	//head = head->child;
+	//node * temp_delete = (node *)malloc(sizeof(struct list));//middle one
+	while (temp_next->mid != mid){
+		printf("two");
+		if (temp_next != 0){
+			printf("there");
+			if (temp_next->next != 0){
+				printf("four\n");
+				temp_next = temp_next->next;
+
+			}
+			else{
+				printf("out of storage node and cannot find it out \n");
+				printf("the lost mid is : %d-------fail!!! \n", mid);
+				yc = 0;
+				break;
+			}
+		}
+	}
+	if (yc == 1){
+		printf("get mid:  %d--------success!!\n", temp_next->mid);
+		printf("its father is :  %d\n", temp_next->father->mid);
+
+	}
+
+	//temp_next->next = malloc(sizeof(struct list));
+	//temp_next = temp_next->next;
+	//temp_next->mid = 4;
+	//temp_next->next = NULL;
+	printf("five");
+
+
+
+
+
+}
+
+
 void rt_init(){
 
 	head = malloc(sizeof(struct list));
-	head->mid = 0;
+	head->mid = 101;
 	head->next = NULL;
 	head->father = NULL;
 	head->prior = NULL;
@@ -258,6 +304,7 @@ temp_next = temp_insert;
 */
 void insert_rt_next_doublenew_delete(int mid){//deletenode
 	printf("one");
+	int ic = 1;
 	temp_next = head;
 	//node * temp_delete = (node *)malloc(sizeof(struct list));//middle one
 	while (temp_next->mid != mid){
@@ -265,8 +312,15 @@ void insert_rt_next_doublenew_delete(int mid){//deletenode
 		if (temp_next != 0){
 			printf("there");
 			if (temp_next->next != 0){
-				printf("four");
+				printf("four\n");
 				temp_next = temp_next->next;
+
+			}
+			else{
+				printf("out of storage node and cannot delete it out \n");
+				printf("the mid cannot delete is : %d-------fail!!! \n", mid);
+				ic = 0;
+				break;
 			}
 		}
 	}
@@ -275,10 +329,13 @@ void insert_rt_next_doublenew_delete(int mid){//deletenode
 	//temp_next = temp_next->next;
 	//temp_next->mid = 4;
 	//temp_next->next = NULL;
-	printf("five");
+	printf("five\n");
 
-	temp_next->next->prior = temp_next->prior;
-	temp_next->prior->next = temp_next->next;
+	if (ic == 1){
+		printf("delete node mid is :  %d----succes!!\n", temp_next->mid);
+		temp_next->next->prior = temp_next->prior;
+		temp_next->prior->next = temp_next->next;
+	}
 
 
 
