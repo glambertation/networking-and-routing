@@ -19,6 +19,7 @@ unsigned short _send_simple_command(unsigned short command);
 int USART_rec();
 int recv_process();
 int ping_ack();
+int _send_pub();
 
 void rt_init();
 void insert_rt_next_doublenew();
@@ -322,12 +323,31 @@ int recv_process(){
 	}
 	if (recmpkt.command == PINGRESP){
 		insert_rt_next_doublenew(recmpkt.mid);
+		rc = _send_pub();// ask it to be master-child node
+		printf("ask it to be master-child node");
 
 	}
+	if (recmpkt.command == PUBLISH){
+		printf("child ping!!!!!!!!!!!!");
+		 _send_pingreq();
+		printf("child ping!!!!!!!!!!!!");
+		
+
+	}
+	
 	return rc;
 
 
 }
+
+int _send_pub(){
+	unsigned short rc = _send_simple_command(PUBLISH);
+  
+	rc = 0;
+	return rc;
+
+}
+
 
 int ping_ack(){
 	unsigned short rc = _send_simple_command(PINGRESP);
