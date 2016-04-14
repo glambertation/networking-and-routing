@@ -19,6 +19,7 @@ unsigned short _send_simple_command(unsigned short command);
 int USART_rec();
 int recv_process();
 int ping_ack();
+int _send_pub();
 
 void rt_init();
 void insert_rt_next_doublenew();
@@ -48,6 +49,7 @@ int rc;
 
 char _out_packet[20] = { 0 };
 char _current_out_packet[20] = { 0 };//µ±?°
+char _usart_recv_packet[200] = { 0 };
 
 struct messagestuff
 {
@@ -176,6 +178,8 @@ void insert_rt_next_doublenew(int one){
 			temp_insert->father = temp_next->father;//same father node
 			temp_next = temp_insert;
 		}
+		printf("insert mid is: %d",temp_next->mid);
+		printf("insert father node is: %d",temp_next->father->mid);
 	}
 
 	//temp_next->next = malloc(sizeof(struct list));
@@ -250,6 +254,7 @@ int USART_rec(){
 		for (t = 0; t<len; t++)
 		{
 			USART1->DR = USART_RX_BUF[t];
+			_usart_recv_packet[t]=USART_RX_BUF[t];
 			while ((USART1->SR & 0X40) == 0);//?-?··??í,?±µ?·??ííê±?   
 		}
 		printf("\r\n\r\n");//??DD
@@ -266,7 +271,8 @@ int USART_rec(){
 
 unsigned short _recieve_pingreq(){
 	if (USART_rec() == USART_ERR_SUCCESS){
-		printf("rec message");
+				recv_process();
+		
 	}
 	else if (USART_rec() == USART_ERR_NOMESSAGE){
 		printf("not rec message");
@@ -290,7 +296,7 @@ int recv_process(){
 	printf("Tokens:\n");
 
 	// Establish string and get the first token:
-	token1 = strtok(_current_out_packet, seps);
+	token1 = strtok(_usart_recv_packet, seps);
 	printf(" oo%soo", token1);
 
 	tokenx1 = atoi(token1);
@@ -315,14 +321,37 @@ int recv_process(){
 		rc = ping_ack();
 
 	}
+	if (recmpkt.command == PINGRESP){
+		insert_rt_next_doublenew(recmpkt.mid);
+		rc = _send_pub();// ask it to be master-child node
+		printf("ask it to be master-child node");
+
+	}
+	if (recmpkt.command == PUBLISH){
+		printf("child ping!!!!!!!!!!!!");
+		 _send_pingreq();
+		printf("child ping!!!!!!!!!!!!");
+		
+
+	}
+	
 	return rc;
 
 
 }
 
+int _send_pub(){
+	unsigned short rc = _send_simple_command(PUBLISH);
+  
+	rc = 0;
+	return rc;
+
+}
+
+
 int ping_ack(){
 	unsigned short rc = _send_simple_command(PINGRESP);
-
+  
 	rc = 0;
 	return rc;
 
@@ -344,6 +373,18 @@ unsigned short _send_pingreq(){
 	//if (rc == MQTT_ERR_SUCCESS){
 	//unsigned short _ping_t = time(0);
 	//}
+	
+	delay_ms(30000);
+	delay_ms(30000);
+	delay_ms(30000);
+	delay_ms(30000);
+	delay_ms(30000);
+	delay_ms(30000);
+	delay_ms(30000);
+	delay_ms(30000);
+	delay_ms(30000);
+	delay_ms(30000);
+	delay_ms(30000);
 	rc = 0;
 	return rc;
 }
@@ -410,34 +451,32 @@ int main(void)
 	delay_init();	    	 //?óê±o¯êy3?ê??¯	  
 	LED_Init();		  	//3?ê??¯ó?LEDá??óµ?ó2?t?ó?ú
 	uart_init(9600);
-
+  rt_init();
 
 	while (1)
 	{
 		LED0 = 0;
-		LED1 = 1;
-		delay_ms(300);	 //?óê±300ms
-		LED0 = 1;
 		LED1 = 0;
-		_send_pingreq();
+		delay_ms(300);	 //?óê±300ms
+		LED0 = 0;
+		LED1 = 0;
+		 _send_pingreq();
 		_recieve_pingreq();
 
 
-		rt_init();
-		insert_rt_next_doublenew(1);
-		insert_rt_next_doublenew(2);
-		insert_rt_next_doublenew(3);
-		insert_rt_next_doublenew(4);
-		insert_rt_next_doublenew(5);
-		insert_rt_next_doublenew(6);
-		insert_rt_next_doublenew(7);
+
+		
+	//	insert_rt_next_doublenew(1);
+	//	insert_rt_next_doublenew(2);
+		
 
 		//	insert_rt_next_doublenew_delete(5);
 
-		head = head->child;//transfer to the first child node and then printf head-next-mid
-		searching_node(15);
-		insert_rt_next_doublenew_delete(5);
-		insert_rt_next_doublenew_delete(16);
+		//head = head->child;//transfer to the first child node and then printf head-next-mid
+		//searching_node(15);
+		//insert_rt_next_doublenew_delete(5);
+		//insert_rt_next_doublenew_delete(16);
+		/*
 		while (head != NULL)
 		{
 			printf("my mid is :  ");
@@ -448,8 +487,9 @@ int main(void)
 
 			head = head->next;
 		}
+		*/
 		printf("\n");
 
-		delay_ms(300);	//?óê±300ms
+		//delay_ms(30000);	//?óê±300ms
 	}
 }
