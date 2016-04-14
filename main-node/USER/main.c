@@ -48,6 +48,7 @@ int rc;
 
 char _out_packet[20] = { 0 };
 char _current_out_packet[20] = { 0 };//µ±?°
+char _usart_recv_packet[200] = { 0 };
 
 struct messagestuff
 {
@@ -250,6 +251,7 @@ int USART_rec(){
 		for (t = 0; t<len; t++)
 		{
 			USART1->DR = USART_RX_BUF[t];
+			_usart_recv_packet[t]=USART_RX_BUF[t];
 			while ((USART1->SR & 0X40) == 0);//?-?··??í,?±µ?·??ííê±?   
 		}
 		printf("\r\n\r\n");//??DD
@@ -266,7 +268,10 @@ int USART_rec(){
 
 unsigned short _recieve_pingreq(){
 	if (USART_rec() == USART_ERR_SUCCESS){
+		printf("!!!!!!!!!!!!!!!!!!!!!!");	
 		printf("rec message");
+    printf("%s",_usart_recv_packet);		
+		printf("!!!!!!!!!!!!!!!!!!!!!!");	
 	}
 	else if (USART_rec() == USART_ERR_NOMESSAGE){
 		printf("not rec message");
@@ -415,9 +420,9 @@ int main(void)
 	while (1)
 	{
 		LED0 = 0;
-		LED1 = 1;
+		LED1 = 0;
 		delay_ms(300);	 //?óê±300ms
-		LED0 = 1;
+		LED0 = 0;
 		LED1 = 0;
 		_send_pingreq();
 		_recieve_pingreq();
