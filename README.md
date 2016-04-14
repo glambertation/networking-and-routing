@@ -14,4 +14,4 @@ LOGGING.TXT record of everything --any ideas--the situation right now
 gm.txt the meeting every week
 
 
-if you wanna know the whole level ,check logging.txt, and it is record as time precedes.
+if you wanna know the whole level ,check logging.txt, and it is recorded as time precedes.
