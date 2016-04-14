@@ -1,0 +1,79 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: ¦ÌVision V5.18.0.0
+Copyright (C) 2016 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: song Microsoft, Microsoft, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.18
+Toolchain Path:  d:\Keil_v5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 1 (build 61)
+Assembler:       Armasm.exe V5.06 update 1 (build 61)
+Linker/Locator:  ArmLink.exe V5.06 update 1 (build 61)
+Library Manager: ArmAr.exe V5.06 update 1 (build 61)
+Hex Converter:   FromElf.exe V5.06 update 1 (build 61)
+CPU DLL:         SARMCM3.DLL V5.18
+Dialog DLL:      DARMSTM.DLL V1.65.0.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V2.0.18.0
+Dialog DLL:      TARMSTM.DLL V1.64.0.0
+ 
+<h2>Project:</h2>
+E:\networking\sec-node\USER\LED.uvproj
+Project File Date:  04/14/2016
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 1 (build 61)', folder: 'd:\Keil_v5\ARM\ARMCC\Bin'
+Rebuild target 'Target 1'
+compiling stm32f10x_it.c...
+compiling system_stm32f10x.c...
+compiling main.c...
+main.c(14): warning:  #161-D: unrecognized #pragma
+  #pragma comment(lib,"ws2_32.lib")
+main.c(15): warning:  #1295-D: Deprecated declaration _send_pingreq - give arg types
+  unsigned short _send_pingreq();
+main.c(16): warning:  #1295-D: Deprecated declaration _recieve_pingreq - give arg types
+  unsigned short _recieve_pingreq();
+main.c(19): warning:  #1295-D: Deprecated declaration USART_rec - give arg types
+  int USART_rec();
+main.c(20): warning:  #1295-D: Deprecated declaration recv_process - give arg types
+  int recv_process();
+main.c(21): warning:  #1295-D: Deprecated declaration ping_ack - give arg types
+  int ping_ack();
+main.c(23): warning:  #1295-D: Deprecated declaration rt_init - give arg types
+  void rt_init();
+main.c(24): warning:  #1295-D: Deprecated declaration insert_rt_next_doublenew - give arg types
+  void insert_rt_next_doublenew();
+main.c(261): warning:  #177-D: variable "rc" was declared but never referenced
+  		int  rc = USART_ERR_NOMESSAGE;
+main.c(237): warning:  #177-D: variable "times" was declared but never referenced
+  	u16 times = 0;
+main.c(278): warning:  #940-D: missing return statement at end of non-void function "_recieve_pingreq"
+  }
+main.c(286): warning:  #177-D: variable "next_token1" was declared but never referenced
+  	char *next_token1 = NULL;
+main.c(338): warning:  #940-D: missing return statement at end of non-void function "routetable"
+  }
+main.c: 13 warnings, 0 errors
+compiling test.c...
+compiling malloc.c...
+compiling led.c...
+compiling delay.c...
+compiling sys.c...
+compiling core_cm3.c...
+assembling startup_stm32f10x_hd.s...
+compiling usart.c...
+compiling stm32f10x_gpio.c...
+compiling stm32f10x_rcc.c...
+compiling stm32f10x_usart.c...
+compiling misc.c...
+linking...
+Program Size: Code=8196 RO-data=632 RW-data=152 ZI-data=254312  
+FromELF: creating hex file...
+"..\OBJ\LED.axf" - 0 Error(s), 13 Warning(s).
+Build Time Elapsed:  00:00:04
+</pre>
+</body>
+</html>
