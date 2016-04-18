@@ -1,3 +1,16 @@
+2016/4/18
+
+48-command,102-mid,101-did,192,0,2
+
+add did
+can judge whether the message is send to me
+when recieve a pingreq: fisrt time on child second time on next
+加入destny id 收到后判断是不是发给我的信息
+
+小问题：
+发pingreq时，全1111，那么【主从节点】发给【从从】的，在测试中会被【主节点】收到，人为衰减。
+
+==========================
 2016/4/15
 小婷advice
 十字图
