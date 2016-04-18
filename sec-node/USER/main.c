@@ -18,13 +18,14 @@ unsigned short _packet_queue(unsigned short command, unsigned short packet, unsi
 unsigned short _send_simple_command(unsigned short command , unsigned short mid, unsigned short did);
 int USART_rec();
 int recv_process();
-int ping_ack();
-int _send_pub();
+int ping_ack(unsigned short did);
+int _send_pub(unsigned short did);
+int _send_sub(unsigned short did);
 
 void rt_init();
 void insert_rt_next_doublenew();
 void insert_rt_next_doublenew_delete(int mid);
-void searching_node(int mid);
+int searching_node(int mid);
 
 
 unsigned short	CONNECT = 0x10;
@@ -46,6 +47,7 @@ unsigned short  MQTT_ERR_SUCCESS = 0;
 unsigned short  USART_ERR_SUCCESS = 1;
 unsigned short  USART_ERR_NOMESSAGE = 2;
 int rc;
+int already_in_net=0;
 
 char _out_packet[20] = { 0 };
 char _current_out_packet[20] = { 0 };//µ±?°
@@ -86,11 +88,12 @@ node *temp_father;
 
 
 
-void searching_node(int mid){// searching node only at its child level,
+int searching_node(int mid){// searching node only at its child level,
+	
 	int yc = 1;
 	printf("one");
 	temp_next = head;
-
+	temp_next=temp_next->child;
 	//head = head->child;
 	//node * temp_delete = (node *)malloc(sizeof(struct list));//middle one
 	while (temp_next->mid != mid){
@@ -121,6 +124,7 @@ void searching_node(int mid){// searching node only at its child level,
 	//temp_next->mid = 4;
 	//temp_next->next = NULL;
 	printf("five");
+	return yc;
 
 
 
@@ -324,20 +328,36 @@ int recv_process(){
 	}
 
 
-	if (recmpkt.command == PINGREQ && (recmpkt.did==101||recmpkt.did==1111)){
-		rc = ping_ack();
+	if (recmpkt.command == PINGREQ && (recmpkt.did==102||recmpkt.did==1111)){
+		
+		if(!already_in_net){
+			rc = ping_ack(recmpkt.mid);
+			already_in_net=1;
+		}
+		
 
 	}
-	if (recmpkt.command == PINGRESP && (recmpkt.did==101||recmpkt.did==1111)){
+	if (recmpkt.command == PINGRESP && (recmpkt.did==102||recmpkt.did==1111)){
 		insert_rt_next_doublenew(recmpkt.mid);
-		rc = _send_pub();// ask it to be master-child node
-		printf("ask it to be master-child node");
+	//	rc = _send_pub();// ask it to be master-child node
+	//	printf("ask it to be master-child node");
 
 	}
-	if (recmpkt.command == PUBLISH && (recmpkt.did==101||recmpkt.did==1111)){
-		printf("child ping!!!!!!!!!!!!");
-		 _send_pingreq();
-		printf("child ping!!!!!!!!!!!!");
+	if (recmpkt.command == PUBLISH ){
+	//	printf("child ping!!!!!!!!!!!!");
+		//if get pub,search rt to find out;
+		if(recmpkt.did==102){
+				_send_sub(recmpkt.mid);
+		}
+		else{
+				if(searching_node(recmpkt.did)){
+					_send_pub(recmpkt.did);
+					
+				}
+
+		}
+		// _send_pingreq();
+		//printf("child ping!!!!!!!!!!!!");
 		
 
 	}
@@ -347,8 +367,8 @@ int recv_process(){
 
 }
 
-int _send_pub(){
-	unsigned short rc = _send_simple_command(PUBLISH,101,102);
+int _send_sub(unsigned short did){
+	unsigned short rc = _send_simple_command(PINGRESP,102,did);
   
 	rc = 0;
 	return rc;
@@ -356,8 +376,17 @@ int _send_pub(){
 }
 
 
-int ping_ack(){
-	unsigned short rc = _send_simple_command(PINGRESP,101,103);
+int _send_pub(unsigned short did){
+	unsigned short rc = _send_simple_command(PUBLISH,102,did);
+  
+	rc = 0;
+	return rc;
+
+}
+
+
+int ping_ack(unsigned short did){
+	unsigned short rc = _send_simple_command(PINGRESP,102,did);
   
 	rc = 0;
 	return rc;
