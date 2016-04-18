@@ -494,9 +494,9 @@ int main(void)
 		LED0 = 0;
 		LED1 = 0;
 		delay_ms(300);	 //?σκ±300ms
-		LED0 = 0;
+		LED0 = 1;
 		LED1 = 0;
-		 _send_pingreq();
+		// _send_pingreq();
 		_recieve_pingreq();
 
 
