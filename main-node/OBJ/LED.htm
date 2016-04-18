@@ -3,9 +3,9 @@
 <title>Static Call Graph - [..\OBJ\LED.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\OBJ\LED.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060061: Last Updated: Mon Apr 18 10:24:50 2016
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060061: Last Updated: Mon Apr 18 14:46:05 2016
 <BR><P>
-<H3>Maximum Stack Usage =        232 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        240 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 __rt_entry_main &rArr; main &rArr; _recieve_pingreq &rArr; recv_process &rArr; ping_ack &rArr; _send_simple_command &rArr; _packet_queue &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 <P>
@@ -255,7 +255,7 @@ Global Symbols
 <P><STRONG><a name="[ce]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
 <P><STRONG><a name="[62]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 232 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 240 + Unknown Stack Size
 <LI>Call Chain = __rt_entry_main &rArr; main &rArr; _recieve_pingreq &rArr; recv_process &rArr; ping_ack &rArr; _send_simple_command &rArr; _packet_queue &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exit
@@ -323,8 +323,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_send_simple_command
 </UL>
 
-<P><STRONG><a name="[72]"></a>_send_simple_command</STRONG> (Thumb, 22 bytes, Stack size 16 bytes, main.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 184 + Unknown Stack Size
+<P><STRONG><a name="[72]"></a>_send_simple_command</STRONG> (Thumb, 28 bytes, Stack size 24 bytes, main.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 192 + Unknown Stack Size
 <LI>Call Chain = _send_simple_command &rArr; _packet_queue &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_packet_queue
@@ -334,8 +334,8 @@ Global Symbols
 <LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_send_pingreq
 </UL>
 
-<P><STRONG><a name="[73]"></a>_send_pingreq</STRONG> (Thumb, 106 bytes, Stack size 8 bytes, main.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 192 + Unknown Stack Size
+<P><STRONG><a name="[73]"></a>_send_pingreq</STRONG> (Thumb, 112 bytes, Stack size 8 bytes, main.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 200 + Unknown Stack Size
 <LI>Call Chain = _send_pingreq &rArr; _send_simple_command &rArr; _packet_queue &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
@@ -345,8 +345,8 @@ Global Symbols
 <LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;recv_process
 </UL>
 
-<P><STRONG><a name="[75]"></a>_send_pub</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, main.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 192 + Unknown Stack Size
+<P><STRONG><a name="[75]"></a>_send_pub</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, main.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 200 + Unknown Stack Size
 <LI>Call Chain = _send_pub &rArr; _send_simple_command &rArr; _packet_queue &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_send_simple_command
@@ -354,8 +354,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;recv_process
 </UL>
 
-<P><STRONG><a name="[76]"></a>ping_ack</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, main.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 192 + Unknown Stack Size
+<P><STRONG><a name="[76]"></a>ping_ack</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, main.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 200 + Unknown Stack Size
 <LI>Call Chain = ping_ack &rArr; _send_simple_command &rArr; _packet_queue &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_send_simple_command
@@ -363,8 +363,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;recv_process
 </UL>
 
-<P><STRONG><a name="[77]"></a>recv_process</STRONG> (Thumb, 824 bytes, Stack size 32 bytes, main.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 224 + Unknown Stack Size
+<P><STRONG><a name="[77]"></a>recv_process</STRONG> (Thumb, 808 bytes, Stack size 32 bytes, main.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 232 + Unknown Stack Size
 <LI>Call Chain = recv_process &rArr; ping_ack &rArr; _send_simple_command &rArr; _packet_queue &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strtok
@@ -379,7 +379,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[7a]"></a>_recieve_pingreq</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, main.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 232 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 240 + Unknown Stack Size
 <LI>Call Chain = _recieve_pingreq &rArr; recv_process &rArr; ping_ack &rArr; _send_simple_command &rArr; _packet_queue &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
@@ -392,7 +392,7 @@ Global Symbols
 <P><STRONG><a name="[d1]"></a>routetable</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, main.o(.text), UNUSED)
 
 <P><STRONG><a name="[63]"></a>main</STRONG> (Thumb, 72 bytes, Stack size 0 bytes, main.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 232 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 240 + Unknown Stack Size
 <LI>Call Chain = main &rArr; _recieve_pingreq &rArr; recv_process &rArr; ping_ack &rArr; _send_simple_command &rArr; _packet_queue &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf

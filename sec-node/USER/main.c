@@ -15,7 +15,7 @@
 unsigned short _send_pingreq();
 unsigned short _recieve_pingreq();
 unsigned short _packet_queue(unsigned short command, unsigned short packet, unsigned short mid, unsigned short did);
-unsigned short _send_simple_command(unsigned short command);
+unsigned short _send_simple_command(unsigned short command , unsigned short mid, unsigned short did);
 int USART_rec();
 int recv_process();
 int ping_ack();
@@ -311,7 +311,7 @@ int recv_process(){
 	token1 = strtok(NULL, seps);
 	tokenx3 = atoi(token1);
 	recmpkt.did = tokenx3;
-		printf("did: %d\n", recmpkt.did);
+	printf("did: %d\n", recmpkt.did);
 
 	// While there are tokens in "string1" or "string2"
 	while (token1 != NULL)
@@ -348,7 +348,7 @@ int recv_process(){
 }
 
 int _send_pub(){
-	unsigned short rc = _send_simple_command(PUBLISH);
+	unsigned short rc = _send_simple_command(PUBLISH,101,102);
   
 	rc = 0;
 	return rc;
@@ -357,7 +357,7 @@ int _send_pub(){
 
 
 int ping_ack(){
-	unsigned short rc = _send_simple_command(PINGRESP);
+	unsigned short rc = _send_simple_command(PINGRESP,101,103);
   
 	rc = 0;
 	return rc;
@@ -376,7 +376,7 @@ int routetable(){
 
 unsigned short _send_pingreq(){
 	//self._easy_log(MQTT_LOG_DEBUG, "Sending PINGREQ")
-	unsigned short rc = _send_simple_command(PINGREQ);
+	unsigned short rc = _send_simple_command(PINGREQ,101,1111);
 	//if (rc == MQTT_ERR_SUCCESS){
 	//unsigned short _ping_t = time(0);
 	//}
@@ -395,7 +395,7 @@ unsigned short _send_pingreq(){
 	rc = 0;
 	return rc;
 }
-unsigned short _send_simple_command(unsigned short command){
+unsigned short _send_simple_command(unsigned short command , unsigned short mid, unsigned short did){
 	//For DISCONNECT, PINGREQ and PINGRESP
 	//unsigned short remaining_length = 0;
 
@@ -403,7 +403,7 @@ unsigned short _send_simple_command(unsigned short command){
 	//printf("%d", 12);
 	//packet = struct.pack('!BB', command, remaining_length);
 	//unsigned short packet = command;
-	return _packet_queue(command, packet, 101, 1111);
+	return _packet_queue(command, packet, mid, did);
 }
 
 unsigned short _packet_queue(unsigned short command, unsigned short packet, unsigned short mid, unsigned short did){
