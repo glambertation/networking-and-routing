@@ -14,7 +14,7 @@
 #pragma comment(lib,"ws2_32.lib")
 unsigned short _send_pingreq();
 unsigned short _recieve_pingreq();
-unsigned short _packet_queue(unsigned short command, unsigned short packet, unsigned short mid, unsigned short qos);
+unsigned short _packet_queue(unsigned short command, unsigned short packet, unsigned short mid, unsigned short did);
 unsigned short _send_simple_command(unsigned short command);
 int USART_rec();
 int recv_process();
@@ -55,7 +55,7 @@ struct messagestuff
 {
 	unsigned short  command;
 	unsigned short  mid;
-	unsigned short  qos;
+	unsigned short  did;
 	unsigned short  pos;
 	unsigned short  to_process;
 	unsigned short	packet;
@@ -292,6 +292,7 @@ int recv_process(){
 	char *next_token1 = NULL;
 	int tokenx1 = 0;
 	int tokenx2 = 0;
+	int tokenx3 = 0;
 
 	printf("Tokens:\n");
 
@@ -299,12 +300,18 @@ int recv_process(){
 	token1 = strtok(_usart_recv_packet, seps);
 	printf(" oo%soo", token1);
 
+
 	tokenx1 = atoi(token1);
 	recmpkt.command = tokenx1;
+	printf("command: %d\n", recmpkt.command);
 	token1 = strtok(NULL, seps);
 	tokenx2 = atoi(token1);
 	recmpkt.mid = tokenx2;
-	printf(" %d\n", recmpkt.mid);
+	printf("mid: %d\n", recmpkt.mid);
+	token1 = strtok(NULL, seps);
+	tokenx3 = atoi(token1);
+	recmpkt.did = tokenx3;
+		printf("did: %d\n", recmpkt.did);
 
 	// While there are tokens in "string1" or "string2"
 	while (token1 != NULL)
@@ -317,17 +324,17 @@ int recv_process(){
 	}
 
 
-	if (recmpkt.command == PINGREQ){
+	if (recmpkt.command == PINGREQ && (recmpkt.did==101||recmpkt.did==1111)){
 		rc = ping_ack();
 
 	}
-	if (recmpkt.command == PINGRESP){
+	if (recmpkt.command == PINGRESP && (recmpkt.did==101||recmpkt.did==1111)){
 		insert_rt_next_doublenew(recmpkt.mid);
 		rc = _send_pub();// ask it to be master-child node
 		printf("ask it to be master-child node");
 
 	}
-	if (recmpkt.command == PUBLISH){
+	if (recmpkt.command == PUBLISH && (recmpkt.did==101||recmpkt.did==1111)){
 		printf("child ping!!!!!!!!!!!!");
 		 _send_pingreq();
 		printf("child ping!!!!!!!!!!!!");
@@ -396,22 +403,22 @@ unsigned short _send_simple_command(unsigned short command){
 	//printf("%d", 12);
 	//packet = struct.pack('!BB', command, remaining_length);
 	//unsigned short packet = command;
-	return _packet_queue(command, packet, 0, 0);
+	return _packet_queue(command, packet, 101, 1111);
 }
 
-unsigned short _packet_queue(unsigned short command, unsigned short packet, unsigned short mid, unsigned short qos){
+unsigned short _packet_queue(unsigned short command, unsigned short packet, unsigned short mid, unsigned short did){
 	int i = 0;
 
 	mpkt.command = command;
 	mpkt.mid = mid;
 	mpkt.packet = packet;
-	mpkt.qos = qos;
+	mpkt.did = did;
 	mpkt.pos = 0;
 	mpkt.to_process = sizeof(packet);
 
 
 	//self._out_packet_mutex.acquire();
-	sprintf(_out_packet, "  %u%u%u%u%u%u  ", mpkt.command, mpkt.packet, mpkt.mid, mpkt.qos, mpkt.pos, mpkt.to_process);
+	sprintf(_out_packet, "  %u%u%u%u%u%u  ", mpkt.command,  mpkt.mid, mpkt.did, mpkt.packet, mpkt.pos, mpkt.to_process);
 	//printf("%s\n", _out_packet);
 	//	_out_packet.append(mpkt);  //????
 	//if self._current_out_packet_mutex.acquire(False){

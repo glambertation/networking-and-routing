@@ -3,7 +3,7 @@
 <title>Static Call Graph - [..\OBJ\LED.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\OBJ\LED.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060061: Last Updated: Thu Apr 14 16:37:47 2016
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060061: Last Updated: Mon Apr 18 10:24:50 2016
 <BR><P>
 <H3>Maximum Stack Usage =        232 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -323,7 +323,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_send_simple_command
 </UL>
 
-<P><STRONG><a name="[72]"></a>_send_simple_command</STRONG> (Thumb, 20 bytes, Stack size 16 bytes, main.o(.text))
+<P><STRONG><a name="[72]"></a>_send_simple_command</STRONG> (Thumb, 22 bytes, Stack size 16 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 184 + Unknown Stack Size
 <LI>Call Chain = _send_simple_command &rArr; _packet_queue &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
@@ -363,7 +363,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;recv_process
 </UL>
 
-<P><STRONG><a name="[77]"></a>recv_process</STRONG> (Thumb, 702 bytes, Stack size 32 bytes, main.o(.text))
+<P><STRONG><a name="[77]"></a>recv_process</STRONG> (Thumb, 824 bytes, Stack size 32 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 224 + Unknown Stack Size
 <LI>Call Chain = recv_process &rArr; ping_ack &rArr; _send_simple_command &rArr; _packet_queue &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
