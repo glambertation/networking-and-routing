@@ -51,7 +51,7 @@ int already_in_net=0;
 
 char _out_packet[20] = { 0 };
 char _current_out_packet[20] = { 0 };//µ±?°
-char _usart_recv_packet[200] = { 0 };
+char _usart_recv_packet[200] ;
 
 struct messagestuff
 {
