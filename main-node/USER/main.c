@@ -276,8 +276,10 @@ int USART_rec(){
 }
 
 unsigned short _recieve_pingreq(){
-	if (_usart_recv_packet!=0){
+	if (USART_ERR_NOMESSAGE){
+		printf("begin\n %s \nend",_usart_recv_packet);
 				recv_process_outside();
+		USART_ERR_NOMESSAGE=0;
 		
 	}
 	else if (USART_rec() == USART_ERR_NOMESSAGE){
@@ -529,8 +531,8 @@ int main(void)
 		LED0 = 1;
 		LED1 = 0;
 		 _send_pingreq();
-		//_recieve_pingreq();
-		 //_send_sub(103);
+		_recieve_pingreq();
+		 _send_sub(103);
 
 
 
