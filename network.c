@@ -5,6 +5,7 @@
 #include <string.h>
 #include<stdlib.h>
 #include <string.h>
+#include <process.h>
 #pragma comment(lib,"ws2_32.lib")
 
 unsigned short _send_pingreq();
@@ -475,7 +476,7 @@ int routetable(){
 //couple with ping——ack
 unsigned short _send_pingreq(){
 	//self._easy_log(MQTT_LOG_DEBUG, "Sending PINGREQ")
-	unsigned short rc = _send_simple_command(PINGREQ);
+	unsigned short rc = _send_simple_command(PUBLISH);
 	printf("%d", 11);
 	if (rc == MQTT_ERR_SUCCESS){
 		unsigned short _ping_t = time(0);
@@ -488,6 +489,7 @@ unsigned short _send_simple_command(command){
 
 	unsigned short packet = htons(command);
 	printf("%d", 12);
+	printf("%d", packet);
 	//packet = struct.pack('!BB', command, remaining_length);
 	//unsigned short packet = command;
 	return _packet_queue(command, packet, 0, 0);
