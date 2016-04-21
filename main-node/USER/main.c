@@ -17,7 +17,7 @@ unsigned short _recieve_pingreq();
 unsigned short _packet_queue(unsigned short command, unsigned short packet, unsigned short mid, unsigned short did);
 unsigned short _send_simple_command(unsigned short command , unsigned short mid, unsigned short did);
 int USART_rec();
-int recv_process();
+
 int ping_ack(unsigned short did);
 int _send_pub(unsigned short did);
 int _send_sub(unsigned short did);
@@ -26,6 +26,8 @@ void rt_init();
 void insert_rt_next_doublenew();
 void insert_rt_next_doublenew_delete(int mid);
 int searching_node(int mid);
+int recv_process_outside();
+int recv_process(char *message);
 
 
 unsigned short	CONNECT = 0x10;
@@ -274,8 +276,8 @@ int USART_rec(){
 }
 
 unsigned short _recieve_pingreq(){
-	if (USART_rec() == USART_ERR_SUCCESS){
-				recv_process();
+	if (_usart_recv_packet!=0){
+				recv_process_outside();
 		
 	}
 	else if (USART_rec() == USART_ERR_NOMESSAGE){
@@ -287,10 +289,34 @@ unsigned short _recieve_pingreq(){
 
 }
 
+int recv_process_outside(){
 
-int recv_process(){
+	char seps[] = " ;";
+	char *token1 = NULL;
 
-	char seps[] = " ,\t\n";
+	// Establish string and get the first token:
+	token1 = strtok(_usart_recv_packet, seps);
+  recv_process(token1 );
+
+	// While there are tokens in "string1" or "string2"
+	while (token1 != NULL)
+	{
+		// Get next token:
+
+		//printf(" %s\n", token1);
+		token1 = strtok(NULL, seps);
+		recv_process(token1 );
+
+	}
+
+	return rc;
+
+}
+
+
+int recv_process(char *message){
+
+	char seps[] = " ,\t\n";  
 	char *token1 = NULL;
 
 	char *next_token1 = NULL;
@@ -301,7 +327,7 @@ int recv_process(){
 	printf("Tokens:\n");
 
 	// Establish string and get the first token:
-	token1 = strtok(_usart_recv_packet, seps);
+	token1 = strtok(message, seps);
 	printf(" oo%soo", token1);
 
 
@@ -503,8 +529,8 @@ int main(void)
 		LED0 = 1;
 		LED1 = 0;
 		 _send_pingreq();
-		_recieve_pingreq();
-		 _send_sub(103);
+		//_recieve_pingreq();
+		 //_send_sub(103);
 
 
 

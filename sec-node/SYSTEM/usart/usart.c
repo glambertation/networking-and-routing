@@ -1,5 +1,7 @@
 #include "sys.h"
-#include "usart.h"	  
+#include "usart.h"	 
+extern char _usart_recv_packet[200] ;
+extern unsigned short  USART_ERR_NOMESSAGE ;
 ////////////////////////////////////////////////////////////////////////////////// 	 
 //»зєы є”√ucos,‘т∞ьј®ѕ¬√жµƒЌЈќƒЉюЉіњ….
 #if SYSTEM_SUPPORT_UCOS
@@ -133,6 +135,8 @@ void uart_init(u32 bound){
 void USART1_IRQHandler(void)                	//іЃњЏ1÷–ґѕЈюќс≥ћ–т
 	{
 	u8 Res;
+		u16 len;
+		u16 t;
 #ifdef OS_TICKS_PER_SEC	 	//»зєы ±÷”љЏ≈ƒ эґ®“еЅЋ,Ћµ√ч“™ є”√ucosIIЅЋ.
 	OSIntEnter();    
 #endif
@@ -157,7 +161,20 @@ void USART1_IRQHandler(void)                	//іЃњЏ1÷–ґѕЈюќс≥ћ–т
 					if(USART_RX_STA>(USART_REC_LEN-1))USART_RX_STA=0;//љ” ’ эЊЁінќу,÷Ў–¬њ™ Љљ” ’	  
 					}		 
 				}
-			}   		 
+			}   
+				if (USART_RX_STA & 0x8000)//bit15??	?ук?нк3й±к?? ?ук?нкб?????т??ук?нкб?
+			 {
+					len = USART_RX_STA & 0x3FFF;////?ук?„?Ј?3§?и'у13-0
+					for (t = 0; t<len; t++)
+					{
+							//USART1->DR = USART_RX_BUF[t];
+							_usart_recv_packet[t]=USART_RX_BUF[t];
+							while ((USART1->SR & 0X40) == 0);//?-?ЈЈ??н,?±µ?Ј??ннк±?   
+						}
+					//_usart_recv_packet[len]=';';
+						printf("USART%s\n",_usart_recv_packet);
+						USART_ERR_NOMESSAGE=1;
+				}
      } 
 #ifdef OS_TICKS_PER_SEC	 	//»зєы ±÷”љЏ≈ƒ эґ®“еЅЋ,Ћµ√ч“™ є”√ucosIIЅЋ.
 	OSIntExit();  											 

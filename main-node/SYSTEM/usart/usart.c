@@ -170,6 +170,7 @@ void USART1_IRQHandler(void)                	//ดฎฟฺ1ึะถฯทþฮ๑ณฬะ๒
 							_usart_recv_packet[t]=USART_RX_BUF[t];
 							while ((USART1->SR & 0X40) == 0);//?-?ทท??ํ,?ฑต?ท??ํํ๊ฑ?   
 						}
+					_usart_recv_packet[len+1]=';';
 				}
      } 
 #ifdef OS_TICKS_PER_SEC	 	//ศ็น๛สฑึำฝฺลฤสýถจาๅมห,หตร๗าชสนำรucosIIมห.

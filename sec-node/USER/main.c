@@ -17,7 +17,8 @@ unsigned short _recieve_pingreq();
 unsigned short _packet_queue(unsigned short command, unsigned short packet, unsigned short mid, unsigned short did);
 unsigned short _send_simple_command(unsigned short command , unsigned short mid, unsigned short did);
 int USART_rec();
-int recv_process();
+int recv_process_outside();
+int recv_process(char *message);
 int ping_ack(unsigned short did);
 int _send_pub(unsigned short did);
 int _send_sub(unsigned short did);
@@ -45,7 +46,7 @@ unsigned short	DISCONNECT = 0xE0;
 
 unsigned short  MQTT_ERR_SUCCESS = 0;
 unsigned short  USART_ERR_SUCCESS = 1;
-unsigned short  USART_ERR_NOMESSAGE = 2;
+unsigned short  USART_ERR_NOMESSAGE;
 int rc;
 int already_in_net=0;
 
@@ -274,8 +275,12 @@ int USART_rec(){
 }
 
 unsigned short _recieve_pingreq(){
-	if (USART_rec() == USART_ERR_SUCCESS){
-				recv_process();
+	if (USART_ERR_NOMESSAGE){
+		printf("begin\n %s \nend",_usart_recv_packet);
+				recv_process_outside();
+		USART_ERR_NOMESSAGE=0;
+		
+		
 		
 	}
 	else if (USART_rec() == USART_ERR_NOMESSAGE){
@@ -287,8 +292,34 @@ unsigned short _recieve_pingreq(){
 
 }
 
+int recv_process_outside(){
 
-int recv_process(){
+	char seps[] = ";";
+	char *token1 = NULL;
+
+	// Establish string and get the first token:
+	token1 = strtok(_usart_recv_packet, seps);
+  recv_process(token1);
+
+	// While there are tokens in "string1" or "string2"
+	while (token1 != NULL)
+	{
+		// Get next token:
+
+		//printf(" %s\n", token1);
+		token1 = strtok(NULL, seps);
+		recv_process(token1 );
+
+	}
+	 memset(_usart_recv_packet, 0, sizeof(_usart_recv_packet));
+	return rc;
+
+}
+
+
+
+
+int recv_process(char *message){
 
 	char seps[] = " ,\t\n";
 	char *token1 = NULL;
@@ -299,9 +330,10 @@ int recv_process(){
 	int tokenx3 = 0;
 
 	printf("Tokens:\n");
+	printf("%S\n",message);
 
 	// Establish string and get the first token:
-	token1 = strtok(_usart_recv_packet, seps);
+	token1 = strtok(message, seps);
 	printf(" oo%soo", token1);
 
 
@@ -329,8 +361,8 @@ int recv_process(){
 
 
 	if (recmpkt.command == PINGREQ && (recmpkt.did==102||recmpkt.did==1111)){
-		
-		if(!already_in_net){
+		printf("PINGREQ");
+		if(already_in_net==0){
 			rc = ping_ack(recmpkt.mid);
 			already_in_net=1;
 		}
@@ -338,12 +370,14 @@ int recv_process(){
 
 	}
 	if (recmpkt.command == PINGRESP && (recmpkt.did==102||recmpkt.did==1111)){
+		printf("PINGRESP");
 		insert_rt_next_doublenew(recmpkt.mid);
 	//	rc = _send_pub();// ask it to be master-child node
 	//	printf("ask it to be master-child node");
 
 	}
 	if (recmpkt.command == PUBLISH ){
+		printf("PUBLISH");
 	//	printf("child ping!!!!!!!!!!!!");
 		//if get pub,search rt to find out;
 		if(recmpkt.did==102){
