@@ -299,15 +299,19 @@ int recv_process_outside(){
 
 	// Establish string and get the first token:
 	token1 = strtok(_usart_recv_packet, seps);
+	printf("fisrt!!!!!!!!! %s\n", token1);
+		printf("second!!!!!!!!! %s\n", token1);
   recv_process(token1);
-
+ // printf("fisrt %s\n", token1);
 	// While there are tokens in "string1" or "string2"
 	while (token1 != NULL)
 	{
 		// Get next token:
 
 		//printf(" %s\n", token1);
+		printf("^^^^^^^^ %s^^^^^^^^\n", token1);
 		token1 = strtok(NULL, seps);
+		printf("^^^^^^^^ %s^^^^^^^^\n", token1);
 		recv_process(token1 );
 
 	}
@@ -330,7 +334,7 @@ int recv_process(char *message){
 	int tokenx3 = 0;
 
 	printf("Tokens:\n");
-	printf("%S\n",message);
+	printf("message %S\n",message);
 
 	// Establish string and get the first token:
 	token1 = strtok(message, seps);

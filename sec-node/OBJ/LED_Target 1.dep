@@ -1,5 +1,5 @@
 Dependencies for Project 'LED', Target 'Target 1': (DO NOT MODIFY !)
-F (.\main.c)(0x5718E4E6)(-c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\CMSIS\Include-I d:\Keil_v5\ARM\Inc\ST\STM32F10x-D__UVISION_VERSION="518" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
+F (.\main.c)(0x5719B3A7)(-c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\CMSIS\Include-I d:\Keil_v5\ARM\Inc\ST\STM32F10x-D__UVISION_VERSION="518" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
 I (..\HARDWARE\LED\led.h)(0x50513ABC)
 I (..\SYSTEM\sys\sys.h)(0x5055B57C)
 I (..\USER\stm32f10x.h)(0x4D783CB4)
