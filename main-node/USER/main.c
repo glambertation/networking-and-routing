@@ -282,9 +282,7 @@ unsigned short _recieve_pingreq(){
 		USART_ERR_NOMESSAGE=0;
 		
 	}
-	else if (USART_rec() == USART_ERR_NOMESSAGE){
-		printf("not rec message");
-	}
+
 	else{
 		printf("else situation");
 	}

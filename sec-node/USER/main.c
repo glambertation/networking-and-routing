@@ -49,6 +49,8 @@ unsigned short  USART_ERR_SUCCESS = 1;
 unsigned short  USART_ERR_NOMESSAGE;
 int rc;
 int already_in_net=0;
+int len_packet=0;
+
 
 char _out_packet[20] = { 0 };
 char _current_out_packet[20] = { 0 };//µ±?°

@@ -1,7 +1,9 @@
 #include "sys.h"
 #include "usart.h"	 
+extern unsigned short  USART_ERR_NOMESSAGE;
 extern char _usart_recv_packet[200] ;
-extern unsigned short  USART_ERR_NOMESSAGE ;
+char _usart_recv_packet_current[200] ;
+extern int len_packet;
 ////////////////////////////////////////////////////////////////////////////////// 	 
 //Èç¹ûÊ¹ÓÃucos,Ôò°üÀ¨ÏÂÃæµÄÍ·ÎÄ¼ş¼´¿É.
 #if SYSTEM_SUPPORT_UCOS
@@ -165,16 +167,26 @@ void USART1_IRQHandler(void)                	//´®¿Ú1ÖĞ¶Ï·şÎñ³ÌĞò
 				if (USART_RX_STA & 0x8000)//bit15??	?óê?íê3é±ê?? ?óê?íêá?????ò??óê?íêá?
 			 {
 					len = USART_RX_STA & 0x3FFF;////?óê?×?·?3¤?è'ó13-0
+				
 					for (t = 0; t<len; t++)
 					{
 							//USART1->DR = USART_RX_BUF[t];
-							_usart_recv_packet[t]=USART_RX_BUF[t];
+							_usart_recv_packet_current[t]=USART_RX_BUF[t];
 							while ((USART1->SR & 0X40) == 0);//?-?··??í,?±µ?·??ííê±?   
 						}
 					//_usart_recv_packet[len]=';';
-						printf("USART%s\n",_usart_recv_packet);
+						printf("USART%s\n",_usart_recv_packet_current);
 						USART_ERR_NOMESSAGE=1;
+						printf("_usart_recv_packet%s!!!\n",_usart_recv_packet);
+						for (t =0; t<len; t++)
+					{
+							_usart_recv_packet[len_packet+len]=_usart_recv_packet_current[t];
+							
+						}
+					 len_packet=len_packet+len;
 				}
+			 	// _usart_recv_packet_len=sizeof(_usart_recv_packet_current);
+			 
      } 
 #ifdef OS_TICKS_PER_SEC	 	//Èç¹ûÊ±ÖÓ½ÚÅÄÊı¶¨ÒåÁË,ËµÃ÷ÒªÊ¹ÓÃucosIIÁË.
 	OSIntExit();  											 
