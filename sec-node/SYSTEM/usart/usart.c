@@ -1,9 +1,11 @@
 #include "sys.h"
 #include "usart.h"	 
 extern unsigned short  USART_ERR_NOMESSAGE;
-extern char _usart_recv_packet[200] ;
-char _usart_recv_packet_current[200] ;
+extern char _usart_recv_packet1[200] ;
+extern char _usart_recv_packet2[200] ;
 extern int len_packet;
+extern int usart_flag1;
+extern int usart_flag2;
 ////////////////////////////////////////////////////////////////////////////////// 	 
 //Èç¹ûÊ¹ÓÃucos,Ôò°üÀ¨ÏÂÃæµÄÍ·ÎÄ¼ş¼´¿É.
 #if SYSTEM_SUPPORT_UCOS
@@ -139,6 +141,7 @@ void USART1_IRQHandler(void)                	//´®¿Ú1ÖĞ¶Ï·şÎñ³ÌĞò
 	u8 Res;
 		u16 len;
 		u16 t;
+
 #ifdef OS_TICKS_PER_SEC	 	//Èç¹ûÊ±ÖÓ½ÚÅÄÊı¶¨ÒåÁË,ËµÃ÷ÒªÊ¹ÓÃucosIIÁË.
 	OSIntEnter();    
 #endif
@@ -167,23 +170,34 @@ void USART1_IRQHandler(void)                	//´®¿Ú1ÖĞ¶Ï·şÎñ³ÌĞò
 				if (USART_RX_STA & 0x8000)//bit15??	?óê?íê3é±ê?? ?óê?íêá?????ò??óê?íêá?
 			 {
 					len = USART_RX_STA & 0x3FFF;////?óê?×?·?3¤?è'ó13-0
-				
-					for (t = 0; t<len; t++)
-					{
+				 printf("usart_flag1::%d   and usart_flag2:: %d\n",usart_flag1,usart_flag2);
+				  printf("_usart_recv_packet1::%s   and usart_flag2:: %s\n",_usart_recv_packet1,_usart_recv_packet2);
+				 
+				 printf("USART_RX_BUF::%s \n",USART_RX_BUF);
+					
 							//USART1->DR = USART_RX_BUF[t];
-							_usart_recv_packet_current[t]=USART_RX_BUF[t];
-							while ((USART1->SR & 0X40) == 0);//?-?··??í,?±µ?·??ííê±?   
+						if( usart_flag1==0){
+							USART_ERR_NOMESSAGE=0;
+							for (t = 0; t<len; t++){
+								_usart_recv_packet1[t]=USART_RX_BUF[t];
+								while ((USART1->SR & 0X40) == 0);
+							}
+							usart_flag1=1;
 						}
-					//_usart_recv_packet[len]=';';
-						printf("USART%s\n",_usart_recv_packet_current);
-						USART_ERR_NOMESSAGE=1;
-						printf("_usart_recv_packet%s!!!\n",_usart_recv_packet);
-						for (t =0; t<len; t++)
-					{
-							_usart_recv_packet[len_packet+len]=_usart_recv_packet_current[t];
-							
+						else if (	 usart_flag2==0&&usart_flag1==1){
+							USART_ERR_NOMESSAGE=0;
+							for (t = 0; t<len; t++){
+								_usart_recv_packet2[t]=USART_RX_BUF[t];
+								while ((USART1->SR & 0X40) == 0);
+							}
+							usart_flag2=1;	
+						
 						}
-					 len_packet=len_packet+len;
+					
+			 printf("over\n");
+					
+				
+
 				}
 			 	// _usart_recv_packet_len=sizeof(_usart_recv_packet_current);
 			 

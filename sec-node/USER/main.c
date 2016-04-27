@@ -50,11 +50,15 @@ unsigned short  USART_ERR_NOMESSAGE;
 int rc;
 int already_in_net=0;
 int len_packet=0;
+int usart_flag1=0;
+int usart_flag2=0;
+
 
 
 char _out_packet[20] = { 0 };
 char _current_out_packet[20] = { 0 };//µ±?°
-char _usart_recv_packet[200] = { 0 };
+char _usart_recv_packet1[200] ;
+char _usart_recv_packet2[200] ;
 
 struct messagestuff
 {
@@ -241,7 +245,7 @@ void insert_rt_next_doublenew_delete(int mid){//deletenode
 }
 
 
-
+/*
 int USART_rec(){
 	u16 t;
 	u16 len;
@@ -275,25 +279,43 @@ int USART_rec(){
 	}
 	return rc;
 }
+*/
 
 unsigned short _recieve_pingreq(){
-	if (USART_ERR_NOMESSAGE){
-		printf("begin\n %s \nend",_usart_recv_packet);
-				recv_process_outside();
-		USART_ERR_NOMESSAGE=0;
+		if(USART_ERR_NOMESSAGE){
+			printf("wrong situation");
+		}
+	//	printf("begin\n %s \nend",_usart_recv_packet);
+		if (usart_flag1==1){
+				recv_process( _usart_recv_packet1);
+			 memset(_usart_recv_packet1, 0, sizeof(_usart_recv_packet1));
+				printf("????%s ????\n",_usart_recv_packet1);
+			usart_flag1=0;
+			printf("case1\n");
+		}
+			
+			
+		//USART_ERR_NOMESSAGE=0;
 		
-		
-		
-	}
-	else if (USART_rec() == USART_ERR_NOMESSAGE){
-		printf("not rec message");
-	}
+		else if (usart_flag2==1){
+				recv_process( _usart_recv_packet2);
+				 memset(_usart_recv_packet2, 0, sizeof(_usart_recv_packet2));
+			printf("!!!!%s !!!\n",_usart_recv_packet2);
+					usart_flag2=0;
+				printf("case2\n");
+		}
+
 	else{
 		printf("else situation");
 	}
+	
+	//printf("USART_ERR_NOMESSAGE: %d \n",USART_ERR_NOMESSAGE);
+	//printf("usart_flag: %d \n usart_flag %d \n",usart_flag1,usart_flag2);
 
 }
 
+
+/*
 int recv_process_outside(){
 
 	char seps[] = ";";
@@ -322,7 +344,7 @@ int recv_process_outside(){
 
 }
 
-
+*/
 
 
 int recv_process(char *message){
@@ -366,7 +388,7 @@ int recv_process(char *message){
 	}
 
 
-	if (recmpkt.command == PINGREQ && (recmpkt.did==102||recmpkt.did==1111)){
+	if (recmpkt.command == PINGREQ && (recmpkt.did==102||recmpkt.did==1111)){//192
 		printf("PINGREQ");
 		if(already_in_net==0){
 			rc = ping_ack(recmpkt.mid);
@@ -375,14 +397,14 @@ int recv_process(char *message){
 		
 
 	}
-	if (recmpkt.command == PINGRESP && (recmpkt.did==102||recmpkt.did==1111)){
+	if (recmpkt.command == PINGRESP && (recmpkt.did==102||recmpkt.did==1111)){  //208
 		printf("PINGRESP");
 		insert_rt_next_doublenew(recmpkt.mid);
 	//	rc = _send_pub();// ask it to be master-child node
 	//	printf("ask it to be master-child node");
 
 	}
-	if (recmpkt.command == PUBLISH ){
+	if (recmpkt.command == PUBLISH ){  //48
 		printf("PUBLISH");
 	//	printf("child ping!!!!!!!!!!!!");
 		//if get pub,search rt to find out;
