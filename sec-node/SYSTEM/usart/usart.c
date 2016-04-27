@@ -168,37 +168,37 @@ void USART1_IRQHandler(void)                	//´®¿Ú1ÖÐ¶Ï·þÎñ³ÌÐò
 				}
 			}   
 				if (USART_RX_STA & 0x8000)//bit15??	?óê?íê3é±ê?? ?óê?íêá?????ò??óê?íêá?
-			 {
+			{
 					len = USART_RX_STA & 0x3FFF;////?óê?×?·?3¤?è'ó13-0
-				 printf("usart_flag1::%d   and usart_flag2:: %d\n",usart_flag1,usart_flag2);
-				  printf("_usart_recv_packet1::%s   and usart_flag2:: %s\n",_usart_recv_packet1,_usart_recv_packet2);
+					printf("usart_flag1::%d   and usart_flag2:: %d\n",usart_flag1,usart_flag2);
+				 // printf("_usart_recv_packet1::%s   and usart_flag2:: %s\n",_usart_recv_packet1,_usart_recv_packet2);
 				 
-				 printf("USART_RX_BUF::%s \n",USART_RX_BUF);
+					printf("USART_RX_BUF::%s \n",USART_RX_BUF);
 					
 							//USART1->DR = USART_RX_BUF[t];
-						if( usart_flag1==0){
-							USART_ERR_NOMESSAGE=0;
-							for (t = 0; t<len; t++){
-								_usart_recv_packet1[t]=USART_RX_BUF[t];
-								while ((USART1->SR & 0X40) == 0);
-							}
-							usart_flag1=1;
+					if( usart_flag1==0){
+						USART_ERR_NOMESSAGE=0;
+						for (t = 0; t<len; t++){
+							_usart_recv_packet1[t]=USART_RX_BUF[t];
+							while ((USART1->SR & 0X40) == 0);
 						}
-						else if (	 usart_flag2==0&&usart_flag1==1){
-							USART_ERR_NOMESSAGE=0;
-							for (t = 0; t<len; t++){
-								_usart_recv_packet2[t]=USART_RX_BUF[t];
-								while ((USART1->SR & 0X40) == 0);
-							}
-							usart_flag2=1;	
+						usart_flag1=1;
+					}
+					else if (	 usart_flag2==0&&usart_flag1==1){
+						USART_ERR_NOMESSAGE=0;
+						for (t = 0; t<len; t++){
+							_usart_recv_packet2[t]=USART_RX_BUF[t];
+							while ((USART1->SR & 0X40) == 0);
+						}
+						usart_flag2=1;	
 						
 						}
 					
-			 printf("over\n");
+					printf("over\n");
 					
-				
+				USART_RX_STA=0;
 
-				}
+		}
 			 	// _usart_recv_packet_len=sizeof(_usart_recv_packet_current);
 			 
      } 
