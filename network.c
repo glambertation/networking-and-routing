@@ -40,6 +40,7 @@ unsigned short	PINGRESP = 0xD0;
 unsigned short	DISCONNECT = 0xE0;
 
 unsigned short  MQTT_ERR_SUCCESS = 0;
+unsigned short  MY_CHILD_HAS_NODE = 0;
 
 char _out_packet[20] = { 0 };
 char _current_out_packet[20] = { 0 };
@@ -81,6 +82,7 @@ node *temp_next;
 node *temp_child;
 node *temp_prior;
 node *temp_father;
+
 
 
 
@@ -195,6 +197,39 @@ void main(){
 
 	printf("tocken!!!!!!!!!!!");
 	getchar();
+}
+
+
+
+char * send_my_rt(char * my_child_rt){
+	char my_rt[] = { 0 };//数组初始化可以不确定大小吗？
+	my_rt[0] = head->father->mid;
+	my_rt[1] = head->mid;
+	my_rt[2] = "#";
+	my_rt[3] = head->mid;
+	node * tmp_head = (node *)malloc(sizeof(struct list));
+	tmp_head = head;
+	int my_rt_num = 4;
+	tmp_head = tmp_head->child;
+	while (tmp_head != NULL)
+	{
+		my_rt[my_rt_num] = tmp_head->mid;
+		my_rt_num++;
+
+		tmp_head = tmp_head->next;
+	}
+	int my_child_rt_num = 0;
+	char *my_rt_point = my_rt;
+	char *my_child_rt_point = my_child_rt;
+
+
+	if (MY_CHILD_HAS_NODE){
+
+		my_rt_point = stpcpy(my_rt_point, my_child_rt_point);
+
+	}
+	return my_rt_point;
+
 }
 
 
