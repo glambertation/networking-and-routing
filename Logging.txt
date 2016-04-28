@@ -1,4 +1,25 @@
-2016/4/27
+2016/4/28
+【to do】
+
+
+
+建立路由思路：
+读取child路由表，#切分，每条build_my_child_rt
+
+【todo】
+searching_node(tmp_id))// must return a point to tmp_id
+
+/*
+add something to change the point to tmp_id 
+void move_piont_to_build_rt(){node *head, node *tmp_id_point}
+*/
+
+
+先ping-pingack--然后所有点都组完，从下往上发路由信息
+
+
+
+====================
 2016/4/27
 弥强advice：
 集中式路由 or 分布式路由  真正网状，包太长
