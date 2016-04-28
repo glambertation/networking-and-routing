@@ -162,6 +162,38 @@ void main(){
 		head = head->next;
 	}
 	printf("\n");
+
+
+	printf("tocken!!!!!!!!!!!");
+	char string1[] =
+		"A string\tof ,,tokens and some  more tokens";
+
+	char seps[] = ",";
+	char seps1[] = "\t";
+	char *token1 = NULL;
+
+	char *next_token1 = NULL;
+
+
+	printf("Tokens:\n");
+
+	// Establish string and get the first token:
+	token1 = strtok_s(string1, seps, &next_token1);
+	printf("tocken1: %s\n", token1);
+	token1 = strtok_s(token1, seps1, &next_token1);
+	printf("tocken3: %s\n", token1);
+	// While there are tokens in "string1" or "string2"
+	while (token1 != NULL)
+	{
+
+		printf("tocken2:  %s\n", token1);
+		token1 = strtok_s(NULL, seps1, &next_token1);
+
+
+	}
+
+
+	printf("tocken!!!!!!!!!!!");
 	getchar();
 }
 
@@ -402,6 +434,9 @@ KEY_Init();         	//初始化与按键连接的硬件接口
 }
 
 */
+
+
+
 
 int recv_process(){
 
