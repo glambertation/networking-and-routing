@@ -22,7 +22,7 @@ void insert_rt_next();
 
 void insert_rt_next_doublenew();
 void insert_rt_next_doublenew_delete(int mid);
-void searching_node(int mid);
+int searching_node(int mid);
 
 unsigned short	CONNECT = 0x10;
 unsigned short	CONNACK = 0x20;
@@ -41,6 +41,9 @@ unsigned short	DISCONNECT = 0xE0;
 
 unsigned short  MQTT_ERR_SUCCESS = 0;
 unsigned short  MY_CHILD_HAS_NODE = 0;
+unsigned short  MY_RT = 0xf0; //send myself route table
+unsigned short  CHILD_RT_ERR = 1;
+
 
 char _out_packet[20] = { 0 };
 char _current_out_packet[20] = { 0 };
@@ -195,13 +198,30 @@ void main(){
 	}
 
 
-	printf("tocken!!!!!!!!!!!");
+	printf("tocken!!!!!!!!!!!\n\n\n");
+	printf("new!!!!!!!!!!!\n");
+
+	char we[] = { 'p', '2', '3' };
+	int cc = atoi(we);
+	char *me = we;
+	printf("%c\n", *me);
+	me++;
+	printf("%c\n", *me);
+	me++;
+	printf("%c\n", *me);
+	printf("%d\n", cc);
+
+	printf("new!!!!!!!!!!!\n");
+
+
+
+
 	getchar();
 }
 
 
 
-char * send_my_rt(char * my_child_rt){
+int send_my_rt(char * my_child_rt){
 	char my_rt[] = { 0 };//数组初始化可以不确定大小吗？
 	my_rt[0] = head->father->mid;
 	my_rt[1] = head->mid;
@@ -225,15 +245,78 @@ char * send_my_rt(char * my_child_rt){
 
 	if (MY_CHILD_HAS_NODE){
 
-		my_rt_point = stpcpy(my_rt_point, my_child_rt_point);
+		my_rt_point = strcpy_s(my_rt_point, my_rt_num, my_child_rt_point);
 
 	}
-	return my_rt_point;
+
+	_send_simple_command(MY_RT);
+
+
+
+}
+
+int read_my_child_rt(char * packet){   //use # to cut and build_my_child_rt to biuld whole node
+	char seps[] = "#";
+	char *token1 = NULL, *pNext = NULL;
+
+	// Establish string and get the first token:
+	token1 = strtok_s(packet, seps, pNext);
+	build_my_child_rt(token1);
+
+	while (token1 != NULL)
+	{
+
+		token1 = strtok_s(NULL, seps, pNext);
+
+		build_my_child_rt(token1);
+
+	}
+}
+int build_my_child_rt(char *packet){ //packet cannot have some string or else, only ok for num packet[]={'1','22','678'}
+
+	if (atoi(*packet) == 102){
+		packet++;
+		while (*packet != NULL)
+		{
+			int tmp_id;
+			tmp_id = atoi(*packet);
+			insert_rt_next_doublenew(tmp_id);
+			packet++;
+
+		}
+	}
+
+	if (*packet != 102){
+		int tmp_id;
+		tmp_id = atoi(*packet);
+		if (searching_node(tmp_id)){// must return a point to tmp_id
+
+			/*
+			add something to change the point to tmp_id
+			void move_piont_to_build_rt(){node *head, node *tmp_id_point}
+			*/
+			packet++;
+			while (*packet != NULL)
+			{
+				int tmp_id;
+				tmp_id = atoi(*packet);
+				insert_rt_next_doublenew(tmp_id);
+				packet++;
+
+			}
+		}
+
+		else {
+			CHILD_RT_ERR = 1;
+		}
+
+
+	}
 
 }
 
 
-void searching_node(int mid){// searching node only at its child level,
+int searching_node(int mid){// searching node only at its child level,
 	printf("one");
 	temp_next = head;
 	int yc = 1;
@@ -269,7 +352,7 @@ void searching_node(int mid){// searching node only at its child level,
 	printf("five");
 
 
-
+	return yc;
 
 
 }
