@@ -1,3 +1,8 @@
+2016/4/29
+add preordertraverse (node * tree, int mid)
+¡¾to do¡¿
+ÕûÀí³ÌĞò
+===============
 2016/4/28
 ¡¾to do¡¿
 
