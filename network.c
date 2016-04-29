@@ -43,6 +43,7 @@ unsigned short  MQTT_ERR_SUCCESS = 0;
 unsigned short  MY_CHILD_HAS_NODE = 0;
 unsigned short  MY_RT = 0xf0; //send myself route table
 unsigned short  CHILD_RT_ERR = 1;
+unsigned short  FOUND_MID;
 
 
 char _out_packet[20] = { 0 };
@@ -312,6 +313,24 @@ int build_my_child_rt(char *packet){ //packet cannot have some string or else, o
 
 
 	}
+
+}
+
+
+node * preordertraverse(node * tree, int mid){
+	if (tree->mid == mid){
+		FOUND_MID = 1;
+		char *point_found_mid = tree;
+		return point_found_mid;
+
+	}
+
+	if (tree == NULL)
+		return;
+	printf("%d", tree->mid);
+	preordertraverse(tree->child, mid);
+	preordertraverse(tree->next, mid);
+
 
 }
 
