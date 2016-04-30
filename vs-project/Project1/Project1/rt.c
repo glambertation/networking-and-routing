@@ -1,6 +1,8 @@
 #include "rt.h"
 
-node *point_found_mid = NULL;
+node *will_after_found_id;
+extern unsigned short  FOUND_MID;
+
 
 
 //make my own rt into my_rt[], then _send_simple_command(MY_RT);
@@ -124,7 +126,7 @@ int build_my_child_rt(char *packet){ //packet cannot have some string or else, o
 //searvh preoder
 
 node * preordertraverse(node * tree, node *id){
-	FOUND_MID = 0;
+	
 
 	if (tree != NULL){
 		if (tree->mid != 0){
@@ -133,12 +135,13 @@ node * preordertraverse(node * tree, node *id){
 
 			if (tree->mid == id->mid){
 				FOUND_MID = 1;
-				node *after_found_id = (node *)malloc(sizeof(struct list));
-				after_found_id = tree;
-				printf("after_found_id->%d\n", after_found_id->mid);
-				printf("after_found_id->next%d\n", after_found_id->next->mid);
-				printf("after_found_id%d\n", after_found_id);
-				return 	after_found_id ;
+				will_after_found_id = malloc(sizeof(struct list));
+				will_after_found_id = tree;
+				printf("after_found_id->%d\n", will_after_found_id->mid);
+				printf("after_found_id->next%d\n", will_after_found_id->next->mid);
+				printf("after_found_id%d\n", will_after_found_id);
+				printf("FOUND_MID:%d\n", FOUND_MID);
+				return 	will_after_found_id ;
 
 			}
 
@@ -227,9 +230,14 @@ void insert_rt_next_doublenew_delete(node * tree ,int delete_id){//delete node
 	//will_found_id = NULL;
 	will_found_id->mid = delete_id;
 	printf("deltet_head_mid->%d\n", tree->mid);
-	found_id=preordertraverse(tree, will_found_id);
-	printf("balal%d\n", preordertraverse(tree, will_found_id));
-	printf("found_id->%d\n", found_id);
+	preordertraverse(tree, will_found_id);
+	printf("id\n");
+	printf("id%d\n", will_after_found_id->mid);
+	found_id = will_after_found_id;
+	//printf("balal%d\n", preordertraverse(tree, will_found_id));
+	printf("found_id->%d\n", found_id->next->mid);
+	printf("FOUND_MID:%d\n", FOUND_MID);
+
 	
 
 

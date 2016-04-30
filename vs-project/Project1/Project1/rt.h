@@ -25,7 +25,7 @@ extern unsigned short  MQTT_ERR_SUCCESS;
 extern unsigned short  MY_CHILD_HAS_NODE ;
 extern unsigned short  MY_RT  ; //send myself route table
 extern unsigned short  CHILD_RT_ERR ;
-extern unsigned short  FOUND_MID;
+
 
 
 extern char _out_packet[20];
