@@ -1,13 +1,38 @@
 #include<stdio.h>
-#include<winsock2.h>
 
-#include<time.h>
-#include <string.h>
-#include<stdlib.h>
-#include <string.h>
-#include <process.h>
+
 #include "message_struct.h"
 #include "global_var.h"
+
+
+
+extern unsigned short	CONNECT;
+extern unsigned short	CONNACK;
+extern unsigned short	PUBLISH ;
+extern unsigned short	PUBACK;
+extern unsigned short	PUBREC;
+extern unsigned short	PUBREL;
+extern unsigned short	PUBCOMP;
+extern unsigned short	SUBSCRIBE;
+extern unsigned short	SUBACK;
+extern unsigned short	UNSUBSCRIBE ;
+extern unsigned short	UNSUBACK;
+extern unsigned short	PINGREQ;//1100 0000 transfer to 192 in decimal unit
+extern unsigned short	PINGRESP;
+extern unsigned short	DISCONNECT;
+
+extern unsigned short  MQTT_ERR_SUCCESS;
+extern unsigned short  MY_CHILD_HAS_NODE ;
+extern unsigned short  MY_RT  ; //send myself route table
+extern unsigned short  CHILD_RT_ERR ;
+extern unsigned short  FOUND_MID;
+
+
+extern char _out_packet[20];
+extern char _current_out_packet[20];
+
+
+void preordertraverse(node * tree, int mid, node *after_found_id);
 
 
 unsigned short _send_pingreq();

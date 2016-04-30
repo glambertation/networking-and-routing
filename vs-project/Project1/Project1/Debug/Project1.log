@@ -1,33 +1,34 @@
-﻿生成启动时间为 2016/4/29 15:27:45。
+﻿生成启动时间为 2016/4/30 19:18:30。
      1>项目“E:\networking\vs-project\Project1\Project1\Project1.vcxproj”在节点 2 上(Build 个目标)。
      1>ClCompile:
-         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt main.c
-         main.c
-     1>e:\networking\vs-project\project1\project1\main.c(230): warning C4047: “=”:“char”与“char [2]”的间接级别不同
-     1>e:\networking\vs-project\project1\project1\main.c(250): warning C4047: “=”:“char *”与“errno_t”的间接级别不同
-     1>e:\networking\vs-project\project1\project1\main.c(265): warning C4047: “函数”:“char **”与“char *”的间接级别不同
-     1>e:\networking\vs-project\project1\project1\main.c(265): warning C4024: “strtok_s”: 形参和实参 3 的类型不同
-     1>e:\networking\vs-project\project1\project1\main.c(266): warning C4013: “build_my_child_rt”未定义；假设外部返回 int
-     1>e:\networking\vs-project\project1\project1\main.c(271): warning C4047: “函数”:“char **”与“char *”的间接级别不同
-     1>e:\networking\vs-project\project1\project1\main.c(271): warning C4024: “strtok_s”: 形参和实参 3 的类型不同
-     1>e:\networking\vs-project\project1\project1\main.c(279): warning C4047: “函数”:“const char *”与“char”的间接级别不同
-     1>e:\networking\vs-project\project1\project1\main.c(279): warning C4024: “atoi”: 形参和实参 1 的类型不同
-     1>e:\networking\vs-project\project1\project1\main.c(281): warning C4047: “!=”:“int”与“void *”的间接级别不同
-     1>e:\networking\vs-project\project1\project1\main.c(284): warning C4047: “函数”:“const char *”与“char”的间接级别不同
-     1>e:\networking\vs-project\project1\project1\main.c(284): warning C4024: “atoi”: 形参和实参 1 的类型不同
-     1>e:\networking\vs-project\project1\project1\main.c(293): warning C4047: “函数”:“const char *”与“char”的间接级别不同
-     1>e:\networking\vs-project\project1\project1\main.c(293): warning C4024: “atoi”: 形参和实参 1 的类型不同
-     1>e:\networking\vs-project\project1\project1\main.c(296): warning C4013: “preordertraverse”未定义；假设外部返回 int
-     1>e:\networking\vs-project\project1\project1\main.c(296): warning C4047: “=”:“node *”与“int”的间接级别不同
-     1>e:\networking\vs-project\project1\project1\main.c(303): warning C4047: “!=”:“int”与“void *”的间接级别不同
-     1>e:\networking\vs-project\project1\project1\main.c(306): warning C4047: “函数”:“const char *”与“char”的间接级别不同
-     1>e:\networking\vs-project\project1\project1\main.c(306): warning C4024: “atoi”: 形参和实参 1 的类型不同
-     1>e:\networking\vs-project\project1\project1\main.c(323): error C2371: “preordertraverse”: 重定义；不同的基类型
-     1>e:\networking\vs-project\project1\project1\main.c(327): warning C4098: “preordertraverse”:“void”函数返回值
-     1>e:\networking\vs-project\project1\project1\main.c(637): warning C4244: “初始化”: 从“time_t”转换到“unsigned short”，可能丢失数据
-     1>e:\networking\vs-project\project1\project1\main.c(660): warning C4244: “初始化”: 从“time_t”转换到“unsigned short”，可能丢失数据
-     1>已完成生成项目“E:\networking\vs-project\Project1\Project1\Project1.vcxproj”(Build 个目标)的操作 - 失败。
+         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt rt.c
+         rt.c
+     1>e:\networking\vs-project\project1\project1\rt.c(11): warning C4047: “=”:“char”与“char [2]”的间接级别不同
+     1>e:\networking\vs-project\project1\project1\rt.c(15): warning C4013: “malloc”未定义；假设外部返回 int
+     1>e:\networking\vs-project\project1\project1\rt.c(37): warning C4013: “strcpy_s”未定义；假设外部返回 int
+     1>e:\networking\vs-project\project1\project1\rt.c(37): warning C4047: “=”:“char *”与“int”的间接级别不同
+     1>e:\networking\vs-project\project1\project1\rt.c(63): warning C4013: “strtok_s”未定义；假设外部返回 int
+     1>e:\networking\vs-project\project1\project1\rt.c(63): warning C4047: “=”:“char *”与“int”的间接级别不同
+     1>e:\networking\vs-project\project1\project1\rt.c(64): warning C4013: “build_my_child_rt”未定义；假设外部返回 int
+     1>e:\networking\vs-project\project1\project1\rt.c(69): warning C4047: “=”:“char *”与“int”的间接级别不同
+     1>e:\networking\vs-project\project1\project1\rt.c(79): warning C4013: “atoi”未定义；假设外部返回 int
+     1>e:\networking\vs-project\project1\project1\rt.c(81): warning C4047: “!=”:“int”与“void *”的间接级别不同
+     1>e:\networking\vs-project\project1\project1\rt.c(105): warning C4047: “!=”:“int”与“void *”的间接级别不同
+     1>e:\networking\vs-project\project1\project1\rt.c(164): warning C4047: “=”:“node *”与“int”的间接级别不同
+     1>e:\networking\vs-project\project1\project1\rt.c(173): warning C4047: “=”:“node *”与“int”的间接级别不同
+     1>e:\networking\vs-project\project1\project1\rt.c(175): warning C4047: “=”:“node *”与“int”的间接级别不同
+     1>e:\networking\vs-project\project1\project1\rt.c(219): warning C4028: 形参 1 与声明不同
+     1>e:\networking\vs-project\project1\project1\rt.c(219): warning C4029: 声明的形参表不同于定义
+     1>e:\networking\vs-project\project1\project1\rt.c(74): warning C4716: “read_my_child_rt”: 必须返回一个值
+     1>e:\networking\vs-project\project1\project1\rt.c(48): warning C4716: “send_my_rt”: 必须返回一个值
+     1>e:\networking\vs-project\project1\project1\rt.c(121): warning C4716: “build_my_child_rt”: 必须返回一个值
+       Link:
+         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\networking\vs-project\Project1\Debug\Project1.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:\networking\vs-project\Project1\Debug\Project1.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\networking\vs-project\Project1\Debug\Project1.lib" /MACHINE:X86 Debug\main.obj
+         Debug\recv_pro.obj
+         Debug\rt.obj
+         Project1.vcxproj -> E:\networking\vs-project\Project1\Debug\Project1.exe
+     1>已完成生成项目“E:\networking\vs-project\Project1\Project1\Project1.vcxproj”(Build 个目标)的操作。
 
-生成失败。
+生成成功。
 
-已用时间 00:00:01.40
+已用时间 00:00:00.39

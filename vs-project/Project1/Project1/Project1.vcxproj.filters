@@ -21,6 +21,9 @@
     <ClCompile Include="rt.c">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="recv_pro.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="message_struct.h">
