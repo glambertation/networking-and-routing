@@ -1,39 +1,53 @@
 #include "rt.h"
 
-
+//make my own rt into my_rt[], then _send_simple_command(MY_RT);
 int send_my_rt(char * my_child_rt){
 	char my_rt[] = { 0 };//数组初始化可以不确定大小吗？
 	my_rt[0] = head->father->mid;
 	my_rt[1] = head->mid;
-	my_rt[2] = "#";
-	my_rt[3] = head->mid;
+	my_rt[2] = "#";  //add father-me and over
+	my_rt[3] = head->mid;  //add me
 	node * tmp_head = (node *)malloc(sizeof(struct list));
 	tmp_head = head;
 	int my_rt_num = 4;
 	tmp_head = tmp_head->child;
-	while (tmp_head != NULL)
+	while (tmp_head != NULL) // add child
 	{
 		my_rt[my_rt_num] = tmp_head->mid;
 		my_rt_num++;
 
 		tmp_head = tmp_head->next;
 	}
+	my_rt[my_rt_num] = '#';//over me-child
 	int my_child_rt_num = 0;
 	char *my_rt_point = my_rt;
 	char *my_child_rt_point = my_child_rt;
 
 
-	if (MY_CHILD_HAS_NODE){
+	if (MY_CHILD_HAS_NODE){  //MY_CHILD_HAS_NODE set in  
 
-		my_rt_point = strcpy_s(my_rt_point, my_rt_num, my_child_rt_point);
+		my_rt_point = strcpy_s(my_rt_point, my_rt_num, my_child_rt_point); // add child-child's child  and the point my_rt_point point to the begining 
 
 	}
 
-	_send_simple_command(MY_RT);
+	_send_simple_command(MY_RT);// 
+
+	//todo
+	/*
+	_send_simple_command(MY_RT,my_rt_point);//
+    */
 
 
 
 }
+
+
+/*
+when got child_rt, to build own rt:
+1. read_my_child_rt(char * packet)  //cut use #
+2. build_my_child_rt(token1);
+
+*/
 
 int read_my_child_rt(char * packet){   //use # to cut and build_my_child_rt to biuld whole node
 	char seps[] = "#";
@@ -52,6 +66,10 @@ int read_my_child_rt(char * packet){   //use # to cut and build_my_child_rt to b
 
 	}
 }
+
+
+
+
 int build_my_child_rt(char *packet){ //packet cannot have some string or else, only ok for num packet[]={'1','22','678'}
 
 	if (atoi(*packet) == 102){
@@ -60,7 +78,13 @@ int build_my_child_rt(char *packet){ //packet cannot have some string or else, o
 		{
 			int tmp_id;
 			tmp_id = atoi(*packet);
+			insert_rt_next_doublenew(packet, tmp_id);    //insert from packet:should packet->child then insert
+			/*
+			todo
 			insert_rt_next_doublenew(packet, tmp_id);
+			should packet->child then insert
+			*/
+
 			packet++;
 
 		}
@@ -69,9 +93,10 @@ int build_my_child_rt(char *packet){ //packet cannot have some string or else, o
 	if (*packet != 102){
 		int tmp_id;
 		tmp_id = atoi(*packet);
+		
+		node *after_found_id = (node *)malloc(sizeof(struct list));
+		after_found_id = preordertraverse(head, tmp_id);
 		if (FOUND_MID){// must return a point to tmp_id
-			node *after_found_id = (node *)malloc(sizeof(struct list));
-			after_found_id = preordertraverse(head, tmp_id);
 
 			/*
 			add something to change the point to tmp_id
@@ -98,9 +123,9 @@ int build_my_child_rt(char *packet){ //packet cannot have some string or else, o
 }
 
 
+//searvh preoder
 
-
-void preordertraverse(node * tree, int mid){
+node * preordertraverse(node * tree, int mid){
 	if (tree->mid == mid){
 		FOUND_MID = 1;
 		node *point_found_mid = tree;
@@ -121,6 +146,11 @@ void move_piont_to_build_rt(node *head, node *tmp_id_point){
 
 }
 
+
+//as we got node * preordertraverse(node * tree, int mid)
+//which return the point of mid 
+
+/*
 int searching_node(int mid){// searching node only at its child level,
 	printf("one");
 	temp_next = head;
@@ -163,6 +193,8 @@ int searching_node(int mid){// searching node only at its child level,
 }
 
 
+*/
+
 void rt_init(){
 
 	head = malloc(sizeof(struct list));
@@ -180,6 +212,9 @@ void rt_init(){
 	temp_child = head;
 
 }
+
+/*void insert_rt_next_doublenew(node * head, int one)
+
 void insert_rt_next(){
 	if (temp_next != 0){
 		while (temp_next->next != 0){
@@ -192,7 +227,7 @@ void insert_rt_next(){
 	temp_next->next = NULL;
 
 }
-
+*/
 
 void insert_rt_next_doublenew(node * head, int one){
 
