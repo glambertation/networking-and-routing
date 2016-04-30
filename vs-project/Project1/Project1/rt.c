@@ -123,7 +123,7 @@ int build_my_child_rt(char *packet){ //packet cannot have some string or else, o
 
 //searvh preoder
 
-void preordertraverse(node * tree, int mid, node *after_found_id){
+node * preordertraverse(node * tree, node *id){
 	FOUND_MID = 0;
 
 	if (tree != NULL){
@@ -131,11 +131,14 @@ void preordertraverse(node * tree, int mid, node *after_found_id){
 
 			printf("tree_mid->%d\n", tree->mid);
 
-			if (tree->mid == mid){
+			if (tree->mid == id->mid){
 				FOUND_MID = 1;
+				node *after_found_id = (node *)malloc(sizeof(struct list));
 				after_found_id = tree;
 				printf("after_found_id->%d\n", after_found_id->mid);
-				return;
+				printf("after_found_id->next%d\n", after_found_id->next->mid);
+				printf("after_found_id%d\n", after_found_id);
+				return 	after_found_id ;
 
 			}
 
@@ -147,8 +150,8 @@ void preordertraverse(node * tree, int mid, node *after_found_id){
 	if (tree == NULL)
 		return ;
 	printf("tree::%d\n", tree->mid);
-	preordertraverse(tree->child, mid, after_found_id);
-	preordertraverse(tree->next, mid, after_found_id);
+	preordertraverse(tree->child, id);
+	preordertraverse(tree->next, id);
 
 
 }
@@ -218,20 +221,24 @@ void insert_rt_next_doublenew(node * head, int one){
 
 void insert_rt_next_doublenew_delete(node * tree ,int delete_id){//delete node
 
-	node *after_found_id = (node *)malloc(sizeof(struct list));
-	after_found_id = NULL;
+	node *found_id = (node *)malloc(sizeof(struct list));
+	//after_found_id = NULL;
+	node *will_found_id = (node *)malloc(sizeof(struct list));
+	//will_found_id = NULL;
+	will_found_id->mid = delete_id;
 	printf("deltet_head_mid->%d\n", tree->mid);
-	preordertraverse(tree, delete_id, after_found_id);
-	printf("after_found_id->%d\n", after_found_id->mid);
+	found_id=preordertraverse(tree, will_found_id);
+	printf("balal%d\n", preordertraverse(tree, will_found_id));
+	printf("found_id->%d\n", found_id);
 	
 
 
 
 	if (FOUND_MID == 1){
 	
-		after_found_id->next->prior = after_found_id->prior;
-		after_found_id->prior->next = after_found_id->next;
-		after_found_id->father->child = NULL;
+		found_id->next->prior = found_id->prior;
+		found_id->prior->next = found_id->next;
+		found_id->father->child = NULL;
 	}
 
 

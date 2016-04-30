@@ -10,6 +10,9 @@
 #include "rt.h"
 #pragma comment(lib,"ws2_32.lib")
 
+
+
+
 unsigned short	CONNECT = 0x10;
 unsigned short	CONNACK = 0x20;
 unsigned short	PUBLISH = 0x30;
@@ -168,8 +171,6 @@ void main(){
 
 	getchar();
 }
-
-
 
 
 

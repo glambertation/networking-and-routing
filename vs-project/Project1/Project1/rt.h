@@ -32,7 +32,7 @@ extern char _out_packet[20];
 extern char _current_out_packet[20];
 
 
-void preordertraverse(node * tree, int mid, node *after_found_id);
+node * preordertraverse(node * tree, node *id);
 
 
 unsigned short _send_pingreq();
