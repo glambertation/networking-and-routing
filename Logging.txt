@@ -1,3 +1,36 @@
+2016/5/1
+how to 组成网状呢
+
+rt.c这里基本差不多了
+
+
+==================
+2016/4/30
+
+	if (tree != 0){
+		if (tree->mid != 0){
+
+			printf("tree_mid->%d\n", tree->mid);
+
+			if (tree->mid == mid){
+				FOUND_MID = 1;
+				after_found_id = tree;
+				return;
+
+			}
+
+
+		}
+
+		
+	}
+
+【todo】
+1._send_simple_command(MY_RT,my_rt_point);//
+2.htnol;
+3.改packet char【】属性
+
+==============
 2016/4/29
 add preordertraverse (node * tree, int mid)
 【to do】

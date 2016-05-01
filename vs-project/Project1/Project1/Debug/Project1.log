@@ -1,4 +1,4 @@
-﻿生成启动时间为 2016/4/30 21:59:26。
+﻿生成启动时间为 2016/5/1 13:55:15。
      1>项目“E:\networking\vs-project\Project1\Project1\Project1.vcxproj”在节点 2 上(Build 个目标)。
      1>ClCompile:
          D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt rt.c
@@ -24,8 +24,8 @@
      1>e:\networking\vs-project\project1\project1\rt.c(181): warning C4047: “=”:“node *”与“int”的间接级别不同
      1>e:\networking\vs-project\project1\project1\rt.c(225): warning C4028: 形参 1 与声明不同
      1>e:\networking\vs-project\project1\project1\rt.c(225): warning C4029: 声明的形参表不同于定义
-     1>e:\networking\vs-project\project1\project1\rt.c(50): warning C4716: “send_my_rt”: 必须返回一个值
      1>e:\networking\vs-project\project1\project1\rt.c(76): warning C4716: “read_my_child_rt”: 必须返回一个值
+     1>e:\networking\vs-project\project1\project1\rt.c(50): warning C4716: “send_my_rt”: 必须返回一个值
      1>e:\networking\vs-project\project1\project1\rt.c(123): warning C4716: “build_my_child_rt”: 必须返回一个值
      1>e:\networking\vs-project\project1\project1\rt.c(160): warning C4715: “preordertraverse”: 不是所有的控件路径都返回值
        Link:
@@ -37,4 +37,4 @@
 
 生成成功。
 
-已用时间 00:00:00.39
+已用时间 00:00:00.43

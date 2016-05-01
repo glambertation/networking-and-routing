@@ -223,7 +223,7 @@ void insert_rt_next_doublenew(node * head, int one){
 
 
 void insert_rt_next_doublenew_delete(node * tree ,int delete_id){//delete node
-
+	FOUND_MID = 0;
 	node *found_id = (node *)malloc(sizeof(struct list));
 	//after_found_id = NULL;
 	node *will_found_id = (node *)malloc(sizeof(struct list));
@@ -243,10 +243,18 @@ void insert_rt_next_doublenew_delete(node * tree ,int delete_id){//delete node
 
 
 	if (FOUND_MID == 1){
-	
+		
 		found_id->next->prior = found_id->prior;
+		printf("found_id->%d\n", found_id->next->prior->mid);
 		found_id->prior->next = found_id->next;
-		found_id->father->child = NULL;
+		//found_id->father->child = NULL;  cause every child was point to father and if delete,it will affact
+		if (found_id->child != NULL){
+			found_id->child->father->next->prior = found_id->child->father->prior;
+			found_id->child->father->prior->next = found_id->child->father->next;
+			found_id->child = NULL;
+
+		}
+		
 	}
 
 

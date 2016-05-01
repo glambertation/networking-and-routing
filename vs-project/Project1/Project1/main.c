@@ -109,6 +109,7 @@ void main(){
 	insert_rt_next_doublenew_delete(head,5);
 	//insert_rt_next_doublenew_delete(head,16);
 	head = head->child;
+	printf("%d\n", head);
 	while (head != NULL)
 	{
 		printf("my mid is :  ");
