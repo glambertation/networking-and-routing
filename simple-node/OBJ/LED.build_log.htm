@@ -43,64 +43,10 @@ rt.h(67): warning:  #1295-D: Deprecated declaration recv_process_outside - give 
 main.c(13): warning:  #161-D: unrecognized #pragma
   #pragma comment(lib,"ws2_32.lib")
 main.c: 7 warnings, 0 errors
+compiling stm32f10x_it.c...
 compiling system_stm32f10x.c...
 compiling test.c...
-compiling stm32f10x_it.c...
 compiling malloc.c...
-compiling rt.c...
-message_struct.h(42): warning:  #1-D: last line of file ends without a newline
-  node *point_found_mid;
-rt.h(49): warning:  #1295-D: Deprecated declaration rt_init - give arg types
-  void rt_init();
-rt.h(62): warning:  #1295-D: Deprecated declaration _send_pingreq - give arg types
-  unsigned short _send_pingreq();
-rt.h(63): warning:  #1295-D: Deprecated declaration _recieve_pingreq - give arg types
-  void _recieve_pingreq();
-rt.h(66): warning:  #1295-D: Deprecated declaration USART_rec - give arg types
-  int USART_rec();
-rt.h(67): warning:  #1295-D: Deprecated declaration recv_process_outside - give arg types
-  int recv_process_outside();
-rt.c(13): error:  #513: a value of type "char *" cannot be assigned to an entity of type "char"
-  	my_rt[2] = "#";  //add father-me and over
-rt.c(17): error:  #268: declaration may not appear after executable statement in block
-  	node * tmp_head = (node *)malloc(sizeof(struct list));
-rt.c(19): error:  #268: declaration may not appear after executable statement in block
-  	int my_rt_num = 4;
-rt.c(33): error:  #268: declaration may not appear after executable statement in block
-  	int my_child_rt_num = 0;
-rt.c(34): error:  #268: declaration may not appear after executable statement in block
-  	char *my_rt_point = my_rt;
-rt.c(35): error:  #268: declaration may not appear after executable statement in block
-  	char *my_child_rt_point = my_child_rt;
-rt.c(50): warning:  #940-D: missing return statement at end of non-void function "send_my_rt"
-  }
-rt.c(33): warning:  #177-D: variable "my_child_rt_num" was declared but never referenced
-  	int my_child_rt_num = 0;
-rt.c(76): warning:  #940-D: missing return statement at end of non-void function "read_my_child_rt"
-  }
-rt.c(81): error:  #167: argument of type "char" is incompatible with parameter of type "const char *"
-  	if (atoi(*packet) == 102){
-rt.c(86): error:  #167: argument of type "char" is incompatible with parameter of type "const char *"
-  			tmp_id = atoi(*packet);
-rt.c(87): error:  #167: argument of type "char *" is incompatible with parameter of type "node *"
-  			insert_rt_next_doublenew(packet, tmp_id);    //insert from packet:should packet->child then insert
-rt.c(95): error:  #167: argument of type "char" is incompatible with parameter of type "const char *"
-  		tmp_id = atoi(*packet);
-rt.c(97): error:  #268: declaration may not appear after executable statement in block
-  		node *after_found_id = (node *)malloc(sizeof(struct list));
-rt.c(98): error:  #167: argument of type "int" is incompatible with parameter of type "node *"
-  		preordertraverse(head, tmp_id);
-rt.c(110): error:  #167: argument of type "char" is incompatible with parameter of type "const char *"
-  				tmp_id = atoi(*packet);
-rt.c(123): warning:  #940-D: missing return statement at end of non-void function "build_my_child_rt"
-  }
-rt.c(160): warning:  #940-D: missing return statement at end of non-void function "preordertraverse"
-  }
-rt.c(227): error:  #268: declaration may not appear after executable statement in block
-  	node *found_id = (node *)malloc(sizeof(struct list));
-rt.c(229): error:  #268: declaration may not appear after executable statement in block
-  	node *will_found_id = (node *)malloc(sizeof(struct list));
-rt.c: 11 warnings, 15 errors
 compiling recv_pro.c...
 message_struct.h(42): warning:  #1-D: last line of file ends without a newline
   node *point_found_mid;
@@ -116,26 +62,72 @@ rt.h(67): warning:  #1295-D: Deprecated declaration recv_process_outside - give 
   int recv_process_outside();
 recv_pro.c(50): warning:  #226-D: invalid format string conversion
   	printf("message %S\n",message);
-recv_pro.c(104): error:  #167: argument of type "unsigned short" is incompatible with parameter of type "node *"
-  			preordertraverse(head, recmpkt.did);
 recv_pro.c(44): warning:  #177-D: variable "next_token1" was declared but never referenced
   	char *next_token1 = NULL;
-recv_pro.c(155): warning:  #940-D: missing return statement at end of non-void function "routetable"
+recv_pro.c(161): warning:  #940-D: missing return statement at end of non-void function "routetable"
   }
-recv_pro.c(232): warning:  #1-D: last line of file ends without a newline
+recv_pro.c(238): warning:  #1-D: last line of file ends without a newline
   }
-recv_pro.c: 10 warnings, 1 error
-compiling led.c...
+recv_pro.c: 10 warnings, 0 errors
 compiling delay.c...
-compiling usart.c...
+compiling led.c...
+compiling rt.c...
+message_struct.h(42): warning:  #1-D: last line of file ends without a newline
+  node *point_found_mid;
+rt.h(49): warning:  #1295-D: Deprecated declaration rt_init - give arg types
+  void rt_init();
+rt.h(62): warning:  #1295-D: Deprecated declaration _send_pingreq - give arg types
+  unsigned short _send_pingreq();
+rt.h(63): warning:  #1295-D: Deprecated declaration _recieve_pingreq - give arg types
+  void _recieve_pingreq();
+rt.h(66): warning:  #1295-D: Deprecated declaration USART_rec - give arg types
+  int USART_rec();
+rt.h(67): warning:  #1295-D: Deprecated declaration recv_process_outside - give arg types
+  int recv_process_outside();
+rt.c(49): warning:  #940-D: missing return statement at end of non-void function "send_my_rt"
+  }
+rt.c(14): warning:  #550-D: variable "my_child_rt_num" was set but never used
+  	int my_child_rt_num ;
+rt.c(75): warning:  #940-D: missing return statement at end of non-void function "read_my_child_rt"
+  }
+rt.c(165): warning:  #940-D: missing return statement at end of non-void function "build_my_child_rt"
+  }
+rt.c(202): warning:  #940-D: missing return statement at end of non-void function "preordertraverse"
+  }
+rt.c: 11 warnings, 0 errors
 compiling sys.c...
-compiling stm32f10x_gpio.c...
+compiling usart.c...
 assembling startup_stm32f10x_hd.s...
-compiling stm32f10x_usart.c...
+compiling stm32f10x_gpio.c...
 compiling core_cm3.c...
 compiling stm32f10x_rcc.c...
+compiling stm32f10x_usart.c...
 compiling misc.c...
-"..\OBJ\LED.axf" - 16 Error(s), 28 Warning(s).
+linking...
+..\OBJ\LED.axf: Error: L6200E: Symbol recmpkt multiply defined (by recv_pro.o and main.o).
+..\OBJ\LED.axf: Error: L6200E: Symbol recmpkt multiply defined (by rt.o and main.o).
+..\OBJ\LED.axf: Error: L6200E: Symbol mpkt multiply defined (by recv_pro.o and main.o).
+..\OBJ\LED.axf: Error: L6200E: Symbol mpkt multiply defined (by rt.o and main.o).
+..\OBJ\LED.axf: Error: L6200E: Symbol rt multiply defined (by recv_pro.o and main.o).
+..\OBJ\LED.axf: Error: L6200E: Symbol rt multiply defined (by rt.o and main.o).
+..\OBJ\LED.axf: Error: L6200E: Symbol head multiply defined (by recv_pro.o and main.o).
+..\OBJ\LED.axf: Error: L6200E: Symbol head multiply defined (by rt.o and main.o).
+..\OBJ\LED.axf: Error: L6200E: Symbol temp_next multiply defined (by recv_pro.o and main.o).
+..\OBJ\LED.axf: Error: L6200E: Symbol temp_next multiply defined (by rt.o and main.o).
+..\OBJ\LED.axf: Error: L6200E: Symbol temp_child multiply defined (by recv_pro.o and main.o).
+..\OBJ\LED.axf: Error: L6200E: Symbol temp_child multiply defined (by rt.o and main.o).
+..\OBJ\LED.axf: Error: L6200E: Symbol temp_prior multiply defined (by recv_pro.o and main.o).
+..\OBJ\LED.axf: Error: L6200E: Symbol temp_prior multiply defined (by rt.o and main.o).
+..\OBJ\LED.axf: Error: L6200E: Symbol temp_father multiply defined (by recv_pro.o and main.o).
+..\OBJ\LED.axf: Error: L6200E: Symbol temp_father multiply defined (by rt.o and main.o).
+..\OBJ\LED.axf: Error: L6200E: Symbol point_found_mid multiply defined (by recv_pro.o and main.o).
+..\OBJ\LED.axf: Error: L6200E: Symbol point_found_mid multiply defined (by rt.o and main.o).
+..\OBJ\LED.axf: Error: L6200E: Symbol will_after_found_id multiply defined (by recv_pro.o and main.o).
+..\OBJ\LED.axf: Error: L6200E: Symbol will_after_found_id multiply defined (by rt.o and main.o).
+Not enough information to list image symbols.
+Not enough information to list the image map.
+Finished: 2 information, 0 warning and 20 error messages.
+"..\OBJ\LED.axf" - 20 Error(s), 28 Warning(s).
 Target not created.
 Build Time Elapsed:  00:00:05
 </pre>

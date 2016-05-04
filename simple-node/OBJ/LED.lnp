@@ -4,6 +4,8 @@
 "..\obj\system_stm32f10x.o"
 "..\obj\test.o"
 "..\obj\malloc.o"
+"..\obj\recv_pro.o"
+"..\obj\rt.o"
 "..\obj\led.o"
 "..\obj\delay.o"
 "..\obj\sys.o"

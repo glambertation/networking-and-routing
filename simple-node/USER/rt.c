@@ -7,32 +7,31 @@ extern unsigned short  FOUND_MID;
 
 //make my own rt into my_rt[], then _send_simple_command(MY_RT);
 int send_my_rt(char * my_child_rt){
-	char my_rt[] = { 0 };//数组初始化可以不确定大小吗？
-	my_rt[0] = head->father->mid;
-	my_rt[1] = head->mid;
-	my_rt[2] = "#";  //add father-me and over
-
-
-	my_rt[3] = head->mid;  //add me
-	node * tmp_head = (node *)malloc(sizeof(struct list));
+	char my_rt[300] = { 0 };//数组初始化可以不确定大小吗？
+	node * tmp_head ;
+	char *my_rt_point;
+	char *my_child_rt_point;
+	int my_child_rt_num ;
+	
+	
+	 tmp_head = malloc(sizeof(struct list));
+	 my_child_rt_num = 0;
+	 my_rt_point = my_rt;
+	 my_child_rt_point = my_child_rt;
+	
+	sprintf(my_rt, "%u,%u#%u", head->father->mid,head->mid,head->mid);
+	
 	tmp_head = head;
-	int my_rt_num = 4;
 	tmp_head = tmp_head->child;
 
 
 	while (tmp_head != NULL) // add child
 	{
-		my_rt[my_rt_num] = tmp_head->mid;
-		my_rt_num++;
-
+		sprintf(my_rt, "%s%u,",my_rt,tmp_head->mid);
 		tmp_head = tmp_head->next;
 	}
-	my_rt[my_rt_num] = '#';//over me-child
 
-
-	int my_child_rt_num = 0;
-	char *my_rt_point = my_rt;
-	char *my_child_rt_point = my_child_rt;
+	sprintf(my_rt, "%s#",my_rt);
 
 
 	if (MY_CHILD_HAS_NODE){  //MY_CHILD_HAS_NODE set in  
@@ -77,6 +76,49 @@ int read_my_child_rt(char * packet){   //use # to cut and build_my_child_rt to b
 
 
 int build_my_child_rt(char *packet){ //packet cannot have some string or else, only ok for num packet[]={'1','22','678'}
+		char seps[] = ",";
+	  char *token1 = NULL;
+
+	// Establish string and get the first token:
+	token1 = strtok(packet, seps);
+	if(atoi(token1)==102){
+				while (token1 != NULL)
+			{
+
+					token1 = strtok(NULL, seps);
+
+						insert_rt_next_doublenew(head, atoi(token1));
+
+			}
+	}
+	//build_my_child_rt(token1);
+
+	if(atoi(token1)!=102){
+			node *try_found_id = (node *)malloc(sizeof(struct list));
+		node *found_id = (node *)malloc(sizeof(struct list));
+		found_id = will_after_found_id;
+		try_found_id->mid=atoi(token1);
+			preordertraverse(head, try_found_id);
+		
+		if(FOUND_MID==1){
+					while (token1 != NULL)
+			{
+
+					token1 = strtok(NULL, seps);
+
+						insert_rt_next_doublenew(found_id, atoi(token1));
+
+			}
+		
+		
+		}
+		else {   // IF NOT FIND ID
+			CHILD_RT_ERR = 1;
+		}
+				
+	}
+	
+	/*
 
 	if (atoi(*packet) == 102){
 		packet++;
@@ -99,10 +141,10 @@ int build_my_child_rt(char *packet){ //packet cannot have some string or else, o
 
 		if (FOUND_MID){// must return a point to tmp_id
 
-			/*
-			add something to change the point to tmp_id
-			void move_piont_to_build_rt(){node *head, node *tmp_id_point}
-			*/
+			
+			//add something to change the point to tmp_id
+		//	void move_piont_to_build_rt(){node *head, node *tmp_id_point}
+			
 			packet++;
 			while (*packet != NULL)
 			{
@@ -119,7 +161,7 @@ int build_my_child_rt(char *packet){ //packet cannot have some string or else, o
 		}
 
 	}
-
+*/
 }
 
 
@@ -223,11 +265,14 @@ void insert_rt_next_doublenew(node * head, int one){
 
 
 void insert_rt_next_doublenew_delete(node * tree ,int delete_id){//delete node
+
+	node *found_id ;
+	node *will_found_id ;
+	
 	FOUND_MID = 0;
-	node *found_id = (node *)malloc(sizeof(struct list));
-	//after_found_id = NULL;
-	node *will_found_id = (node *)malloc(sizeof(struct list));
-	//will_found_id = NULL;
+	found_id= malloc(sizeof(struct list));
+	will_found_id =malloc(sizeof(struct list));
+	
 	will_found_id->mid = delete_id;
 	printf("deltet_head_mid->%d\n", tree->mid);
 	preordertraverse(tree, will_found_id);

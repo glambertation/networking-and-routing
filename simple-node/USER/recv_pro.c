@@ -101,7 +101,13 @@ int recv_process(char *message){
 				_send_sub(recmpkt.mid);
 		}
 		else{
-			preordertraverse(head, recmpkt.did);
+					node *try_found_id = (node *)malloc(sizeof(struct list));
+					node *found_id = (node *)malloc(sizeof(struct list));
+					found_id = will_after_found_id;
+					try_found_id->mid=recmpkt.did;
+					preordertraverse(head, try_found_id);
+			
+			
 				if(FOUND_MID==1 ){
 					_send_pub(recmpkt.did);
 					
@@ -199,7 +205,7 @@ unsigned short _packet_queue(unsigned short command, unsigned short packet, unsi
 
 
 	//self._out_packet_mutex.acquire();
-	sprintf(_out_packet, "  %u%u%u%u%u%u  ", mpkt.command,  mpkt.mid, mpkt.did, mpkt.packet, mpkt.pos, mpkt.to_process);
+	sprintf(_out_packet, "%u,%u,%u,%u,%u,%u", mpkt.command,  mpkt.mid, mpkt.did, mpkt.packet, mpkt.pos, mpkt.to_process);
 	//printf("%s\n", _out_packet);
 	//	_out_packet.append(mpkt);  //????
 	//if self._current_out_packet_mutex.acquire(False){
