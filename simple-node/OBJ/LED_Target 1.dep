@@ -1,0 +1,185 @@
+Dependencies for Project 'LED', Target 'Target 1': (DO NOT MODIFY !)
+F (.\main.c)(0x5729711F)(-c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\CMSIS\Include-I d:\Keil_v5\ARM\Inc\ST\STM32F10x-D__UVISION_VERSION="518" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
+I (..\HARDWARE\LED\led.h)(0x50513ABC)
+I (..\SYSTEM\sys\sys.h)(0x5055B57C)
+I (..\USER\stm32f10x.h)(0x4D783CB4)
+I (..\CORE\core_cm3.h)(0x4D523B58)
+I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+I (..\USER\system_stm32f10x.h)(0x4D783CAA)
+I (..\USER\stm32f10x_conf.h)(0x505C04C6)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x50515FBA)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
+I (..\SYSTEM\delay\delay.h)(0x50513B7A)
+I (..\SYSTEM\usart\usart.h)(0x50513AC4)
+I (d:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x569DEA3A)
+I (rt.h)(0x5729711F)
+I (d:\Keil_v5\ARM\ARMCC\include\string.h)(0x569DEA3A)
+I (d:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x569DEA3A)
+I (message_struct.h)(0x5729687E)
+I (malloc.h)(0x503CC504)
+F (.\stm32f10x_it.c)(0x4EBEACB0)(-c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\CMSIS\Include-I d:\Keil_v5\ARM\Inc\ST\STM32F10x-D__UVISION_VERSION="518" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\stm32f10x_it.o --omf_browse ..\obj\stm32f10x_it.crf --depend ..\obj\stm32f10x_it.d)
+I (stm32f10x_it.h)(0x4D99A426)
+I (stm32f10x.h)(0x4D783CB4)
+I (..\CORE\core_cm3.h)(0x4D523B58)
+I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+I (system_stm32f10x.h)(0x4D783CAA)
+I (stm32f10x_conf.h)(0x505C04C6)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x50515FBA)
+I (..\USER\stm32f10x.h)(0x4D783CB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
+F (.\system_stm32f10x.c)(0x4D99A426)(-c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\CMSIS\Include-I d:\Keil_v5\ARM\Inc\ST\STM32F10x-D__UVISION_VERSION="518" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\system_stm32f10x.o --omf_browse ..\obj\system_stm32f10x.crf --depend ..\obj\system_stm32f10x.d)
+I (stm32f10x.h)(0x4D783CB4)
+I (..\CORE\core_cm3.h)(0x4D523B58)
+I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+I (system_stm32f10x.h)(0x4D783CAA)
+I (stm32f10x_conf.h)(0x505C04C6)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x50515FBA)
+I (..\USER\stm32f10x.h)(0x4D783CB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
+F (.\test.c)(0x56EA974C)(-c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\CMSIS\Include-I d:\Keil_v5\ARM\Inc\ST\STM32F10x-D__UVISION_VERSION="518" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\test.o --omf_browse ..\obj\test.crf --depend ..\obj\test.d)
+F (.\malloc.c)(0x505975D0)(-c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\CMSIS\Include-I d:\Keil_v5\ARM\Inc\ST\STM32F10x-D__UVISION_VERSION="518" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\malloc.o --omf_browse ..\obj\malloc.crf --depend ..\obj\malloc.d)
+I (malloc.h)(0x503CC504)
+I (..\SYSTEM\sys\sys.h)(0x5055B57C)
+I (..\USER\stm32f10x.h)(0x4D783CB4)
+I (..\CORE\core_cm3.h)(0x4D523B58)
+I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+I (..\USER\system_stm32f10x.h)(0x4D783CAA)
+I (..\USER\stm32f10x_conf.h)(0x505C04C6)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x50515FBA)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
+F (.\malloc.h)(0x503CC504)()
+F (.\recv_pro.c)(0x572974CB)(-c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\CMSIS\Include-I d:\Keil_v5\ARM\Inc\ST\STM32F10x-D__UVISION_VERSION="518" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\recv_pro.o --omf_browse ..\obj\recv_pro.crf --depend ..\obj\recv_pro.d)
+I (rt.h)(0x5729711F)
+I (d:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x569DEA3A)
+I (d:\Keil_v5\ARM\ARMCC\include\string.h)(0x569DEA3A)
+I (d:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x569DEA3A)
+I (..\SYSTEM\delay\delay.h)(0x50513B7A)
+I (..\SYSTEM\sys\sys.h)(0x5055B57C)
+I (..\USER\stm32f10x.h)(0x4D783CB4)
+I (..\CORE\core_cm3.h)(0x4D523B58)
+I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+I (..\USER\system_stm32f10x.h)(0x4D783CAA)
+I (..\USER\stm32f10x_conf.h)(0x505C04C6)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x50515FBA)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
+I (message_struct.h)(0x5729687E)
+F (.\rt.c)(0x57297369)(-c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\CMSIS\Include-I d:\Keil_v5\ARM\Inc\ST\STM32F10x-D__UVISION_VERSION="518" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\rt.o --omf_browse ..\obj\rt.crf --depend ..\obj\rt.d)
+I (rt.h)(0x5729711F)
+I (d:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x569DEA3A)
+I (d:\Keil_v5\ARM\ARMCC\include\string.h)(0x569DEA3A)
+I (d:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x569DEA3A)
+I (..\SYSTEM\delay\delay.h)(0x50513B7A)
+I (..\SYSTEM\sys\sys.h)(0x5055B57C)
+I (..\USER\stm32f10x.h)(0x4D783CB4)
+I (..\CORE\core_cm3.h)(0x4D523B58)
+I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+I (..\USER\system_stm32f10x.h)(0x4D783CAA)
+I (..\USER\stm32f10x_conf.h)(0x505C04C6)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x50515FBA)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
+I (message_struct.h)(0x5729687E)
+F (.\rt.h)(0x5729711F)()
+F (.\message_struct.h)(0x5729687E)()
+F (..\HARDWARE\LED\led.c)(0x5205A740)(-c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\CMSIS\Include-I d:\Keil_v5\ARM\Inc\ST\STM32F10x-D__UVISION_VERSION="518" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\led.o --omf_browse ..\obj\led.crf --depend ..\obj\led.d)
+I (..\HARDWARE\LED\led.h)(0x50513ABC)
+I (..\SYSTEM\sys\sys.h)(0x5055B57C)
+I (..\USER\stm32f10x.h)(0x4D783CB4)
+I (..\CORE\core_cm3.h)(0x4D523B58)
+I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+I (..\USER\system_stm32f10x.h)(0x4D783CAA)
+I (..\USER\stm32f10x_conf.h)(0x505C04C6)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x50515FBA)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
+F (..\SYSTEM\delay\delay.c)(0x50513B74)(-c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\CMSIS\Include-I d:\Keil_v5\ARM\Inc\ST\STM32F10x-D__UVISION_VERSION="518" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\delay.o --omf_browse ..\obj\delay.crf --depend ..\obj\delay.d)
+I (..\SYSTEM\delay\delay.h)(0x50513B7A)
+I (..\SYSTEM\sys\sys.h)(0x5055B57C)
+I (..\USER\stm32f10x.h)(0x4D783CB4)
+I (..\CORE\core_cm3.h)(0x4D523B58)
+I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+I (..\USER\system_stm32f10x.h)(0x4D783CAA)
+I (..\USER\stm32f10x_conf.h)(0x505C04C6)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x50515FBA)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
+F (..\SYSTEM\sys\sys.c)(0x5055B57C)(-c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\CMSIS\Include-I d:\Keil_v5\ARM\Inc\ST\STM32F10x-D__UVISION_VERSION="518" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\sys.o --omf_browse ..\obj\sys.crf --depend ..\obj\sys.d)
+I (..\SYSTEM\sys\sys.h)(0x5055B57C)
+I (..\USER\stm32f10x.h)(0x4D783CB4)
+I (..\CORE\core_cm3.h)(0x4D523B58)
+I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+I (..\USER\system_stm32f10x.h)(0x4D783CAA)
+I (..\USER\stm32f10x_conf.h)(0x505C04C6)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x50515FBA)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
+F (..\SYSTEM\usart\usart.c)(0x5720CCD8)(-c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\CMSIS\Include-I d:\Keil_v5\ARM\Inc\ST\STM32F10x-D__UVISION_VERSION="518" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\usart.o --omf_browse ..\obj\usart.crf --depend ..\obj\usart.d)
+I (..\SYSTEM\sys\sys.h)(0x5055B57C)
+I (..\USER\stm32f10x.h)(0x4D783CB4)
+I (..\CORE\core_cm3.h)(0x4D523B58)
+I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+I (..\USER\system_stm32f10x.h)(0x4D783CAA)
+I (..\USER\stm32f10x_conf.h)(0x505C04C6)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x50515FBA)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
+I (..\SYSTEM\usart\usart.h)(0x50513AC4)
+I (d:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x569DEA3A)
+F (..\CORE\core_cm3.c)(0x4C0C587E)(-c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\CMSIS\Include-I d:\Keil_v5\ARM\Inc\ST\STM32F10x-D__UVISION_VERSION="518" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\core_cm3.o --omf_browse ..\obj\core_cm3.crf --depend ..\obj\core_cm3.d)
+I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+F (..\CORE\startup_stm32f10x_hd.s)(0x4D783CDE)(--cpu Cortex-M3 --pd "__EVAL SETA 1" -g --apcs=interwork -I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\CMSIS\Include-I d:\Keil_v5\ARM\Inc\ST\STM32F10x--pd "__UVISION_VERSION SETA 518"--list .\startup_stm32f10x_hd.lst --xref -o ..\obj\startup_stm32f10x_hd.o --depend ..\obj\startup_stm32f10x_hd.d)
+F (..\STM32F10x_FWLib\src\stm32f10x_gpio.c)(0x4D79EEC6)(-c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\CMSIS\Include-I d:\Keil_v5\ARM\Inc\ST\STM32F10x-D__UVISION_VERSION="518" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\stm32f10x_gpio.o --omf_browse ..\obj\stm32f10x_gpio.crf --depend ..\obj\stm32f10x_gpio.d)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x50515FBA)
+I (..\USER\stm32f10x.h)(0x4D783CB4)
+I (..\CORE\core_cm3.h)(0x4D523B58)
+I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+I (..\USER\system_stm32f10x.h)(0x4D783CAA)
+I (..\USER\stm32f10x_conf.h)(0x505C04C6)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
+F (..\STM32F10x_FWLib\src\stm32f10x_rcc.c)(0x4D783BB4)(-c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\CMSIS\Include-I d:\Keil_v5\ARM\Inc\ST\STM32F10x-D__UVISION_VERSION="518" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\stm32f10x_rcc.o --omf_browse ..\obj\stm32f10x_rcc.crf --depend ..\obj\stm32f10x_rcc.d)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\USER\stm32f10x.h)(0x4D783CB4)
+I (..\CORE\core_cm3.h)(0x4D523B58)
+I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+I (..\USER\system_stm32f10x.h)(0x4D783CAA)
+I (..\USER\stm32f10x_conf.h)(0x505C04C6)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x50515FBA)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
+F (..\STM32F10x_FWLib\src\stm32f10x_usart.c)(0x4D783BB4)(-c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\CMSIS\Include-I d:\Keil_v5\ARM\Inc\ST\STM32F10x-D__UVISION_VERSION="518" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\stm32f10x_usart.o --omf_browse ..\obj\stm32f10x_usart.crf --depend ..\obj\stm32f10x_usart.d)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
+I (..\USER\stm32f10x.h)(0x4D783CB4)
+I (..\CORE\core_cm3.h)(0x4D523B58)
+I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+I (..\USER\system_stm32f10x.h)(0x4D783CAA)
+I (..\USER\stm32f10x_conf.h)(0x505C04C6)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x50515FBA)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
+F (..\STM32F10x_FWLib\src\misc.c)(0x4D783BB4)(-c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\CMSIS\Include-I d:\Keil_v5\ARM\Inc\ST\STM32F10x-D__UVISION_VERSION="518" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\misc.o --omf_browse ..\obj\misc.crf --depend ..\obj\misc.d)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
+I (..\USER\stm32f10x.h)(0x4D783CB4)
+I (..\CORE\core_cm3.h)(0x4D523B58)
+I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+I (..\USER\system_stm32f10x.h)(0x4D783CAA)
+I (..\USER\stm32f10x_conf.h)(0x505C04C6)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x50515FBA)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
