@@ -1,3 +1,26 @@
+2016/5/5
+//加入以下代码,支持printf函数,而不需要选择use MicroLIB	  
+#if 1
+//#pragma import(__use_no_semihosting) 
+
+奇怪的问题：回头上板子再测
+
+=============
+
+2016/5/4
+备忘：
+1.rt修改后，在recv——process调用中
+2.unsigned short
+
+
+
+app环境搭好
+
+
+keil组网组完
+
+
+============
 2016/5/1
 how to 组成网状呢
 

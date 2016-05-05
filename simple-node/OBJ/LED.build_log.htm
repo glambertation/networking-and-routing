@@ -27,62 +27,34 @@ Project File Date:  05/04/2016
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 1 (build 61)', folder: 'd:\Keil_v5\ARM\ARMCC\Bin'
 Rebuild target 'Target 1'
+compiling stm32f10x_it.c...
 compiling main.c...
-message_struct.h(42): warning:  #1-D: last line of file ends without a newline
-  node *point_found_mid;
-rt.h(49): warning:  #1295-D: Deprecated declaration rt_init - give arg types
+rt.h(51): warning:  #1295-D: Deprecated declaration rt_init - give arg types
   void rt_init();
-rt.h(62): warning:  #1295-D: Deprecated declaration _send_pingreq - give arg types
+rt.h(64): warning:  #1295-D: Deprecated declaration _send_pingreq - give arg types
   unsigned short _send_pingreq();
-rt.h(63): warning:  #1295-D: Deprecated declaration _recieve_pingreq - give arg types
+rt.h(65): warning:  #1295-D: Deprecated declaration _recieve_pingreq - give arg types
   void _recieve_pingreq();
-rt.h(66): warning:  #1295-D: Deprecated declaration USART_rec - give arg types
+rt.h(68): warning:  #1295-D: Deprecated declaration USART_rec - give arg types
   int USART_rec();
-rt.h(67): warning:  #1295-D: Deprecated declaration recv_process_outside - give arg types
+rt.h(69): warning:  #1295-D: Deprecated declaration recv_process_outside - give arg types
   int recv_process_outside();
 main.c(13): warning:  #161-D: unrecognized #pragma
   #pragma comment(lib,"ws2_32.lib")
-main.c: 7 warnings, 0 errors
-compiling stm32f10x_it.c...
+main.c: 6 warnings, 0 errors
 compiling system_stm32f10x.c...
 compiling test.c...
 compiling malloc.c...
-compiling recv_pro.c...
-message_struct.h(42): warning:  #1-D: last line of file ends without a newline
-  node *point_found_mid;
-rt.h(49): warning:  #1295-D: Deprecated declaration rt_init - give arg types
-  void rt_init();
-rt.h(62): warning:  #1295-D: Deprecated declaration _send_pingreq - give arg types
-  unsigned short _send_pingreq();
-rt.h(63): warning:  #1295-D: Deprecated declaration _recieve_pingreq - give arg types
-  void _recieve_pingreq();
-rt.h(66): warning:  #1295-D: Deprecated declaration USART_rec - give arg types
-  int USART_rec();
-rt.h(67): warning:  #1295-D: Deprecated declaration recv_process_outside - give arg types
-  int recv_process_outside();
-recv_pro.c(50): warning:  #226-D: invalid format string conversion
-  	printf("message %S\n",message);
-recv_pro.c(44): warning:  #177-D: variable "next_token1" was declared but never referenced
-  	char *next_token1 = NULL;
-recv_pro.c(161): warning:  #940-D: missing return statement at end of non-void function "routetable"
-  }
-recv_pro.c(238): warning:  #1-D: last line of file ends without a newline
-  }
-recv_pro.c: 10 warnings, 0 errors
-compiling delay.c...
-compiling led.c...
 compiling rt.c...
-message_struct.h(42): warning:  #1-D: last line of file ends without a newline
-  node *point_found_mid;
-rt.h(49): warning:  #1295-D: Deprecated declaration rt_init - give arg types
+rt.h(51): warning:  #1295-D: Deprecated declaration rt_init - give arg types
   void rt_init();
-rt.h(62): warning:  #1295-D: Deprecated declaration _send_pingreq - give arg types
+rt.h(64): warning:  #1295-D: Deprecated declaration _send_pingreq - give arg types
   unsigned short _send_pingreq();
-rt.h(63): warning:  #1295-D: Deprecated declaration _recieve_pingreq - give arg types
+rt.h(65): warning:  #1295-D: Deprecated declaration _recieve_pingreq - give arg types
   void _recieve_pingreq();
-rt.h(66): warning:  #1295-D: Deprecated declaration USART_rec - give arg types
+rt.h(68): warning:  #1295-D: Deprecated declaration USART_rec - give arg types
   int USART_rec();
-rt.h(67): warning:  #1295-D: Deprecated declaration recv_process_outside - give arg types
+rt.h(69): warning:  #1295-D: Deprecated declaration recv_process_outside - give arg types
   int recv_process_outside();
 rt.c(49): warning:  #940-D: missing return statement at end of non-void function "send_my_rt"
   }
@@ -94,41 +66,40 @@ rt.c(165): warning:  #940-D: missing return statement at end of non-void functio
   }
 rt.c(202): warning:  #940-D: missing return statement at end of non-void function "preordertraverse"
   }
-rt.c: 11 warnings, 0 errors
-compiling sys.c...
+rt.c: 10 warnings, 0 errors
+compiling recv_pro.c...
+rt.h(51): warning:  #1295-D: Deprecated declaration rt_init - give arg types
+  void rt_init();
+rt.h(64): warning:  #1295-D: Deprecated declaration _send_pingreq - give arg types
+  unsigned short _send_pingreq();
+rt.h(65): warning:  #1295-D: Deprecated declaration _recieve_pingreq - give arg types
+  void _recieve_pingreq();
+rt.h(68): warning:  #1295-D: Deprecated declaration USART_rec - give arg types
+  int USART_rec();
+rt.h(69): warning:  #1295-D: Deprecated declaration recv_process_outside - give arg types
+  int recv_process_outside();
+recv_pro.c(51): warning:  #226-D: invalid format string conversion
+  	printf("message %S\n",message);
+recv_pro.c(45): warning:  #177-D: variable "next_token1" was declared but never referenced
+  	char *next_token1 = NULL;
+recv_pro.c(231): warning:  #1-D: last line of file ends without a newline
+  }
+recv_pro.c: 8 warnings, 0 errors
+compiling delay.c...
+compiling led.c...
+compiling message_struct.c...
 compiling usart.c...
+compiling sys.c...
 assembling startup_stm32f10x_hd.s...
 compiling stm32f10x_gpio.c...
 compiling core_cm3.c...
-compiling stm32f10x_rcc.c...
 compiling stm32f10x_usart.c...
+compiling stm32f10x_rcc.c...
 compiling misc.c...
 linking...
-..\OBJ\LED.axf: Error: L6200E: Symbol recmpkt multiply defined (by recv_pro.o and main.o).
-..\OBJ\LED.axf: Error: L6200E: Symbol recmpkt multiply defined (by rt.o and main.o).
-..\OBJ\LED.axf: Error: L6200E: Symbol mpkt multiply defined (by recv_pro.o and main.o).
-..\OBJ\LED.axf: Error: L6200E: Symbol mpkt multiply defined (by rt.o and main.o).
-..\OBJ\LED.axf: Error: L6200E: Symbol rt multiply defined (by recv_pro.o and main.o).
-..\OBJ\LED.axf: Error: L6200E: Symbol rt multiply defined (by rt.o and main.o).
-..\OBJ\LED.axf: Error: L6200E: Symbol head multiply defined (by recv_pro.o and main.o).
-..\OBJ\LED.axf: Error: L6200E: Symbol head multiply defined (by rt.o and main.o).
-..\OBJ\LED.axf: Error: L6200E: Symbol temp_next multiply defined (by recv_pro.o and main.o).
-..\OBJ\LED.axf: Error: L6200E: Symbol temp_next multiply defined (by rt.o and main.o).
-..\OBJ\LED.axf: Error: L6200E: Symbol temp_child multiply defined (by recv_pro.o and main.o).
-..\OBJ\LED.axf: Error: L6200E: Symbol temp_child multiply defined (by rt.o and main.o).
-..\OBJ\LED.axf: Error: L6200E: Symbol temp_prior multiply defined (by recv_pro.o and main.o).
-..\OBJ\LED.axf: Error: L6200E: Symbol temp_prior multiply defined (by rt.o and main.o).
-..\OBJ\LED.axf: Error: L6200E: Symbol temp_father multiply defined (by recv_pro.o and main.o).
-..\OBJ\LED.axf: Error: L6200E: Symbol temp_father multiply defined (by rt.o and main.o).
-..\OBJ\LED.axf: Error: L6200E: Symbol point_found_mid multiply defined (by recv_pro.o and main.o).
-..\OBJ\LED.axf: Error: L6200E: Symbol point_found_mid multiply defined (by rt.o and main.o).
-..\OBJ\LED.axf: Error: L6200E: Symbol will_after_found_id multiply defined (by recv_pro.o and main.o).
-..\OBJ\LED.axf: Error: L6200E: Symbol will_after_found_id multiply defined (by rt.o and main.o).
-Not enough information to list image symbols.
-Not enough information to list the image map.
-Finished: 2 information, 0 warning and 20 error messages.
-"..\OBJ\LED.axf" - 20 Error(s), 28 Warning(s).
-Target not created.
+Program Size: Code=9080 RO-data=608 RW-data=148 ZI-data=211196  
+FromELF: creating hex file...
+"..\OBJ\LED.axf" - 0 Error(s), 24 Warning(s).
 Build Time Elapsed:  00:00:05
 </pre>
 </body>

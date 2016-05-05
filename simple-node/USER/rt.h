@@ -39,7 +39,9 @@ extern unsigned short  MY_RT  ; //send myself route table
 extern unsigned short  CHILD_RT_ERR ;
 
 
-node *will_after_found_id;
+
+
+extern node *will_after_found_id;
 extern unsigned short  FOUND_MID;
 
 int send_my_rt(char * my_child_rt);

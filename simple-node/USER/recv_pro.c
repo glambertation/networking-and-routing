@@ -1,5 +1,6 @@
 #include "rt.h"
 
+extern node * will_after_found_id;
 
 void _recieve_pingreq(){
 		if(USART_ERR_NOMESSAGE){
@@ -151,14 +152,6 @@ int ping_ack(unsigned short did){
 
 }
 
-int routetable(){
-	rt.mid = mpkt.mid;
-	rt.forward_mid = recmpkt.mid;
-	rt.layer = 1;
-	rt.metric = 1;
-
-
-}
 
 
 unsigned short _send_pingreq(){

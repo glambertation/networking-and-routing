@@ -1,5 +1,4 @@
 
-
 struct messagestuff
 {
 	unsigned short  command;
@@ -11,20 +10,11 @@ struct messagestuff
 	unsigned short	packet;
 
 };
-struct messagestuff recmpkt;
-struct messagestuff mpkt;
-
-struct routestuff
-{
-
-	unsigned short  mid;
-	unsigned short  forward_mid;
-	unsigned short  layer;
-	unsigned short  metric;
-}rt;
+extern struct messagestuff recmpkt;
+extern struct messagestuff mpkt;
 
 
-typedef struct list
+ typedef struct list
 {
 	int mid;
 	struct list *child;//child
@@ -34,9 +24,10 @@ typedef struct list
 }node;
 
 
-node *head;
-node *temp_next;
-node *temp_child;
-node *temp_prior;
-node *temp_father;
-node *point_found_mid;
+extern node *head;
+extern node *temp_next;
+extern node *temp_child;
+extern node *temp_prior;
+extern node *temp_father;
+extern node *point_found_mid;
+

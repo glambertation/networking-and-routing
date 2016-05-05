@@ -6,6 +6,7 @@
 "..\obj\malloc.o"
 "..\obj\recv_pro.o"
 "..\obj\rt.o"
+"..\obj\message_struct.o"
 "..\obj\led.o"
 "..\obj\delay.o"
 "..\obj\sys.o"
