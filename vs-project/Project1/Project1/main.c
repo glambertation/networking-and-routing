@@ -10,7 +10,7 @@
 #include "rt.h"
 #pragma comment(lib,"ws2_32.lib")
 
-
+void pre(node * tree);
 
 
 unsigned short	CONNECT = 0x10;
@@ -108,6 +108,7 @@ void main(){
 	
 	insert_rt_next_doublenew_delete(head,5);
 	//insert_rt_next_doublenew_delete(head,16);
+	/*
 	head = head->child;
 	printf("%d\n", head);
 	while (head != NULL)
@@ -122,7 +123,8 @@ void main(){
 	}
 	printf("\n");
 
-	
+	*/
+	printf("\n");
 	printf("tocken!!!!!!!!!!!");
 	char string1[] =
 		"A string\tof ,,tokens and some  more tokens";
@@ -167,10 +169,46 @@ void main(){
 
 	printf("new!!!!!!!!!!!\n");
 
+	int ipo = 198;
+	
+	
+	printf("new0!!!!!!!!!!!\n%d\n", ipo);
+	unsigned short q = 102;
+	unsigned short qw = 103;
+	unsigned short qwe = 104;
+	char rr[20] = { 0 };
+	sprintf_s(rr,20, "%u,%u,%u#", q,qw,qwe);
+	node *father;
+	father = malloc(sizeof(struct list));
+	father->child = head;
+	head->father = father;
+	father->mid = 100;
+	MY_CHILD_HAS_NODE = 1;
+	send_my_rt(rr);
 
-
+	//read_my_child_rt(rr);
 
 	getchar();
+}
+
+
+ void pre(node * tree){
+
+
+	
+
+			printf("tree_mid->%d\n", tree->mid);
+
+
+
+
+	if (tree == NULL)
+		return;
+	printf("tree::%d\n", tree->mid);
+	pre(tree->child);
+	pre(tree->next);
+
+
 }
 
 

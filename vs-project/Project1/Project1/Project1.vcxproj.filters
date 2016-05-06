@@ -32,8 +32,5 @@
     <ClInclude Include="rt.h">
       <Filter>源文件</Filter>
     </ClInclude>
-    <ClInclude Include="global_var.h">
-      <Filter>源文件</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>

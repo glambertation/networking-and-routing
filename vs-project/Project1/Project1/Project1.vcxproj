@@ -69,7 +69,6 @@
     <ClCompile Include="rt.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="global_var.h" />
     <ClInclude Include="message_struct.h" />
     <ClInclude Include="rt.h" />
   </ItemGroup>

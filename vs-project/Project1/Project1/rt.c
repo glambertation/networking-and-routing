@@ -1,13 +1,80 @@
-#include "rt.h"
+﻿#include "rt.h"
 
+
+/*
 node *will_after_found_id;
 extern unsigned short  FOUND_MID;
+int send_my_rt(char * my_child_rt);
+int read_my_child_rt(char * packet);
+int build_my_child_rt(char *packet);
+node * preordertraverse(node * tree, node *id);
+void rt_init();
+void insert_rt_next_doublenew(node * head, int one);
+void insert_rt_next_doublenew_delete(node * tree, int delete_id);
+*/
 
+
+//make my own rt into my_rt[], then _send_simple_command(MY_RT);
 
 
 //make my own rt into my_rt[], then _send_simple_command(MY_RT);
 int send_my_rt(char * my_child_rt){
-	char my_rt[] = { 0 };//�����ʼ�����Բ�ȷ����С��
+	char my_rt[300] = { 0 };//Êý×é³õÊ¼»¯¿ÉÒÔ²»È·¶¨´óÐ¡Âð£¿
+	node * tmp_head;
+	char *my_rt_point;
+	char *my_child_rt_point;
+	int my_child_rt_num;
+
+
+	tmp_head = malloc(sizeof(struct list));
+	my_child_rt_num = 0;
+	my_rt_point = my_rt;
+	my_child_rt_point = my_child_rt;
+
+	sprintf_s(my_rt,300, "%u,%u#%u", head->father->mid, head->mid, head->mid);
+
+	tmp_head = head;
+	tmp_head = tmp_head->child;
+
+
+	while (tmp_head != NULL) // add child
+	{	
+
+		sprintf_s(my_rt, 300,"%s,%u", my_rt, tmp_head->mid);
+		
+		tmp_head = tmp_head->next;
+	}
+
+	sprintf_s(my_rt,300, "%s#", my_rt);
+
+
+	if (MY_CHILD_HAS_NODE){  //MY_CHILD_HAS_NODE set in  
+		my_rt_point = strcat(my_rt_point, my_child_rt_point); // add child-child's child  
+		//and the point my_rt_point point to the begining 
+	}
+	printf("ok!\n");
+	printf("%s", my_rt_point);
+	printf("ok!\n");
+//	_send_simple_command(MY_RT, 102, 101);// 
+
+	//todo
+	/*
+	_send_simple_command(MY_RT,my_rt_point);//
+	*/
+
+}
+
+
+/*
+when got child_rt, to build own rt:
+1. read_my_child_rt(char * packet)  //cut use #
+2. build_my_child_rt(token1);
+
+*/
+
+/*
+int send_my_rt(char * my_child_rt){
+	char my_rt[] = { 0 };//数组初始化可以不确定大小吗？
 	my_rt[0] = head->father->mid;
 	my_rt[1] = head->mid;
 	my_rt[2] = "#";  //add father-me and over
@@ -40,15 +107,15 @@ int send_my_rt(char * my_child_rt){
 		//and the point my_rt_point point to the begining 
 	}
 
-	_send_simple_command(MY_RT);// 
+	//_send_simple_command(MY_RT);// 
 
 	//todo
-	/*
-	_send_simple_command(MY_RT,my_rt_point);//
-    */
+	
+//	_send_simple_command(MY_RT,my_rt_point);//
+   
 
 }
-
+*/
 
 /*
 when got child_rt, to build own rt:
@@ -95,7 +162,7 @@ int build_my_child_rt(char *packet){ //packet cannot have some string or else, o
 		tmp_id = atoi(*packet);
 		
 		node *after_found_id = (node *)malloc(sizeof(struct list));
-		preordertraverse(head, tmp_id, after_found_id);
+		preordertraverse(head, tmp_id);
 
 		if (FOUND_MID){// must return a point to tmp_id
 
@@ -188,7 +255,7 @@ void insert_rt_next_doublenew(node * head, int one){
 
 	node * temp_insert = (node *)malloc(sizeof(struct list));//middle one
 
-	if (head->child == 0){      //����ӽڵ�Ϊ��
+	if (head->child == 0){      //如果子节点为空
 
 		temp_next->child = temp_insert;
 		temp_insert->prior = temp_next;

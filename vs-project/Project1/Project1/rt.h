@@ -2,7 +2,7 @@
 
 
 #include "message_struct.h"
-#include "global_var.h"
+
 
 
 
@@ -21,19 +21,36 @@ extern unsigned short	PINGREQ;//1100 0000 transfer to 192 in decimal unit
 extern unsigned short	PINGRESP;
 extern unsigned short	DISCONNECT;
 
+//===============  usart  ======================
+extern char _out_packet[20];
+extern char _current_out_packet[20];
+
+
+//===============  rt  ======================
 extern unsigned short  MQTT_ERR_SUCCESS;
 extern unsigned short  MY_CHILD_HAS_NODE ;
 extern unsigned short  MY_RT  ; //send myself route table
 extern unsigned short  CHILD_RT_ERR ;
 
 
+node *will_after_found_id;
+extern unsigned short  FOUND_MID;
 
-extern char _out_packet[20];
-extern char _current_out_packet[20];
-
-
+int send_my_rt(char * my_child_rt);
+int read_my_child_rt(char * packet);
+int build_my_child_rt(char *packet);
 node * preordertraverse(node * tree, node *id);
+void rt_init();
+void insert_rt_next_doublenew(node * head, int one);
+void insert_rt_next_doublenew_delete(node * tree, int delete_id);
 
+
+//================= over ============================= //
+
+
+
+
+//===============  recv-proccess  ======================
 
 unsigned short _send_pingreq();
 unsigned short _recieve_pingreq();
@@ -43,11 +60,4 @@ int recv_process();
 
 
 int ping_ack();
-int routetable();
-//int USART_rec();
-void rt_init();
-void insert_rt_next();
 
-void insert_rt_next_doublenew();
-void insert_rt_next_doublenew_delete(int mid);
-int searching_node(int mid);
