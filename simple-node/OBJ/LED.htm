@@ -3,7 +3,7 @@
 <title>Static Call Graph - [..\OBJ\LED.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\OBJ\LED.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060061: Last Updated: Thu May 05 11:04:50 2016
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060061: Last Updated: Fri May 06 15:31:30 2016
 <BR><P>
 <H3>Maximum Stack Usage =        264 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -422,7 +422,7 @@ Global Symbols
 
 <P><STRONG><a name="[85]"></a>send_my_rt</STRONG> (Thumb, 134 bytes, Stack size 328 bytes, rt.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
-<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcpy
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcat
 <LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;malloc
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_send_simple_command
@@ -452,7 +452,7 @@ Global Symbols
 <LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;recv_process
 </UL>
 
-<P><STRONG><a name="[88]"></a>build_my_child_rt</STRONG> (Thumb, 170 bytes, Stack size 32 bytes, rt.o(.text), UNUSED)
+<P><STRONG><a name="[88]"></a>build_my_child_rt</STRONG> (Thumb, 172 bytes, Stack size 32 bytes, rt.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strtok
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;atoi
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;malloc
@@ -462,7 +462,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;read_my_child_rt
 </UL>
 
-<P><STRONG><a name="[89]"></a>read_my_child_rt</STRONG> (Thumb, 52 bytes, Stack size 16 bytes, rt.o(.text), UNUSED)
+<P><STRONG><a name="[89]"></a>read_my_child_rt</STRONG> (Thumb, 54 bytes, Stack size 16 bytes, rt.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strtok
 <LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;build_my_child_rt
 </UL>
@@ -1038,7 +1038,7 @@ Global Symbols
 <LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;recv_process
 </UL>
 
-<P><STRONG><a name="[87]"></a>strcpy</STRONG> (Thumb, 72 bytes, Stack size 12 bytes, strcpy.o(.text), UNUSED)
+<P><STRONG><a name="[87]"></a>strcat</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, strcat.o(.text), UNUSED)
 <BR><BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_my_rt
 </UL>
 

@@ -27,7 +27,7 @@ int send_my_rt(char * my_child_rt){
 
 	while (tmp_head != NULL) // add child
 	{
-		sprintf(my_rt, "%s%u,",my_rt,tmp_head->mid);
+		sprintf(my_rt, "%s,%u",my_rt,tmp_head->mid);
 		tmp_head = tmp_head->next;
 	}
 
@@ -35,7 +35,7 @@ int send_my_rt(char * my_child_rt){
 
 
 	if (MY_CHILD_HAS_NODE){  //MY_CHILD_HAS_NODE set in  
-		my_rt_point = strcpy(my_rt_point,  my_child_rt_point); // add child-child's child  
+		my_rt_point = strcat(my_rt_point,  my_child_rt_point); // add child-child's child  
 		//and the point my_rt_point point to the begining 
 	}
 
@@ -68,9 +68,11 @@ int read_my_child_rt(char * packet){   //use # to cut and build_my_child_rt to b
 	{
 
 		token1 = strtok(NULL, seps);
-
-		build_my_child_rt(token1);
-
+			if (token1 != NULL){
+					build_my_child_rt(token1);
+		
+					}
+	
 	}
 }
 
@@ -105,8 +107,10 @@ int build_my_child_rt(char *packet){ //packet cannot have some string or else, o
 			{
 
 					token1 = strtok(NULL, seps);
-
-						insert_rt_next_doublenew(found_id, atoi(token1));
+						if (token1 != NULL){
+			               insert_rt_next_doublenew(found_id, atoi(token1));
+							}
+						
 
 			}
 		

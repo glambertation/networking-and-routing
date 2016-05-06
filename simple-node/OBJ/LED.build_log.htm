@@ -22,12 +22,12 @@ Dialog DLL:      TARMSTM.DLL V1.64.0.0
  
 <h2>Project:</h2>
 E:\networking\simple-node\USER\LED.uvproj
-Project File Date:  05/04/2016
+Project File Date:  05/05/2016
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 1 (build 61)', folder: 'd:\Keil_v5\ARM\ARMCC\Bin'
 Rebuild target 'Target 1'
-compiling stm32f10x_it.c...
+compiling system_stm32f10x.c...
 compiling main.c...
 rt.h(51): warning:  #1295-D: Deprecated declaration rt_init - give arg types
   void rt_init();
@@ -42,31 +42,9 @@ rt.h(69): warning:  #1295-D: Deprecated declaration recv_process_outside - give 
 main.c(13): warning:  #161-D: unrecognized #pragma
   #pragma comment(lib,"ws2_32.lib")
 main.c: 6 warnings, 0 errors
-compiling system_stm32f10x.c...
+compiling stm32f10x_it.c...
 compiling test.c...
 compiling malloc.c...
-compiling rt.c...
-rt.h(51): warning:  #1295-D: Deprecated declaration rt_init - give arg types
-  void rt_init();
-rt.h(64): warning:  #1295-D: Deprecated declaration _send_pingreq - give arg types
-  unsigned short _send_pingreq();
-rt.h(65): warning:  #1295-D: Deprecated declaration _recieve_pingreq - give arg types
-  void _recieve_pingreq();
-rt.h(68): warning:  #1295-D: Deprecated declaration USART_rec - give arg types
-  int USART_rec();
-rt.h(69): warning:  #1295-D: Deprecated declaration recv_process_outside - give arg types
-  int recv_process_outside();
-rt.c(49): warning:  #940-D: missing return statement at end of non-void function "send_my_rt"
-  }
-rt.c(14): warning:  #550-D: variable "my_child_rt_num" was set but never used
-  	int my_child_rt_num ;
-rt.c(75): warning:  #940-D: missing return statement at end of non-void function "read_my_child_rt"
-  }
-rt.c(165): warning:  #940-D: missing return statement at end of non-void function "build_my_child_rt"
-  }
-rt.c(202): warning:  #940-D: missing return statement at end of non-void function "preordertraverse"
-  }
-rt.c: 10 warnings, 0 errors
 compiling recv_pro.c...
 rt.h(51): warning:  #1295-D: Deprecated declaration rt_init - give arg types
   void rt_init();
@@ -85,22 +63,44 @@ recv_pro.c(45): warning:  #177-D: variable "next_token1" was declared but never 
 recv_pro.c(231): warning:  #1-D: last line of file ends without a newline
   }
 recv_pro.c: 8 warnings, 0 errors
-compiling delay.c...
-compiling led.c...
 compiling message_struct.c...
-compiling usart.c...
+compiling rt.c...
+rt.h(51): warning:  #1295-D: Deprecated declaration rt_init - give arg types
+  void rt_init();
+rt.h(64): warning:  #1295-D: Deprecated declaration _send_pingreq - give arg types
+  unsigned short _send_pingreq();
+rt.h(65): warning:  #1295-D: Deprecated declaration _recieve_pingreq - give arg types
+  void _recieve_pingreq();
+rt.h(68): warning:  #1295-D: Deprecated declaration USART_rec - give arg types
+  int USART_rec();
+rt.h(69): warning:  #1295-D: Deprecated declaration recv_process_outside - give arg types
+  int recv_process_outside();
+rt.c(49): warning:  #940-D: missing return statement at end of non-void function "send_my_rt"
+  }
+rt.c(14): warning:  #550-D: variable "my_child_rt_num" was set but never used
+  	int my_child_rt_num ;
+rt.c(77): warning:  #940-D: missing return statement at end of non-void function "read_my_child_rt"
+  }
+rt.c(169): warning:  #940-D: missing return statement at end of non-void function "build_my_child_rt"
+  }
+rt.c(206): warning:  #940-D: missing return statement at end of non-void function "preordertraverse"
+  }
+rt.c: 10 warnings, 0 errors
+compiling led.c...
+compiling delay.c...
 compiling sys.c...
+compiling usart.c...
 assembling startup_stm32f10x_hd.s...
-compiling stm32f10x_gpio.c...
 compiling core_cm3.c...
-compiling stm32f10x_usart.c...
 compiling stm32f10x_rcc.c...
+compiling stm32f10x_gpio.c...
+compiling stm32f10x_usart.c...
 compiling misc.c...
 linking...
-Program Size: Code=9080 RO-data=608 RW-data=148 ZI-data=211196  
+Program Size: Code=9040 RO-data=608 RW-data=148 ZI-data=211196  
 FromELF: creating hex file...
 "..\OBJ\LED.axf" - 0 Error(s), 24 Warning(s).
-Build Time Elapsed:  00:00:05
+Build Time Elapsed:  00:00:04
 </pre>
 </body>
 </html>

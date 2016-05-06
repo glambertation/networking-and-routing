@@ -418,6 +418,16 @@
               <FileType>5</FileType>
               <FilePath>.\rt.h</FilePath>
             </File>
+            <File>
+              <FileName>message_struct.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\message_struct.h</FilePath>
+            </File>
+            <File>
+              <FileName>message_struct.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\message_struct.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
