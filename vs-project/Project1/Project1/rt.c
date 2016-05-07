@@ -127,56 +127,91 @@ when got child_rt, to build own rt:
 int read_my_child_rt(char * packet){   //use # to cut and build_my_child_rt to biuld whole node
 	char seps[] = "#";
 	char *token1 = NULL, *pNext = NULL;
-
+	printf("one!!!!!!!!!!!\n\n");
 	// Establish string and get the first token:
-	token1 = strtok_s(packet, seps, pNext);
+	token1 = strtok_s(packet, seps, &pNext);
 	build_my_child_rt(token1);
-
+	printf("two!!!!!!!!!!!\n\n");
 	while (token1 != NULL)
 	{
 
-		token1 = strtok_s(NULL, seps, pNext);
-
-		build_my_child_rt(token1);
+		token1 = strtok_s(NULL, seps, &pNext);
+		printf("there!!!!!!!!!!!\n\n");
+		if (token1 != NULL){
+			build_my_child_rt(token1);
+			printf("four!!!!!!!!!!!\n\n");
+		}
+		
 
 	}
+	printf("new0!!!!!!!!!!!\n\n");
 }
 
 
 int build_my_child_rt(char *packet){ //packet cannot have some string or else, only ok for num packet[]={'1','22','678'}
+	char seps[] = ",";
+	char *token1 = NULL;
+	char *pnext = NULL;
+	char *pnext1 = NULL;
+	printf("five!!!!!!!!!!!\n\n");
+	printf("five!!!!!!!!!!!\n%s\n",packet);
 
-	if (atoi(*packet) == 102){
-		packet++;
-		while (*packet != NULL)
+
+
+
+	token1 = strtok_s(packet, seps, &pnext);
+
+
+
+
+
+	if (atoi(token1) == 101){
+		printf("six!!!!!!!!!!!\n\n");
+		printf("six!!!!!!!!!!!\n%s\n",token1);
+		while (token1!= NULL)
 		{
-			int tmp_id;
-			tmp_id = atoi(*packet);
-			insert_rt_next_doublenew(packet, tmp_id);    //insert from packet:should packet->child then insert
-			packet++;
+			printf("seven!!!!!!!!!!!\n\n");
+			
+			token1 = strtok_s(NULL, seps, &pnext);
+			printf("token1!!!!!!!!!!!\n%s\n",token1);
+			if (token1 != NULL){
+				insert_rt_next_doublenew(head, atoi(token1));
+			}
+			  //insert from packet:should packet->child then insert
+			
 
 		}
+		printf("eight!!!!!!!!!!!\n\n");
 	}
 
-	if (*packet != 102){
-		int tmp_id;
-		tmp_id = atoi(*packet);
-		
-		node *after_found_id = (node *)malloc(sizeof(struct list));
-		preordertraverse(head, tmp_id);
+	else if (atoi(token1) != 101){
 
+		node *try_found_id = (node *)malloc(sizeof(struct list));
+		node *found_id = (node *)malloc(sizeof(struct list));
+		
+		try_found_id->mid = atoi(token1);
+		preordertraverse(head, try_found_id);
+		found_id = will_after_found_id;
+
+		preordertraverse(head, try_found_id);
+		printf("new000!!!!!!!!!!!%d\n", FOUND_MID);
+		printf("new0found_id!!!!!!!!!!!%d\n", found_id->mid);
 		if (FOUND_MID){// must return a point to tmp_id
 
 			/*
 			add something to change the point to tmp_id
 			void move_piont_to_build_rt(){node *head, node *tmp_id_point}
 			*/
-			packet++;
-			while (*packet != NULL)
+
+			while (token1 != NULL)
 			{
-				int tmp_id;
-				tmp_id = atoi(*packet);
-				insert_rt_next_doublenew(after_found_id, tmp_id);//inset from the after_found_id
-				packet++;
+				
+				token1 = strtok_s(NULL, seps, &pnext);
+				if (token1 != NULL){
+					insert_rt_next_doublenew(found_id, atoi(token1));
+					printf("six--token1!!!!!!!!!!!\n%s\n", token1);
+				}
+
 
 			}
 		}
@@ -185,7 +220,11 @@ int build_my_child_rt(char *packet){ //packet cannot have some string or else, o
 			CHILD_RT_ERR = 1;
 		}
 
+
 	}
+
+
+
 
 }
 
@@ -204,10 +243,10 @@ node * preordertraverse(node * tree, node *id){
 				FOUND_MID = 1;
 				will_after_found_id = malloc(sizeof(struct list));
 				will_after_found_id = tree;
-				printf("after_found_id->%d\n", will_after_found_id->mid);
-				printf("after_found_id->next%d\n", will_after_found_id->next->mid);
-				printf("after_found_id%d\n", will_after_found_id);
-				printf("FOUND_MID:%d\n", FOUND_MID);
+				//printf("after_found_id->%d\n", will_after_found_id->mid);
+				//printf("after_found_id->next%d\n", will_after_found_id->next->mid);
+				//printf("after_found_id%d\n", will_after_found_id);
+				//printf("FOUND_MID:%d\n", FOUND_MID);
 				return 	will_after_found_id ;
 
 			}
@@ -251,22 +290,41 @@ void rt_init(){
 }
 
 
-void insert_rt_next_doublenew(node * head, int one){
+
+void node_init(node * node_to_init){
+
+	node_to_init = malloc(sizeof(struct list));
+	node_to_init->mid = NULL;
+	node_to_init->next = NULL;
+	node_to_init->father = NULL;
+	node_to_init->prior = NULL;
+	node_to_init->child = NULL;
+
+
+
+
+}
+
+void insert_rt_next_doublenew(node * head_insert, int one){
 
 	node * temp_insert = (node *)malloc(sizeof(struct list));//middle one
+	node_init(temp_next);
+	node_init(temp_insert);
+	temp_next = head_insert;
 
-	if (head->child == 0){      //如果子节点为空
+	if (head_insert->child == 0){      //如果子节点为空
 
 		temp_next->child = temp_insert;
 		temp_insert->prior = temp_next;
 		temp_insert->mid = one;
 		temp_insert->next = NULL;
 		temp_insert->child = NULL;
-		temp_insert->father = head;//same father node
+		temp_insert->father = head_insert;//same father node
 		temp_next = temp_insert;
 
 	}
 	else{
+		temp_next = temp_next->child;
 		if (temp_next != 0){
 			while (temp_next->next != 0){
 				temp_next = temp_next->next;

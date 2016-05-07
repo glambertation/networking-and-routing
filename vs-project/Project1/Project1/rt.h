@@ -43,6 +43,7 @@ node * preordertraverse(node * tree, node *id);
 void rt_init();
 void insert_rt_next_doublenew(node * head, int one);
 void insert_rt_next_doublenew_delete(node * tree, int delete_id);
+void node_init(node * node_to_init);
 
 
 //================= over ============================= //

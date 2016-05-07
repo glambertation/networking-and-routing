@@ -1,30 +1,9 @@
-﻿生成启动时间为 2016/5/6 11:40:52。
+﻿生成启动时间为 2016/5/7 17:18:11。
      1>项目“E:\networking\vs-project\Project1\Project1\Project1.vcxproj”在节点 2 上(Build 个目标)。
      1>ClCompile:
-         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt rt.c
-         rt.c
-     1>e:\networking\vs-project\project1\project1\rt.c(29): warning C4013: “malloc”未定义；假设外部返回 int
-     1>e:\networking\vs-project\project1\project1\rt.c(29): warning C4047: “=”:“node *”与“int”的间接级别不同
-     1>e:\networking\vs-project\project1\project1\rt.c(52): warning C4013: “strcat”未定义；假设外部返回 int
-     1>e:\networking\vs-project\project1\project1\rt.c(52): warning C4047: “=”:“char *”与“int”的间接级别不同
-     1>e:\networking\vs-project\project1\project1\rt.c(132): warning C4013: “strtok_s”未定义；假设外部返回 int
-     1>e:\networking\vs-project\project1\project1\rt.c(132): warning C4047: “=”:“char *”与“int”的间接级别不同
-     1>e:\networking\vs-project\project1\project1\rt.c(138): warning C4047: “=”:“char *”与“int”的间接级别不同
-     1>e:\networking\vs-project\project1\project1\rt.c(148): warning C4013: “atoi”未定义；假设外部返回 int
-     1>e:\networking\vs-project\project1\project1\rt.c(150): warning C4047: “!=”:“int”与“void *”的间接级别不同
-     1>e:\networking\vs-project\project1\project1\rt.c(154): warning C4133: “函数”: 从“char *”到“node *”的类型不兼容
-     1>e:\networking\vs-project\project1\project1\rt.c(165): warning C4047: “函数”:“node *”与“int”的间接级别不同
-     1>e:\networking\vs-project\project1\project1\rt.c(165): warning C4024: “preordertraverse”: 形参和实参 2 的类型不同
-     1>e:\networking\vs-project\project1\project1\rt.c(174): warning C4047: “!=”:“int”与“void *”的间接级别不同
-     1>e:\networking\vs-project\project1\project1\rt.c(205): warning C4047: “=”:“node *”与“int”的间接级别不同
-     1>e:\networking\vs-project\project1\project1\rt.c(221): warning C4033: “preordertraverse”必须返回值
-     1>e:\networking\vs-project\project1\project1\rt.c(237): warning C4047: “=”:“node *”与“int”的间接级别不同
-     1>e:\networking\vs-project\project1\project1\rt.c(246): warning C4047: “=”:“node *”与“int”的间接级别不同
-     1>e:\networking\vs-project\project1\project1\rt.c(248): warning C4047: “=”:“node *”与“int”的间接级别不同
-     1>e:\networking\vs-project\project1\project1\rt.c(143): warning C4716: “read_my_child_rt”: 必须返回一个值
-     1>e:\networking\vs-project\project1\project1\rt.c(190): warning C4716: “build_my_child_rt”: 必须返回一个值
-     1>e:\networking\vs-project\project1\project1\rt.c(227): warning C4715: “preordertraverse”: 不是所有的控件路径都返回值
-     1>e:\networking\vs-project\project1\project1\rt.c(65): warning C4716: “send_my_rt”: 必须返回一个值
+         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt main.c
+         main.c
+     1>e:\networking\vs-project\project1\project1\main.c(70): warning C4013: “routetable”未定义；假设外部返回 int
        Link:
          D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\networking\vs-project\Project1\Debug\Project1.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:\networking\vs-project\Project1\Debug\Project1.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\networking\vs-project\Project1\Debug\Project1.lib" /MACHINE:X86 Debug\main.obj
          Debug\recv_pro.obj
@@ -34,4 +13,4 @@
 
 生成成功。
 
-已用时间 00:00:00.29
+已用时间 00:00:00.62

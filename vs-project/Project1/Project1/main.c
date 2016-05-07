@@ -173,11 +173,13 @@ void main(){
 	
 	
 	printf("new0!!!!!!!!!!!\n%d\n", ipo);
-	unsigned short q = 102;
+	printf("tree::%d\n", head->mid);
+	unsigned short q = 2;
 	unsigned short qw = 103;
 	unsigned short qwe = 104;
+	unsigned short qwer = 105;
 	char rr[20] = { 0 };
-	sprintf_s(rr,20, "%u,%u,%u#", q,qw,qwe);
+	sprintf_s(rr,20, "%u,%u,%u,%u#", q,qw,qwe,qwer);
 	node *father;
 	father = malloc(sizeof(struct list));
 	father->child = head;
@@ -186,8 +188,9 @@ void main(){
 	MY_CHILD_HAS_NODE = 1;
 	send_my_rt(rr);
 
-	//read_my_child_rt(rr);
-
+	read_my_child_rt(rr);
+	pre(head);
+	
 	getchar();
 }
 
@@ -197,16 +200,19 @@ void main(){
 
 	
 
-			printf("tree_mid->%d\n", tree->mid);
+			//printf("tree_mid->%d\n", tree->mid);
 
 
 
 
 	if (tree == NULL)
 		return;
-	printf("tree::%d\n", tree->mid);
+	printf("tree::%d---father::%d\n", tree->mid,tree->father->mid);
+
+	
 	pre(tree->child);
 	pre(tree->next);
+
 
 
 }

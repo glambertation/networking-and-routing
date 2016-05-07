@@ -1,4 +1,24 @@
+2015/5/7
+
+
+===================
+2016/5/6
+目前项目步骤：
+1.vs上看是否构成子树（send_rt ok!build rt ok）
+2.输出send rt
+3.增加路由查找遍历：【回馈路径信息】
+
+3.keil调试完成12
+4.keil写简单主从逻辑
+
+5.测试
+
+========================
 2016/5/5
+备忘：
+2.unsigned short
+
+
 //加入以下代码,支持printf函数,而不需要选择use MicroLIB	  
 #if 1
 //#pragma import(__use_no_semihosting) 
