@@ -1,5 +1,7 @@
 ﻿#include "rt.h"
 
+char track_rt[300] = { 0 };
+int TRACE_FOUND_MID = 0;
 
 /*
 node *will_after_found_id;
@@ -146,6 +148,9 @@ int read_my_child_rt(char * packet){   //use # to cut and build_my_child_rt to b
 	}
 	printf("new0!!!!!!!!!!!\n\n");
 }
+
+
+
 
 
 int build_my_child_rt(char *packet){ //packet cannot have some string or else, only ok for num packet[]={'1','22','678'}
@@ -387,3 +392,73 @@ void insert_rt_next_doublenew_delete(node * tree ,int delete_id){//delete node
 }
 
 
+
+
+
+void tracking_rt(node * tree , int  id)
+{
+	char temp_track[300] = { 0 };
+
+	if (tree != NULL){
+		if (tree->mid != 0){
+
+			printf("tree_mid->%d\n", tree->mid);
+			
+
+			if (tree->mid == id){
+
+				
+
+				TRACE_FOUND_MID = 1;
+				will_after_found_id = malloc(sizeof(struct list));
+				will_after_found_id = tree;
+				//printf("after_found_id->%d\n", will_after_found_id->mid);
+				//printf("after_found_id->next%d\n", will_after_found_id->next->mid);
+				//printf("after_found_id%d\n", will_after_found_id);
+				//printf("FOUND_MID:%d\n", FOUND_MID);
+				node_init(temp_father);
+				temp_father = tree;
+				printf("father::%d\n", temp_father->mid);
+				sprintf_s(track_rt, 300, "%u",  tree->mid);
+				strcpy(temp_track, track_rt);
+				printf("temp_track::%s\n",temp_track);
+				printf("trck::%s\n", track_rt);
+		
+				
+				while (temp_father != NULL){
+					printf("one father::%d\n", temp_father->mid);
+
+
+					if (temp_father->father != NULL){
+
+						temp_father = temp_father->father;
+						sprintf_s(track_rt, 300, "%u,%s", temp_father->mid, temp_track);
+						strcpy(temp_track, track_rt);
+						printf("trck::%s\n", track_rt);
+
+					}
+					else {
+						printf("four\n");
+						break;
+					}
+
+				}
+		
+				return 	;
+
+			}
+			
+
+
+		}
+
+
+	}
+	if (tree == NULL)
+		return;
+	printf("tree::%d\n", tree->mid);
+	tracking_rt(tree->child, id);
+	tracking_rt(tree->next, id);
+
+
+}

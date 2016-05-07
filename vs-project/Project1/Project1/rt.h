@@ -35,6 +35,8 @@ extern unsigned short  CHILD_RT_ERR ;
 
 node *will_after_found_id;
 extern unsigned short  FOUND_MID;
+extern int TRACE_FOUND_MID;
+extern char track_rt[300];
 
 int send_my_rt(char * my_child_rt);
 int read_my_child_rt(char * packet);
@@ -44,6 +46,7 @@ void rt_init();
 void insert_rt_next_doublenew(node * head, int one);
 void insert_rt_next_doublenew_delete(node * tree, int delete_id);
 void node_init(node * node_to_init);
+void tracking_rt(node * tree, int  id);
 
 
 //================= over ============================= //

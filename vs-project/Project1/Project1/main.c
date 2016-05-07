@@ -182,34 +182,38 @@ void main(){
 	sprintf_s(rr,20, "%u,%u,%u,%u#", q,qw,qwe,qwer);
 	node *father;
 	father = malloc(sizeof(struct list));
+	node_init(father);
+	
 	father->child = head;
 	head->father = father;
 	father->mid = 100;
+	father->father = NULL;
 	MY_CHILD_HAS_NODE = 1;
 	send_my_rt(rr);
 
 	read_my_child_rt(rr);
 	pre(head);
-	
+	tracking_rt(head,104 );
+	printf("new!!!!!!!!!!!\n");
+	printf("%s", track_rt);
 	getchar();
 }
 
+void pre(node * tree){
 
- void pre(node * tree){
 
 
-	
 
-			//printf("tree_mid->%d\n", tree->mid);
+	//printf("tree_mid->%d\n", tree->mid);
 
 
 
 
 	if (tree == NULL)
 		return;
-	printf("tree::%d---father::%d\n", tree->mid,tree->father->mid);
+	printf("tree::%d---father::%d\n", tree->mid, tree->father->mid);
 
-	
+
 	pre(tree->child);
 	pre(tree->next);
 

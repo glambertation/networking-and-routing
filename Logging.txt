@@ -1,5 +1,37 @@
 2015/5/7
+目前项目步骤：
+1.vs上看是否构成子树（send_rt ok!build rt ok）
+2.输出send rt【send message 格式】
+3.增加路由查找遍历：【回馈路径信息】（ok）
 
+4.读取回馈路由信息，+send信息格式【100,101,1,104+message】
+5.需要组成网状网络
+6.keil调试完成12
+7.keil写简单主从逻辑
+
+8.测试
+
+========
+init后为啥father-》还是不是null：init重新分配内存空间这里小问题
+========
+1.build rt real ok.
+2.oh no 需要循环建立子树
+哈哈哈哈，因为是高低顺序，所以先主节点，再子节点，所以一层一层，所以肯定能找到头节点然后build
+所以建造的就是全网路由，不用循环，已经while了
+while (token1 != NULL)
+	{
+
+		token1 = strtok_s(NULL, seps, &pNext);
+		printf("there!!!!!!!!!!!\n\n");
+		if (token1 != NULL){
+			build_my_child_rt(token1);
+			printf("four!!!!!!!!!!!\n\n");
+		}
+		
+
+	}
+
+3.需要组成网状网络
 
 ===================
 2016/5/6
@@ -8,10 +40,10 @@
 2.输出send rt
 3.增加路由查找遍历：【回馈路径信息】
 
-3.keil调试完成12
+4.keil调试完成12
 4.keil写简单主从逻辑
 
-5.测试
+6.测试
 
 ========================
 2016/5/5
