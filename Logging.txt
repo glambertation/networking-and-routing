@@ -1,10 +1,38 @@
+2015/5/8
+1.packet改成char【】 c语言没有string
+
+int _send_rt(unsigned short did,char * packet){
+	char pack[200];
+	strcpy(pack, packet);
+	unsigned short rc = _send_simple_command(PINGRESP, 102, did, pack);
+
+	rc = 0;
+	return rc;
+
+}
+
+2.输出send rt【send message 格式  ok】
+
+int _send_rt(unsigned short did,char * packet){
+	char pack[200];
+	strcpy(pack, packet);
+	unsigned short rc = _send_simple_command(PINGRESP, 102, did, pack);
+
+	rc = 0;
+	return rc;
+
+}
+
+========================
 2015/5/7
 目前项目步骤：
 1.vs上看是否构成子树（send_rt ok!build rt ok）
-2.输出send rt【send message 格式】
 3.增加路由查找遍历：【回馈路径信息】（ok）
 
-4.读取回馈路由信息，+send信息格式【100,101,1,104+message】
+2.输出send rt【send message 格式  】
+
+
+4.读取回馈路由信息，+send信息格式【100,101,1,104+message   pub信息修改+读取头路由】
 5.需要组成网状网络
 6.keil调试完成12
 7.keil写简单主从逻辑

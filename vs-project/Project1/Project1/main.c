@@ -1,6 +1,6 @@
 
 #include<winsock2.h>
-
+#include <stdio.h>
 #include<time.h>
 #include <string.h>
 #include<stdlib.h>
@@ -27,6 +27,7 @@ unsigned short	UNSUBACK = 0xB0;
 unsigned short	PINGREQ = 0xC0;//1100 0000 transfer to 192 in decimal unit
 unsigned short	PINGRESP = 0xD0;
 unsigned short	DISCONNECT = 0xE0;
+unsigned short	SEND_RT = 0xE1;
 
 unsigned short  MQTT_ERR_SUCCESS = 0;
 unsigned short  MY_CHILD_HAS_NODE = 0;
@@ -65,9 +66,9 @@ void main(){
 	_send_pingreq();
 	//_recieve_pingreq();
 	printf("hello\n");
-	recv_process();
+	//recv_process();
 
-	routetable();
+	//routetable();
 	//int lens = atoi(_current_out_packet);
 	//int lenss = atoi(_out_packet);
 	//printf("%d  and ", lens);
@@ -196,6 +197,14 @@ void main(){
 	tracking_rt(head,104 );
 	printf("new!!!!!!!!!!!\n");
 	printf("%s", track_rt);
+
+	char tyu[20] = { 'a', 'b', 'c', 'a', 'b', 'c', 'a', 'b', 'c' };
+	char str[200]  ;
+	//strcpy(temp_track, track_rt);
+	strcpy_s(str,20, tyu);
+
+	printf("new!!!!!!!!!!!%s\n",tyu);
+	printf("new!!!!!!!!!!!%saa\n", str);
 	getchar();
 }
 

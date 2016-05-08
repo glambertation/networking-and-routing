@@ -8,7 +8,7 @@ struct messagestuff
 	unsigned short  qos;
 	unsigned short  pos;
 	unsigned short  to_process;
-	unsigned short	packet;
+	char	        packet[200];
 
 };
 struct messagestuff recmpkt;

@@ -20,6 +20,7 @@ extern unsigned short	UNSUBACK;
 extern unsigned short	PINGREQ;//1100 0000 transfer to 192 in decimal unit
 extern unsigned short	PINGRESP;
 extern unsigned short	DISCONNECT;
+extern unsigned short	SEND_RT;
 
 //===============  usart  ======================
 extern char _out_packet[20];
@@ -56,12 +57,17 @@ void tracking_rt(node * tree, int  id);
 
 //===============  recv-proccess  ======================
 
+//extern node * will_after_found_id;  defined in rt.h
+extern int rc = 1;
+extern int already_in_net = 1;
+
+
+void _recieve_pingreq();
+int recv_process(char *message);
+int _send_rt(unsigned short did, char * packet);
+int _send_sub(unsigned short did);
+int _send_pub(unsigned short did);
+int ping_ack(unsigned short did);
 unsigned short _send_pingreq();
-unsigned short _recieve_pingreq();
-unsigned short _packet_queue(command, packet, mid, qos);
-unsigned short _send_simple_command(command);
-int recv_process();
-
-
-int ping_ack();
-
+unsigned short _send_simple_command(unsigned short command, unsigned short mid, unsigned short did, char *packet);
+unsigned short _packet_queue(unsigned short command, char * packet, unsigned short mid, unsigned short did);
