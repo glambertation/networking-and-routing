@@ -1,7 +1,8 @@
 #include "rt.h"
 
 
-
+ int rc=0;
+ int already_in_net=1;
 
 //recv_process(_usart_recv_packet1);
 /*
@@ -184,8 +185,13 @@ unsigned short _send_simple_command(unsigned short command, unsigned short mid, 
 	//For DISCONNECT, PINGREQ and PINGRESP
 	//unsigned short remaining_length = 0;
 
-	char pack[200] ;
-	strcpy(pack, packet);
+	char pack[200] = {0};
+	//assert((pack != NULL) && (packet != NULL));
+	if (packet != NULL)
+	{
+		strcpy(pack, packet);
+	}
+	
 	//printf("%d", 12);
 	//packet = struct.pack('!BB', command, remaining_length);
 	//unsigned short packet = command;

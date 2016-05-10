@@ -1,5 +1,5 @@
-#include<stdio.h>
-
+#include <stdio.h>
+#include <assert.h>
 
 #include "message_struct.h"
 
@@ -58,8 +58,8 @@ void tracking_rt(node * tree, int  id);
 //===============  recv-proccess  ======================
 
 //extern node * will_after_found_id;  defined in rt.h
-extern int rc = 1;
-extern int already_in_net = 1;
+extern int rc;
+extern int already_in_net;
 
 
 void _recieve_pingreq();
