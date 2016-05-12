@@ -21,6 +21,7 @@ extern unsigned short	PINGREQ;//1100 0000 transfer to 192 in decimal unit
 extern unsigned short	PINGRESP;
 extern unsigned short	DISCONNECT;
 extern unsigned short	SEND_RT;
+extern unsigned short  SEND_MESSAGE;
 
 //===============  usart  ======================
 extern char _out_packet[20];
@@ -36,8 +37,8 @@ extern unsigned short  CHILD_RT_ERR ;
 
 node *will_after_found_id;
 extern unsigned short  FOUND_MID;
-extern int TRACE_FOUND_MID;
-extern char track_rt[300];
+int TRACE_FOUND_MID = 0;
+char track_rt[300] = {0};
 
 int send_my_rt(char * my_child_rt);
 int read_my_child_rt(char * packet);
@@ -70,4 +71,4 @@ int _send_pub(unsigned short did);
 int ping_ack(unsigned short did);
 unsigned short _send_pingreq();
 unsigned short _send_simple_command(unsigned short command, unsigned short mid, unsigned short did, char *packet);
-unsigned short _packet_queue(unsigned short command, char * packet, unsigned short mid, unsigned short did);
+unsigned short _packet_queue(unsigned short command, char * packet, unsigned short mid, unsigned short did, unsigned short mid_id);

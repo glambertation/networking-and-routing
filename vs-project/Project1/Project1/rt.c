@@ -1,7 +1,7 @@
 ﻿#include "rt.h"
 
-char track_rt[300] = { 0 };
-int TRACE_FOUND_MID = 0;
+
+
 
 /*
 node *will_after_found_id;
@@ -212,7 +212,15 @@ int build_my_child_rt(char *packet){ //packet cannot have some string or else, o
 			{
 				
 				token1 = strtok_s(NULL, seps, &pnext);
-				if (token1 != NULL){
+				//case:  #1,104#2,104# 
+				preordertraverse(head, token1);//found
+				if (FOUND_MID){
+					//add check state of link stage
+					found_id->father->father_next= try_found_id;
+
+				}
+				//case :100,101#101,1,2#1,104#104,105,106
+				else if (token1 != NULL){
 					insert_rt_next_doublenew(found_id, atoi(token1));
 					printf("six--token1!!!!!!!!!!!\n%s\n", token1);
 				}
@@ -284,6 +292,8 @@ void rt_init(){
 	head->father = NULL;
 	head->prior = NULL;
 	head->child = NULL;
+	head->father_next = NULL;
+	head->father_prior = NULL;
 
 
 
@@ -304,6 +314,8 @@ void node_init(node * node_to_init){
 	node_to_init->father = NULL;
 	node_to_init->prior = NULL;
 	node_to_init->child = NULL;
+	node_to_init->father_next = NULL;
+	node_to_init->father_prior = NULL;
 
 
 

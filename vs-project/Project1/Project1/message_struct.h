@@ -6,7 +6,7 @@ struct messagestuff
 	unsigned short  mid;
 	unsigned short  did;
 	unsigned short  qos;
-	unsigned short  pos;
+	unsigned short  mid_id;
 	unsigned short  to_process;
 	char	        packet[200];
 
@@ -28,9 +28,11 @@ typedef struct list
 {
 	int mid;
 	struct list *child;//child
-	struct list *next;//college
+	struct list *next;//college   //same father
 	struct list *prior;//college
 	struct list *father;//college
+	struct list *father_next;//college same
+	struct list *father_prior;//college same
 }node;
 
 

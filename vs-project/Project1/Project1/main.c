@@ -28,6 +28,7 @@ unsigned short	PINGREQ = 0xC0;//1100 0000 transfer to 192 in decimal unit
 unsigned short	PINGRESP = 0xD0;
 unsigned short	DISCONNECT = 0xE0;
 unsigned short	SEND_RT = 0xE1;
+unsigned short  SEND_MESSAGE = 0xE2;
 
 unsigned short  MQTT_ERR_SUCCESS = 0;
 unsigned short  MY_CHILD_HAS_NODE = 0;

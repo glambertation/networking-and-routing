@@ -1,23 +1,44 @@
-﻿生成启动时间为 2016/5/10 10:21:51。
+﻿生成启动时间为 2016/5/12 15:57:12。
      1>项目“E:\networking\vs-project\Project1\Project1\Project1.vcxproj”在节点 2 上(Build 个目标)。
      1>ClCompile:
-         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt recv_pro.c
-         recv_pro.c
-     1>e:\networking\vs-project\project1\project1\recv_pro.c(59): warning C4013: “strtok_s”未定义；假设外部返回 int
-     1>e:\networking\vs-project\project1\project1\recv_pro.c(59): warning C4047: “=”:“char *”与“int”的间接级别不同
-     1>e:\networking\vs-project\project1\project1\recv_pro.c(64): warning C4013: “atoi”未定义；假设外部返回 int
-     1>e:\networking\vs-project\project1\project1\recv_pro.c(67): warning C4047: “=”:“char *”与“int”的间接级别不同
-     1>e:\networking\vs-project\project1\project1\recv_pro.c(71): warning C4047: “=”:“char *”与“int”的间接级别不同
-     1>e:\networking\vs-project\project1\project1\recv_pro.c(82): warning C4047: “=”:“char *”与“int”的间接级别不同
-     1>e:\networking\vs-project\project1\project1\recv_pro.c(111): warning C4013: “malloc”未定义；假设外部返回 int
-     1>e:\networking\vs-project\project1\project1\recv_pro.c(137): warning C4013: “strcpy”未定义；假设外部返回 int
+         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt rt.c
+         rt.c
+     1>e:\networking\vs-project\project1\project1\rt.c(31): warning C4013: “malloc”未定义；假设外部返回 int
+     1>e:\networking\vs-project\project1\project1\rt.c(31): warning C4047: “=”:“node *”与“int”的间接级别不同
+     1>e:\networking\vs-project\project1\project1\rt.c(54): warning C4013: “strcat”未定义；假设外部返回 int
+     1>e:\networking\vs-project\project1\project1\rt.c(54): warning C4047: “=”:“char *”与“int”的间接级别不同
+     1>e:\networking\vs-project\project1\project1\rt.c(134): warning C4013: “strtok_s”未定义；假设外部返回 int
+     1>e:\networking\vs-project\project1\project1\rt.c(134): warning C4047: “=”:“char *”与“int”的间接级别不同
+     1>e:\networking\vs-project\project1\project1\rt.c(140): warning C4047: “=”:“char *”与“int”的间接级别不同
+     1>e:\networking\vs-project\project1\project1\rt.c(167): warning C4047: “=”:“char *”与“int”的间接级别不同
+     1>e:\networking\vs-project\project1\project1\rt.c(173): warning C4013: “atoi”未定义；假设外部返回 int
+     1>e:\networking\vs-project\project1\project1\rt.c(180): warning C4047: “=”:“char *”与“int”的间接级别不同
+     1>e:\networking\vs-project\project1\project1\rt.c(214): warning C4047: “=”:“char *”与“int”的间接级别不同
+     1>e:\networking\vs-project\project1\project1\rt.c(216): warning C4133: “函数”: 从“char *”到“node *”的类型不兼容
+     1>e:\networking\vs-project\project1\project1\rt.c(257): warning C4047: “=”:“node *”与“int”的间接级别不同
+     1>e:\networking\vs-project\project1\project1\rt.c(273): warning C4033: “preordertraverse”必须返回值
+     1>e:\networking\vs-project\project1\project1\rt.c(289): warning C4047: “=”:“node *”与“int”的间接级别不同
+     1>e:\networking\vs-project\project1\project1\rt.c(300): warning C4047: “=”:“node *”与“int”的间接级别不同
+     1>e:\networking\vs-project\project1\project1\rt.c(302): warning C4047: “=”:“node *”与“int”的间接级别不同
+     1>e:\networking\vs-project\project1\project1\rt.c(311): warning C4047: “=”:“node *”与“int”的间接级别不同
+     1>e:\networking\vs-project\project1\project1\rt.c(312): warning C4047: “=”:“int”与“void *”的间接级别不同
+     1>e:\networking\vs-project\project1\project1\rt.c(425): warning C4047: “=”:“node *”与“int”的间接级别不同
+     1>e:\networking\vs-project\project1\project1\rt.c(435): warning C4013: “strcpy”未定义；假设外部返回 int
+     1>e:\networking\vs-project\project1\project1\rt.c(150): warning C4716: “read_my_child_rt”: 必须返回一个值
+     1>e:\networking\vs-project\project1\project1\rt.c(67): warning C4716: “send_my_rt”: 必须返回一个值
+     1>e:\networking\vs-project\project1\project1\rt.c(279): warning C4715: “preordertraverse”: 不是所有的控件路径都返回值
+     1>e:\networking\vs-project\project1\project1\rt.c(242): warning C4716: “build_my_child_rt”: 必须返回一个值
        Link:
          D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\networking\vs-project\Project1\Debug\Project1.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:\networking\vs-project\Project1\Debug\Project1.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\networking\vs-project\Project1\Debug\Project1.lib" /MACHINE:X86 Debug\main.obj
          Debug\recv_pro.obj
          Debug\rt.obj
-         Project1.vcxproj -> E:\networking\vs-project\Project1\Debug\Project1.exe
-     1>已完成生成项目“E:\networking\vs-project\Project1\Project1\Project1.vcxproj”(Build 个目标)的操作。
+     1>recv_pro.obj : error LNK2005: _TRACE_FOUND_MID 已经在 main.obj 中定义
+     1>recv_pro.obj : error LNK2005: _track_rt 已经在 main.obj 中定义
+     1>rt.obj : error LNK2005: _TRACE_FOUND_MID 已经在 main.obj 中定义
+     1>rt.obj : error LNK2005: _track_rt 已经在 main.obj 中定义
+     1>E:\networking\vs-project\Project1\Debug\Project1.exe : fatal error LNK1169: 找到一个或多个多重定义的符号
+     1>已完成生成项目“E:\networking\vs-project\Project1\Project1\Project1.vcxproj”(Build 个目标)的操作 - 失败。
 
-生成成功。
+生成失败。
 
-已用时间 00:00:00.42
+已用时间 00:00:00.39

@@ -131,11 +131,66 @@ int recv_process(char *message){
 
 
 }
+void token(char * packet,char * sep,int count){
+
+	char seps[]={0};
+	char *token1 = NULL;
+	char *pnext1 = NULL;
+
+	strcpy(seps, sep);
+	if (count == 1){
+
+		token1 = strtok_s(packet, seps, &pnext1);
+	}
+
+	else if (count == 2){
+
+		token1 = strtok_s(packet, seps, &pnext1);
+		token1 = strtok_s(NULL, seps, &pnext1);
+	}
+	else if (count == 100){
+
+		while (token1 != NULL)
+		{
+			// Get next token:
+			//add: a global var to save the token
+			// or give a cut to the program
+	
+			//printf(" %s\n", token1);
+			token1 = strtok_s(NULL, seps, &pnext1);
+
+		}
+	}
+
+}
+
+int _send_message(unsigned short did, char * packet){
+	char pack[200];
+	char seps[] = { ',' };
+	char *token1 = NULL;
+	char *pnext1 = NULL;
+	strcpy(pack, packet);
+
+	tracking_rt(head, did);
+
+	if (TRACE_FOUND_MID == 1){
+
+		
+		token1 = strtok_s(packet, seps, &pnext1);
+		token1 = strtok_s(NULL, seps, &pnext1);
+		
+	}
+	unsigned short rc = _send_simple_command(SEND_MESSAGE, 102, token1, did,pack);
+
+	rc = 0;
+	return rc;
+
+}
 
 int _send_rt(unsigned short did,char * packet){
 	char pack[200];
 	strcpy(pack, packet);
-	unsigned short rc = _send_simple_command(PINGRESP, 102, did, pack);
+	unsigned short rc = _send_simple_command(PINGRESP, 102,NULL, did, pack);
 
 	rc = 0;
 	return rc;
@@ -144,7 +199,7 @@ int _send_rt(unsigned short did,char * packet){
 
 
 int _send_sub(unsigned short did){
-	unsigned short rc = _send_simple_command(PINGRESP, 102, did,NULL);
+	unsigned short rc = _send_simple_command(PINGRESP, 102,NULL, did,NULL);
 
 	rc = 0;
 	return rc;
@@ -153,7 +208,7 @@ int _send_sub(unsigned short did){
 
 
 int _send_pub(unsigned short did){
-	unsigned short rc = _send_simple_command(PUBLISH, 102, did,NULL);
+	unsigned short rc = _send_simple_command(PUBLISH, 102,NULL, did,NULL);
 
 	rc = 0;
 	return rc;
@@ -162,7 +217,7 @@ int _send_pub(unsigned short did){
 
 
 int ping_ack(unsigned short did){
-	unsigned short rc = _send_simple_command(PINGRESP, 102, did,NULL);
+	unsigned short rc = _send_simple_command(PINGRESP, 102,NULL, did,NULL);
 
 	rc = 0;
 	return rc;
@@ -173,7 +228,7 @@ int ping_ack(unsigned short did){
 
 unsigned short _send_pingreq(){
 	//self._easy_log(MQTT_LOG_DEBUG, "Sending PINGREQ")
-	unsigned short rc = _send_simple_command(PINGREQ, 101, 1111,NULL);
+	unsigned short rc = _send_simple_command(PINGREQ, 101,NULL, 1111,NULL);
 	//if (rc == MQTT_ERR_SUCCESS){
 	//unsigned short _ping_t = time(0);
 	//}
@@ -181,7 +236,7 @@ unsigned short _send_pingreq(){
 	rc = 0;
 	return rc;
 }
-unsigned short _send_simple_command(unsigned short command, unsigned short mid, unsigned short did,char *packet){
+unsigned short _send_simple_command(unsigned short command, unsigned short mid, unsigned short mid_id,unsigned short did,char *packet){
 	//For DISCONNECT, PINGREQ and PINGRESP
 	//unsigned short remaining_length = 0;
 
@@ -195,22 +250,22 @@ unsigned short _send_simple_command(unsigned short command, unsigned short mid, 
 	//printf("%d", 12);
 	//packet = struct.pack('!BB', command, remaining_length);
 	//unsigned short packet = command;
-	return _packet_queue(command, pack, mid, did);
+	return _packet_queue(command, pack, mid, did, mid_id);
 }
 
-unsigned short _packet_queue(unsigned short command,char * packet, unsigned short mid, unsigned short did){
+unsigned short _packet_queue(unsigned short command, char * packet, unsigned short mid, unsigned short did,  unsigned short mid_id){
 	int i = 0;
 
 	mpkt.command = command;
 	mpkt.mid = mid;
 	strcpy(mpkt.packet,packet);
 	mpkt.did = did;
-	mpkt.pos = 0;
+	mpkt.mid_id = mid_id;
 	mpkt.to_process = sizeof(packet);
 
 
 	//self._out_packet_mutex.acquire();
-	sprintf_s(_out_packet,200, "%u,%u,%u,%s,%u,%u", mpkt.command, mpkt.mid, mpkt.did, mpkt.packet, mpkt.pos, mpkt.to_process);
+	sprintf_s(_out_packet, 200, "%u,%u,%u,%s,%u,%u", mpkt.command, mpkt.mid, mpkt.mid_id, mpkt.did, mpkt.packet, mpkt.to_process);
 	printf("hahahahahhahahaha\n");
 	printf("%s\n", _out_packet);
 	printf("hahahahahhahahaha\n");
