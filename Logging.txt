@@ -1,3 +1,55 @@
+2016/6/2
+路由表格式
+100,101#101,1,2,3,4,5,6,7,8#3,103,104,106
+
+	rt_init();
+	insert_rt_next_doublenew(head, 1);
+	insert_rt_next_doublenew(head, 2);
+	insert_rt_next_doublenew(head, 3);
+	insert_rt_next_doublenew(head, 4);
+	insert_rt_next_doublenew(head, 5);
+	insert_rt_next_doublenew(head, 6);
+	insert_rt_next_doublenew(head, 7);
+	insert_rt_next_doublenew(head, 8)
+
+
+rt.c
+send_my_rt，读取自己树下节点，并且把child-rt拼接起来
+read_my_child_rt，读取子节点，并且调用build_my_child_rt(token1)来建造自己树下的节点
+
+//可以在建造完后，直接遍历吗，然后把遍历结果send，这样就不用send_my_rt
+//如何确定子树全部建造完呢？
+
+node * preordertraverse 前序遍历查找，找到后返回与找到节点信息一样的节点
+insert_rt_next_doublenew 建造树时候插入新的节点
+insert_rt_next_doublenew_delete 删除已经建造的树的节点
+tracking_rt找到该节点，然后返回找到的路径（前序遍历的改进版）
+
+
+recv.c
+收到信息后切分
+1.pingreq，did目的地址=102 or 1111 （父节点向子节点发送信息要求子节点入网）
+如果自己没有入网，发送ping_ack（PINGRESP）给父节点，然后自己的入网标示 already_in_net = 1;
+
+2.如果收到pingresp，把收到的信息的mid加入自己路由表里
+
+3.如果收到的publish ，如果目的地址did是自己，那么_send_sub(recmpkt.mid)把自己地址回发;
+如果目的地不是自己，查找自己的路由表，如果找到，_send_pub(recmpkt.did)原目的地址
+//_send_pub(recmpkt.did)，中间回传，这个可以改进
+===========================
+2016/5/26
+change to tree module
+
+在现有路由基础上，直接建立树，然后组网
+三层组网
+1.主节点发送一次全体入网
+2.收到的回馈ack，主节点和子节点各自组网
+3.子节点二次发送全体入网
+3.长久未入网的子节点主动发送
+
+
+
+============
 2016/5/12
 增加father-next，这样变成网状ok
 遍历依然是树状遍历
